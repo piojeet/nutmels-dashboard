@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: InterRegular;
+    src: url('./assets/fonts/Inter-Regular.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: InterMeduim;
+    src: url('./assets/fonts/Inter-Medium.otf') format('opentype');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: InterSemiBold;
+    src: url('./assets/fonts/Inter-SemiBold.woff2') format("woff2");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url('./assets/fonts/Inter-Bold.woff2') format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: ProximaNovaRegular;
+    src: url('./assets/fonts/ProximaNova-Regular.woff2') format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+:root {
+    --bg-radial: radial-gradient(circle at 50% 50%, #352b51, #0d1927);
+    --white-color: #ffffff;
+    --color-black-color: #1A1A1A;
+    --btn-shadow: inset 0 0 22px 0 rgba(242, 242, 242, 0.315),
+        inset 0 0 0 1px #99999957,
+        inset -2px -2px 1px -2px #B3B3B3,
+        inset 2px 2px 1px -2px #B3B3B3,
+        inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.144);
+}
+
+[data-theme="dark"] {
+    --bg-radial: #F2EEED;
+    --white-color: #1A1A1A;
+    --color-black-color: #ffffff;
+}
+
+
+@theme {
+    --font-inter-r: InterRegular;
+    --font-inter-m: InterMeduim;
+    --font-inter-s: InterSemiBold;
+    --font-inter-b: InterBold;
+    --font-proxima-r: ProximaNovaRegular;
+    --color-white-color: var(--white-color);
+    --color-yellow-color: #FAAA21;
+    --color-green-color: #2DCA95;
+    --color-btn-shadow: var(--btn-shadow);
+    --color-black-color: #1A1A1A;
+    --shadow-side-bar: var(--btn-shadow);
+}
+
+.recharts-wrapper:focus,
+.recharts-wrapper *:focus {
+    outline: none !important;
+}
+
+.react-datepicker__day {
+    color: var(--white-color) !important;
+}
+
+.react-datepicker__day:not([aria-disabled=true]):hover,
+.react-datepicker__month-text:not([aria-disabled=true]):hover,
+.react-datepicker__quarter-text:not([aria-disabled=true]):hover,
+.react-datepicker__year-text:not([aria-disabled=true]):hover {
+    color: #1A1A1A !important;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+    background-color: rgb(56 138 203) !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+    color: #ffffff !important;
+}
