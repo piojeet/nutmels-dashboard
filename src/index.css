@@ -40,6 +40,22 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: ManropeMedium;
+    src: url('./assets/fonts/manrope-medium.woff2') format("woff2");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: ManropeRegular;
+    src: url('./assets/fonts/manrope-regular.woff2') format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 :root {
     --bg-radial: radial-gradient(circle at 50% 50%, #352b51, #0d1927);
     --white-color: #ffffff;
@@ -64,6 +80,8 @@
     --font-inter-s: InterSemiBold;
     --font-inter-b: InterBold;
     --font-proxima-r: ProximaNovaRegular;
+    --font-manrope-m: ManropeMedium;
+    --font-manrope-r: ManropeRegular;
     --color-white-color: var(--white-color);
     --color-yellow-color: #FAAA21;
     --color-green-color: #2DCA95;

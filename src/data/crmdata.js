@@ -1,3 +1,4 @@
+import product1 from "../assets/product1.png"
 export const crmProfile = [
     {
         id: 1,
@@ -17,6 +18,12 @@ export const crmProfile = [
         items: [
             { product: "Almond", size: "400g", qty: 3, UnitPrice: "1680", discount: "80", tax: "10" },
             { product: "Cashew", size: "250g", qty: 1, UnitPrice: "1200", discount: "100", tax: "5" }
+        ],
+        rating: 5,
+        reviewFeedback: "Absolutely loved the nutmeals cashews! Super fresh, perfectly roasted, and full of flavor. ",
+        mediaFiles: [product1, product1, product1],
+        packageQuelity: [
+            "Quality", "Weight", "Packaging Perfect", "Size"
         ]
     },
     {
@@ -37,6 +44,12 @@ export const crmProfile = [
         items: [
             { product: "Almond", size: "400g", qty: 3, UnitPrice: "1680", discount: "80", tax: "10" },
             { product: "Cashew", size: "250g", qty: 1, UnitPrice: "1200", discount: "100", tax: "5" }
+        ],
+        rating: 2,
+        reviewFeedback: "Great service and quality products!",
+        mediaFiles: [product1, product1],
+        packageQuelity: [
+            "Quality", "Weight", "Packaging Perfect", "Size"
         ]
     },
 ];

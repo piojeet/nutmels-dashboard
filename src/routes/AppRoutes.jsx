@@ -8,6 +8,7 @@ import ConfirmEmail from '../components/auth/ConfirmEmail'
 import Congratulation from '../components/auth/Congratulation'
 import Order from '../components/order/Order'
 import CRMCustomerProfile from '../components/CRMPage/CRMCustomerProfile'
+import ProductPage from '../pages/ProductPage'
 
 function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ function AppRoutes() {
         <Route path='/congratulation' element={<Congratulation />} />
         <Route path='/order' element={<Order />} />
         <Route path='/crm-customer-profile' element={<CRMCustomerProfile />} />
+        <Route path='/products' element={<ProductPage />} />
       </Routes>
     </div>
   )

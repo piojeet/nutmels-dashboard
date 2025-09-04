@@ -1,3 +1,6 @@
+/* This code snippet is creating a context provider and custom hooks for managing CRM (Customer
+Relationship Management) related data in a React application. Here's a breakdown of what the code is
+doing: */
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { crmProfile } from '../data/crmdata';
 
@@ -7,7 +10,7 @@ const CRMContext = createContext();
 export const useCRM = () => useContext(CRMContext);
 
 export const CRMProvider = ({ children }) => {
-  const [orders] = useState(crmProfile);
+  const [orders, setOrders] = useState(crmProfile);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,6 +21,7 @@ export const CRMProvider = ({ children }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isViewing, setIsViewing] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
 
   const tabRefs = useRef([]);
 
@@ -31,23 +35,32 @@ export const CRMProvider = ({ children }) => {
   }, [selectedTab]);
 
   // Filter logic
-  const filteredOrders = orders.filter((order) => {
-    const statusMatch =
-      selectedTab === 'Customer Profile'
-        ? selectedStatuses.length === 0 || selectedStatuses.includes(order.status)
-        : order.status === selectedTab;
+const filteredOrders = orders.filter((order) => {
+  const searchMatch =
+    order.customerName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    order.customerId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    order.orderId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    order.emailId?.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const searchMatch =
-      (order.customer?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.orderId?.toLowerCase().includes(searchQuery.toLowerCase()))
+  const dateMatch = startDate
+    ? new Date(order.date).toDateString() === startDate.toDateString()
+    : true;
 
+  return searchMatch && dateMatch;
+});
 
-    const dateMatch = startDate
-      ? new Date(order.date).toDateString() === startDate.toDateString()
-      : true;
+// Delete handler
+const handleDelete = (orderId) => {
+  setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
 
-    return statusMatch && searchMatch && dateMatch;
+  // Clean checkedItems if deleted
+  setCheckedItems((prev) => {
+    const updated = { ...prev };
+    delete updated[orderId];
+    return updated;
   });
+};
+
 
   // Checkbox: Select all logic
   useEffect(() => {
@@ -129,6 +142,8 @@ export const CRMProvider = ({ children }) => {
     isViewing,
     setIsViewing,
     setCheckedItems,
+    setOrders,
+    handleDelete,
   };
 
   return <CRMContext.Provider value={value}>{children}</CRMContext.Provider>;
