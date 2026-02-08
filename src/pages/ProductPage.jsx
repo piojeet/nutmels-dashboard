@@ -1,8 +1,11 @@
 import React from 'react'
+import ProductManagmentBasic from '../components/product/ProductManagmentBasic'
 
 function ProductPage() {
   return (
-    <div>ProductPage</div>
+    <div>
+      <ProductManagmentBasic />
+    </div>
   )
 }
 

@@ -1,0 +1,211 @@
+import React, { useState } from 'react'
+import { CgSearch } from "react-icons/cg";
+import { LuPlus } from "react-icons/lu";
+import AddBulk from '../product/AddBulk';
+import ProductBrief from '../product/ProductBrief';
+import ProductNutritional from '../product/ProductNutritional';
+import ProductInventory from '../product/ProductInventory';
+import ProductShipping from '../product/ProductShipping';
+import ProductSeo from '../product/ProductSeo';
+import { useBlog } from '../../context/BlogContext';
+import Basic from './Basic';
+import { FaCaretLeft, FaCaretRight } from 'react-icons/fa';
+import MediaBlog from './MediaBlog';
+
+function Blog() {
+
+    const filterBtn = [
+        'All Blog (56)',
+        'Blog 1',
+        'Blog 2',
+      ]
+    
+      const statuses = [
+        "basic",
+        "media",
+        "seo"
+      ];
+    
+      const { tabRefs, setSelectedTab, selectedTab, underlineStyle, paginatedProducts, currentPage, totalPages, goToPage, nextPage, prevPage, } = useBlog();
+    
+      // State to track active filter
+      const [activeFilter, setActiveFilter] = useState(filterBtn[0]);
+    
+      const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+    {/* Header */}
+    <div className="flex justify-between">
+      <div className="text-xl font-inter-b text-white-color">Blog Management</div>
+      <div className="flex gap-2">
+        {/* Search */}
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search orders..."
+            className="w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none text-white-color"
+          />
+          <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
+        </div>
+        <button onClick={() => setIsOpen(true)} className='flex items-center gap-1 px-3.5 py-2.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>
+          Add Bulk Product
+        </button>
+        <button className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg cursor-pointer">
+          <LuPlus className="size-4" />
+          Add New Product
+        </button>
+      </div>
+    </div>
+
+    {isOpen && <AddBulk onClose={() => setIsOpen(false)} />}
+
+    <div className='grid grid-cols-[1fr_500px] mt-8 gap-3'>
+      <div className='border-r border-white-color/30 pr-3 flex flex-col'>
+        <div className='flex justify-between items-center'>
+          <div className='text-xl text-yellow-color'>Food as preventive pharmacy!</div>
+
+          <div className='flex items-center gap-3'>
+            <button className='flex items-center gap-1 px-4 py-1.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>Update</button>
+            <button className='flex items-center gap-1 px-4.5 py-1.5 text-white-color text-sm font-inter-s rounded-lg border border-white-color/20 cursor-pointer bg-[#FE4949]'>Discard</button>
+          </div>
+        </div>
+
+        <div className=" mt-4">
+          {/* Status Filters */}
+          <div className="relative h-fit border-b border-white-color/30">
+            <div className="flex gap-6">
+              {statuses.map((status, i) => (
+                <button
+                  key={status}
+                  ref={(el) => (tabRefs.current[i] = el)}
+                  onClick={() => setSelectedTab(status)}
+                  className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
+                    selectedTab === status
+                      ? "text-yellow-color font-medium"
+                      : "text-white-color/50 hover:text-yellow-color"
+                  }`}
+                >
+                  {status}
+                </button>
+              ))}
+            </div>
+
+            {/* Underline */}
+            <div
+              className="absolute bottom-0 h-0.5 bg-yellow-color transition-all duration-300 ease-in-out"
+              style={{
+                left: underlineStyle.left,
+                width: underlineStyle.width,
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="mt-4 h-full">
+          {selectedTab === "basic" && <Basic />}
+          {selectedTab === "media" && <MediaBlog />}
+          {selectedTab === "seo" && <ProductSeo />}
+        </div>
+      </div>
+      <div>
+        <div className='flex flex-wrap gap-x-4 gap-y-1'>
+          {filterBtn.map(btn => (
+            <button
+              key={btn}
+              className={
+                `border-b-2 px-2 pb-1 transition-colors duration-150 cursor-pointer ` +
+                (activeFilter === btn
+                  ? 'text-white-color border-white-color'
+                  : 'text-white-color/30 border-transparent hover:text-white-color/70 hover:border-white-color/40')
+              }
+              onClick={() => setActiveFilter(btn)}
+            // style={{ fontWeight: activeFilter === btn ? 600 : 400 }}
+            >
+              {btn}
+            </button>
+          ))}
+        </div>
+
+        <div className='mt-4'>
+            <div className="grid grid-cols-3 gap-4">
+              {paginatedProducts.map((item) => (
+                <div key={item} className='bg-white-color/5 border border-white-color/20 rounded-xl'>
+                  <div className='flex items-center justify-center'>
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className='p-2'>
+                    <div className='font-inter-m text-white-color/60 text-xs'>{item.name}</div>
+                    <div className='font-inter-m text-white-color/60 text-xs'>{item.weight}</div>
+                    <div className='text-white-color font-inter-b text-xs'>₹{item.price}</div>
+
+                    <div className='flex justify-between pt-2 mt-2 border-t border-white-color/10 text-xs'>
+                      <div className='font-inter-r text-white-color/60'> <span>Stock:</span><span className='font-inter-r text-white-color'>{item.stock}</span></div>
+                      <div className='font-inter-r text-white-color/60'> <span>Sold:</span><span className='font-inter-r text-white-color'>{item.sold}</span></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination Buttons */}
+            <div className="flex gap-2 items-center justify-center mt-8">
+              {/* Prev */}
+              <button
+                onClick={prevPage}
+                className="size-[32px] bg-white-color/10 text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer disabled:opacity-30"
+                disabled={currentPage === 1}
+              >
+                <FaCaretLeft />
+              </button>
+
+              {/* Page numbers */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .slice(0, 5)
+                .map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`size-[32px] ${currentPage === page
+                        ? "bg-yellow-color text-black-color"
+                        : "bg-white-color/10 text-white-color"
+                      } flex items-center justify-center rounded-xl cursor-pointer font-inter-s`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+              {totalPages > 5 && (
+                <>
+                  <button className="size-[32px] bg-white-color/10 text-white-color flex items-center justify-center rounded-xl">
+                    ...
+                  </button>
+                  <button
+                    onClick={() => goToPage(totalPages)}
+                    className={`size-[32px] ${currentPage === totalPages
+                        ? "bg-yellow-color text-black"
+                        : "bg-white-color/10 text-black-color"
+                      } flex items-center justify-center rounded-xl cursor-pointer`}
+                  >
+                    {totalPages}
+                  </button>
+                </>
+              )}
+
+              {/* Next */}
+              <button
+                onClick={nextPage}
+                className="size-[32px] bg-white-color/10 text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer disabled:opacity-30"
+                disabled={currentPage === totalPages}
+              >
+                <FaCaretRight />
+              </button>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+  )
+}
+
+export default Blog

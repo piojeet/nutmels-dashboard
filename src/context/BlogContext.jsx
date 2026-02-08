@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import products from '../data/allProducts';
 
-const ProductContext = createContext();
+const BlogContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useProduct = () => useContext(ProductContext);
+export const useBlog = () => useContext(BlogContext);
 
-const ProductProvider = ({ children }) => {
+const BlogProvider = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState('basic');
 
   const tabRefs = useRef([]);
@@ -37,8 +37,6 @@ const ProductProvider = ({ children }) => {
   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
-  // -----------------------------
-
   const value = {
     // Tabs
     setSelectedTab,
@@ -56,8 +54,7 @@ const ProductProvider = ({ children }) => {
     nextPage,
     prevPage,
   };
+    return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
+}
 
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
-};
-
-export { ProductProvider };
+export { BlogProvider };

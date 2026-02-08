@@ -9,6 +9,8 @@ import Congratulation from '../components/auth/Congratulation'
 import Order from '../components/order/Order'
 import CRMCustomerProfile from '../components/CRMPage/CRMCustomerProfile'
 import ProductPage from '../pages/ProductPage'
+import Blog from '../components/blog/Blog'
+import UiHome from '../components/ui-seo/UiHome'
 
 function AppRoutes() {
   return (
@@ -23,6 +25,8 @@ function AppRoutes() {
         <Route path='/order' element={<Order />} />
         <Route path='/crm-customer-profile' element={<CRMCustomerProfile />} />
         <Route path='/products' element={<ProductPage />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/seo' element={<UiHome />} />
       </Routes>
     </div>
   )
