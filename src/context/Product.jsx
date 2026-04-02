@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+﻿import { createContext, useContext, useState } from 'react';
 import products from '../data/allProducts';
+import useTabIndicator from '../hooks/useTabIndicator';
 
 const ProductContext = createContext();
 
@@ -8,17 +9,7 @@ export const useProduct = () => useContext(ProductContext);
 
 const ProductProvider = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState('basic');
-
-  const tabRefs = useRef([]);
-
-  // Handle tab underline animation
-  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-  useEffect(() => {
-    const current = tabRefs.current?.find((el) => el?.innerText === selectedTab);
-    if (current) {
-      setUnderlineStyle({ left: current.offsetLeft, width: current.offsetWidth });
-    }
-  }, [selectedTab]);
+  const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(selectedTab);
 
   // -----------------------------
   // Pagination Logic
@@ -44,7 +35,8 @@ const ProductProvider = ({ children }) => {
     setSelectedTab,
     selectedTab,
     underlineStyle,
-    tabRefs,
+    getTabRef,
+    tabListRef,
 
     // Pagination
     products,
@@ -61,3 +53,6 @@ const ProductProvider = ({ children }) => {
 };
 
 export { ProductProvider };
+
+
+

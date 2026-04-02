@@ -1,122 +1,93 @@
-import React, { useEffect, useRef, useState } from 'react'
-import OrderChart from './OrderChart';
+﻿import React, { useState } from 'react';
 import { BiChevronDown } from 'react-icons/bi';
+import OrderChart from './OrderChart';
 import OrderList from './OrderList';
 import ProductPerformance from './ProductPerformance';
 import Transactions from './Transactions';
+import useTabIndicator from '../../hooks/useTabIndicator';
 
 const tabs = ['Analytics', 'CRM', 'SEO', 'Website'];
-
 const componentMap = {
-    Analytics: <OrderChart />,
-    CRM: "This is CRM content.",
-    SEO: "This is SEO content.",
-    Website: "This is Website content.",
+  Analytics: <OrderChart />,
+  CRM: 'This is CRM content.',
+  SEO: 'This is SEO content.',
+  Website: 'This is Website content.',
 };
-
-const options = [
-    'Last 7 days',
-    'Last 30 days',
-    'Last 60 days',
-    'Last 90 days',
-    'Last 1 year',
-];
-
+const options = ['Last 7 days', 'Last 30 days', 'Last 60 days', 'Last 90 days', 'Last 1 year'];
 
 function SummaryTabs() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState(options[0]);
-    const [activeTab, setActiveTab] = useState(tabs[0] || '');
-    const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-    const tabRefs = useRef([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(options[0]);
+  const [activeTab, setActiveTab] = useState(tabs[0] || '');
+  const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(activeTab);
 
-    useEffect(() => {
-        const currentTab = tabRefs.current[tabs.indexOf(activeTab)];
-        if (currentTab) {
-            const { offsetLeft, offsetWidth } = currentTab;
-            setUnderlineStyle({ left: offsetLeft, width: offsetWidth });
-        }
-    }, [activeTab, tabs]);
+  if (!tabs.length) return null;
 
-    if (!tabs.length) return null; // No tabs passed
+  return (
+    <div className='flex flex-col gap-6 lg:grid lg:grid-cols-2'>
+      <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
+        <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
+          <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
+            <div className='font-inter-b text-white-color'>Summary</div>
+            <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  ref={getTabRef(tab)}
+                  data-tab-key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-4 ${
+                    activeTab === tab ? 'text-yellow-color font-inter-b' : 'text-white-color/50 hover:text-yellow-color'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
 
+              <div
+                className='absolute bottom-0 h-0.5 bg-yellow-color transition-all duration-300 ease-in-out'
+                style={{ left: underlineStyle.left, width: underlineStyle.width, opacity: underlineStyle.opacity }}
+              />
+            </div>
+          </div>
 
-    const handleSelect = (option) => {
-        setSelected(option);
-        setIsOpen(false);
-    };
-
-    return (
-        <div className='lg:grid flex flex-col lg:grid-cols-2 gap-6'>
-            <div className='border border-white-color/20 bg-white-color/5 p-4 rounded-xl'>
-                <div className='flex items-center justify-between'>
-                    <div className='flex items-center gap-4'>
-                        <div className='font-inter-b text-white-color'>Summary</div>
-                        {/* Tabs */}
-                        <div className="flex space-x-4 pb-2 relative">
-                            {tabs.map((tab, index) => (
-                                <button
-                                    key={tab}
-                                    ref={(el) => (tabRefs.current[index] = el)}
-                                    onClick={() => setActiveTab(tab)}
-                                    className={`relative px-4 font-inter-r text-sm transition-all duration-300 ease-in-out
-              ${activeTab === tab
-                                            ? 'text-yellow-color font-inter-b'
-                                            : 'text-white-color/50 hover:text-yellow-color'
-                                        }`}
-                                >
-                                    {tab}
-                                </button>
-                            ))}
-
-                            {/* Moving Underline */}
-                            <div
-                                className="absolute bottom-0 h-0.5 bg-yellow-color transition-all duration-300 ease-in-out"
-                                style={{
-                                    left: underlineStyle.left,
-                                    width: underlineStyle.width,
-                                }}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="relative w-fit text-white-color font-inter-m z-20 select-none">
-                        <div
-                            className="bg-transparent border border-white-color/20 px-3 py-1.5 rounded-lg cursor-pointer flex items-center justify-between gap-2 min-w-[150px]"
-                            onClick={() => setIsOpen(!isOpen)}
-                        >
-                            <span>{selected}</span>
-                            <BiChevronDown size={16} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                        </div>
-
-                        {isOpen && (
-                            <div className="absolute top-full mt-2 left-0 w-full bg-black-color border border-white-color/10 rounded-lg shadow-lg overflow-hidden">
-                                {options.map((option, index) => (
-                                    <div
-                                        key={index}
-                                        onClick={() => handleSelect(option)}
-                                        className={`px-4 py-2 cursor-pointer text-sm hover:bg-yellow-color/20 hover:text-yellow-color transition-all ${selected === option ? 'bg-white/10 text-yellow-color' : 'text-white-color/80'
-                                            }`}
-                                    >
-                                        {option}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {/* Content */}
-                <div className="mt-6 text-white text-sm transition-opacity duration-300 ease-in-out opacity-100">
-                    {componentMap?.[activeTab] || 'No content available'}
-                </div>
+          <div className='relative z-20 w-full select-none text-white-color sm:w-fit'>
+            <div className='flex min-w-full cursor-pointer items-center justify-between gap-2 rounded-lg border border-white-color/20 bg-transparent px-3 py-1.5 sm:min-w-[150px]' onClick={() => setIsOpen(!isOpen)}>
+              <span>{selected}</span>
+              <BiChevronDown size={16} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </div>
 
-            <OrderList />
-            <ProductPerformance />
-            <Transactions />
+            {isOpen && (
+              <div className='absolute left-0 top-full mt-2 w-full overflow-hidden rounded-lg border border-white-color/10 bg-black-color shadow-lg'>
+                {options.map((option, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setSelected(option);
+                      setIsOpen(false);
+                    }}
+                    className={`cursor-pointer px-4 py-2 text-sm transition-all hover:bg-yellow-color/20 hover:text-yellow-color ${
+                      selected === option ? 'bg-white/10 text-yellow-color' : 'text-white-color/80'
+                    }`}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-    )
+
+        <div className='mt-6 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
+          {componentMap?.[activeTab] || 'No content available'}
+        </div>
+      </div>
+
+      <OrderList />
+      <ProductPerformance />
+      <Transactions />
+    </div>
+  );
 }
 
-export default SummaryTabs
+export default SummaryTabs;

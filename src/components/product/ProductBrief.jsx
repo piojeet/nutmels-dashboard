@@ -1,109 +1,82 @@
-import React, { useState } from 'react'
-import { IoArrowBack, IoArrowForward } from 'react-icons/io5'
+﻿import React, { useState } from 'react';
+import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 
 function ProductBrief() {
-  const [activeSection, setActiveSection] = useState("brief")
-
+  const [activeSection, setActiveSection] = useState('brief');
   const sections = [
-    { key: "brief", label: "Brief description" },
-    { key: "ingredients", label: "Ingredients" },
-    { key: "benefits", label: "Benefits" },
-    { key: "rdi", label: "Recommended daily intake (RDI)" },
-  ]
+    { key: 'brief', label: 'Brief description' },
+    { key: 'ingredients', label: 'Ingredients' },
+    { key: 'benefits', label: 'Benefits' },
+    { key: 'rdi', label: 'Recommended daily intake (RDI)' },
+  ];
+
+  const activePlaceholder = {
+    brief: 'Enter brief description...',
+    ingredients: 'Enter ingredients...',
+    benefits: 'Enter benefits...',
+    rdi: 'Enter recommended daily intake...',
+  };
 
   return (
-    <div className="h-full">
-      <form action="" className="h-full flex flex-col justify-between gap-4">
-        <div className="space-y-2">
-          <div className="grid grid-cols-[.4fr_1fr] gap-4">
-            {/* Left side buttons */}
-            <div className="flex flex-col items-start space-y-4">
-              {sections.map((sec) => (
+    <div className='h-full'>
+      <form action='' className='flex h-full flex-col justify-between gap-6'>
+        <div className='space-y-4'>
+          <div className='grid gap-6 xl:grid-cols-[.4fr_1fr]'>
+            <div className='flex flex-row gap-3 overflow-x-auto xl:flex-col xl:items-start xl:space-y-4 xl:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+              {sections.map((section) => (
                 <button
-                  type="button"
-                  key={sec.key}
-                  // onClick={() => setActiveSection(sec.key)}
-                  className={`font-inter-m tracking-wider text-start ${
-                    activeSection === sec.key
-                      ? "text-white-color"
-                      : "text-white-color/60"
-                  }`}
+                  type='button'
+                  key={section.key}
+                  onClick={() => setActiveSection(section.key)}
+                  className={`shrink-0 text-start font-inter-m tracking-wider ${activeSection === section.key ? 'text-white-color' : 'text-white-color/60'}`}
                 >
-                  {sec.label}
+                  {section.label}
                 </button>
               ))}
             </div>
 
-            {/* Right side textarea */}
-            <div>
-              {activeSection === "brief" && (
-                <textarea
-                  placeholder="Enter brief description..."
-                  className="w-full bg-white-color/5 border border-white-color/20 px-3 py-2.5 outline-none text-white-color text-sm max-h-[400px] min-h-[250px] rounded-md"
-                />
-              )}
-              {activeSection === "ingredients" && (
-                <textarea
-                  placeholder="Enter ingredients..."
-                  className="w-full bg-white-color/5 border border-white-color/20 px-3 py-2.5 outline-none text-white-color text-sm max-h-[400px] min-h-[250px] rounded-md"
-                />
-              )}
-              {activeSection === "benefits" && (
-                <textarea
-                  placeholder="Enter benefits..."
-                  className="w-full bg-white-color/5 border border-white-color/20 px-3 py-2.5 outline-none text-white-color text-sm max-h-[400px] min-h-[250px] rounded-md"
-                />
-              )}
-              {activeSection === "rdi" && (
-                <textarea
-                  placeholder="Enter recommended daily intake..."
-                  className="w-full bg-white-color/5 border border-white-color/20 px-3 py-2.5 outline-none text-white-color text-sm max-h-[400px] min-h-[250px] rounded-md"
-                />
-              )}
-            </div>
+            <textarea
+              placeholder={activePlaceholder[activeSection]}
+              className='min-h-[250px] max-h-[400px] w-full rounded-md border border-white-color/20 bg-white-color/5 px-3 py-2.5 text-sm text-white-color outline-none'
+            />
           </div>
 
-          {/* Top navigation buttons */}
-          <div className="flex justify-end gap-4">
+          <div className='flex flex-wrap justify-end gap-3 sm:gap-4'>
             <button
-              type="button"
+              type='button'
               onClick={() => {
-                const idx = sections.findIndex((s) => s.key === activeSection)
-                if (idx > 0) setActiveSection(sections[idx - 1].key)
+                const index = sections.findIndex((section) => section.key === activeSection);
+                if (index > 0) setActiveSection(sections[index - 1].key);
               }}
-              className="py-2.5 px-4 bg-white-color/5 border border-white-color/20 outline-none rounded-sm w-[120px] text-center font-inter-m text-sm text-white-color cursor-pointer flex justify-center gap-1 items-center"
+              className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[120px]'
             >
               <IoArrowBack /> Previous
             </button>
             <button
-              type="button"
+              type='button'
               onClick={() => {
-                const idx = sections.findIndex((s) => s.key === activeSection)
-                if (idx < sections.length - 1)
-                  setActiveSection(sections[idx + 1].key)
+                const index = sections.findIndex((section) => section.key === activeSection);
+                if (index < sections.length - 1) setActiveSection(sections[index + 1].key);
               }}
-              className="py-2.5 px-4 bg-white-color/5 border border-white-color/20 outline-none rounded-sm w-[100px] text-center font-inter-m text-sm text-white-color cursor-pointer flex justify-center gap-1 items-center"
+              className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[100px]'
             >
               Next <IoArrowForward />
             </button>
           </div>
         </div>
 
-        {/* BOTTOM navigation untouched */}
-        <div className="flex justify-end gap-4">
-          <button className="py-2.5 px-4 bg-white-color/5 border border-white-color/20 outline-none rounded-sm w-[120px] text-center font-inter-m text-sm text-white-color cursor-pointer flex justify-center gap-1 items-center">
+        <div className='flex flex-wrap justify-end gap-3 sm:gap-4'>
+          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[120px]'>
             <IoArrowBack /> Previous
           </button>
-          <button className="py-2.5 px-4 border border-white-color/20 outline-none rounded-sm w-[100px] text-center font-inter-m text-sm bg-[#2DCA95] cursor-pointer">
-            Save
-          </button>
-          <button className="py-2.5 px-4 bg-white-color/5 border border-white-color/20 outline-none rounded-sm w-[100px] text-center font-inter-m text-sm text-white-color cursor-pointer flex justify-center gap-1 items-center">
+          <button className='w-full rounded-sm border border-white-color/20 bg-[#2DCA95] px-4 py-2.5 text-center text-sm font-inter-m sm:w-[100px]'>Save</button>
+          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[100px]'>
             Next <IoArrowForward />
           </button>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-export default ProductBrief
+export default ProductBrief;

@@ -1,5 +1,16 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
+html, body, #root {
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
 @font-face {
     font-family: InterRegular;
     src: url('./assets/fonts/Inter-Regular.otf') format('opentype');
@@ -127,3 +138,16 @@
 .react-datepicker__year-text--in-range {
     color: #ffffff !important;
 }
+
+.swiper {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .swiper-wrapper {
+    width: 100%;
+  }
+  
+  .swiper-slide {
+    width: 100%;
+  }

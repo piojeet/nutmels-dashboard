@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { BsDownload } from 'react-icons/bs';
 import { CgSearch } from 'react-icons/cg';
 import { FaCalendarAlt, FaCaretLeft, FaCaretRight, FaSlidersH } from 'react-icons/fa';
@@ -21,7 +21,8 @@ function Order() {
     selectedTab,
     setSelectedTab,
     underlineStyle,
-    tabRefs,
+    getTabRef,
+    tabListRef,
     startDate,
     setStartDate,
     openCalendar,
@@ -60,15 +61,15 @@ function Order() {
       filteredOrders.length > 0 &&
       filteredOrders.every(order => checkedItems[order.id]);
     setAllCheckList(allChecked);
-  }, [checkedItems, filteredOrders]);
+  }, [checkedItems, filteredOrders, setAllCheckList]);
 
 
   return (
     <div className="text-white-color">
       {/* Header */}
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>
-        <div className="flex gap-2">
+        <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
           <button onClick={handleExport} className="flex items-center gap-1 px-3.5 py-2.5 bg-white-color text-black-color text-sm font-inter-s rounded-lg cursor-pointer">
             <BsDownload className="size-4" />
             Export
@@ -81,14 +82,15 @@ function Order() {
       </div>
 
       {/* Filters */}
-      <div className="flex justify-between mt-4">
+      <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         {/* Status Filters */}
-        <div className="relative w-fit h-fit">
-          <div className="flex">
-            {statuses.map((status, i) => (
+        <div ref={tabListRef} className="relative w-fit h-fit">
+          <div className="flex overflow-x-auto pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {statuses.map((status) => (
               <button
                 key={status}
-                ref={(el) => (tabRefs.current[i] = el)}
+                ref={getTabRef(status)}
+                data-tab-key={status}
                 onClick={() => setSelectedTab(status)}
                 className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${selectedTab === status
                   ? 'text-yellow-color font-medium'
@@ -106,12 +108,13 @@ function Order() {
             style={{
               left: underlineStyle.left,
               width: underlineStyle.width,
+              opacity: underlineStyle.opacity,
             }}
           />
         </div>
 
         {/* Search + Date + Filters */}
-        <div className="flex gap-2">
+        <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
           {/* Search */}
           <div className="relative">
             <input
@@ -119,7 +122,7 @@ function Order() {
               placeholder="Search orders..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
+              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
             />
             <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
@@ -200,8 +203,8 @@ function Order() {
       </div>
 
       {/* table  */}
-      <div className='max-h-[600px] overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color mt-4'>
-        <table className='w-full'>
+      <div className='mt-4 max-h-[600px] overflow-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color'>
+        <table className='w-full min-w-[1100px]'>
           <thead className='text-white-color bg-white-color/10 rounded-t-md text-sm font-proxima-r'>
             <tr>
               <th>
@@ -219,7 +222,7 @@ function Order() {
                           updatedCheckedItems[order.id] = isChecked;
                         });
 
-                        setCheckedItems(updatedCheckedItems); // ✅ This will update individual checkboxes
+                        setCheckedItems(updatedCheckedItems); // âœ… This will update individual checkboxes
                       }}
                       className="hidden"
                     />
@@ -260,19 +263,19 @@ function Order() {
                     <span className='px-2 py-2 inline-block font-proxima-r'>{order.orderId}</span>
                   </span>
                 </td>
-                <td className='text-center'><span className='flex gap-1 w-fit mx-auto'><span className='px-2 py-2 font-proxima-r shrink-0 flex text-3xl'><VscPackage /></span> <span> <span className='px-2 inline-block font-proxima-r'>{order.items?.[0]?.product || '—'}</span> <br />  <span>+{order.items?.length || 1} Products</span></span></span></td>
+                <td className='text-center'><span className='flex gap-1 w-fit mx-auto'><span className='px-2 py-2 font-proxima-r shrink-0 flex text-3xl'><VscPackage /></span> <span> <span className='px-2 inline-block font-proxima-r'>{order.items?.[0]?.product || 'â€”'}</span> <br />  <span>+{order.items?.length || 1} Products</span></span></span></td>
                 <td className='text-center'><span className='px-2 py-2 inline-block font-proxima-r'>{order.date}</span></td>
                 <td className='text-center'><span className='px-2 py-2 inline-block font-proxima-r'>{order.customer}</span></td>
                 <td className='text-center'>
                   <span className='px-2 py-2 inline-block font-proxima-r'>
-                    ₹{(
+                    â‚¹{(
                       (order.items || []).reduce((acc, item) => {
                         const unitPrice = parseFloat(item.UnitPrice || "0");
                         const discount = parseFloat(item.discount || "0");
                         const tax = parseFloat(item.tax || "0");
                         const qty = parseInt(item.qty || "1", 10);
 
-                        // ✅ Correct amount per item
+                        // âœ… Correct amount per item
                         const amount = (unitPrice - discount) * qty;
                         const total = amount + tax;
 
@@ -304,8 +307,8 @@ function Order() {
         </table>
       </div>
 
-      <div className='flex items-center justify-between mt-8'>
-        {/* Showing X–Y from Z */}
+      <div className='mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+        {/* Showing Xâ€“Y from Z */}
         <div className='text-sm font-inter-m text-white-color/30'>
           Showing <span>{startItem}-{endItem}</span> from <span>{totalItems}</span>
         </div>
@@ -372,3 +375,10 @@ function Order() {
 }
 
 export default Order;
+
+
+
+
+
+
+

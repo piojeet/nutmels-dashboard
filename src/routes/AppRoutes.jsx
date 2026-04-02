@@ -11,6 +11,8 @@ import CRMCustomerProfile from '../components/CRMPage/CRMCustomerProfile'
 import ProductPage from '../pages/ProductPage'
 import Blog from '../components/blog/Blog'
 import UiHome from '../components/ui-seo/UiHome'
+import ReportsHome from '../components/reports/ReportsHome'
+import SettingMain from '../components/setting/SettingMain'
 
 function AppRoutes() {
   return (
@@ -27,6 +29,8 @@ function AppRoutes() {
         <Route path='/products' element={<ProductPage />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/seo' element={<UiHome />} />
+        <Route path='/reports' element={<ReportsHome />} />
+        <Route path='/setting' element={<SettingMain />} />
       </Routes>
     </div>
   )

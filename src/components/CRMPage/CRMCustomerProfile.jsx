@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { BsChat, BsDownload } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import {
@@ -30,7 +30,8 @@ function CRMCustomerProfile() {
     selectedTab,
     setSelectedTab,
     underlineStyle,
-    tabRefs,
+    getTabRef,
+    tabListRef,
     filteredOrders,
     searchQuery,
     setSearchQuery,
@@ -74,9 +75,9 @@ function CRMCustomerProfile() {
   return (
     <div className="text-white-color">
       {/* Header */}
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>
-        <div className="flex gap-2">
+        <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
           {/* Search */}
           <div className="relative">
             <input
@@ -84,7 +85,7 @@ function CRMCustomerProfile() {
               placeholder="Search orders..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
+              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
             />
             <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
@@ -96,14 +97,15 @@ function CRMCustomerProfile() {
       </div>
 
       {/* Filters */}
-      <div className="flex justify-between mt-4">
+      <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         {/* Status Filters */}
-        <div className="relative w-fit h-fit">
-          <div className="flex">
-            {statuses.map((status, i) => (
+        <div ref={tabListRef} className="relative w-fit h-fit">
+          <div className="flex overflow-x-auto pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {statuses.map((status) => (
               <button
                 key={status}
-                ref={(el) => (tabRefs.current[i] = el)}
+                ref={getTabRef(status)}
+                data-tab-key={status}
                 onClick={() => setSelectedTab(status)}
                 className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
                   selectedTab === status
@@ -122,6 +124,7 @@ function CRMCustomerProfile() {
             style={{
               left: underlineStyle.left,
               width: underlineStyle.width,
+              opacity: underlineStyle.opacity,
             }}
           />
         </div>
@@ -130,8 +133,8 @@ function CRMCustomerProfile() {
       {selectedTab === "Customer Profile" && (
         <>
           {/* table  */}
-          <div className="max-h-[600px] overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color mt-4">
-            <table className="w-full">
+          <div className="mt-4 max-h-[600px] overflow-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color">
+            <table className="w-full min-w-[960px]">
               <thead className="text-white-color bg-white-color/10 rounded-t-md text-sm font-proxima-r">
                 <tr>
                   <th>
@@ -363,3 +366,10 @@ function CRMCustomerProfile() {
 }
 
 export default CRMCustomerProfile;
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { CgSearch } from "react-icons/cg";
 import { LuPlus } from "react-icons/lu";
 import AddBulk from '../product/AddBulk';
@@ -26,7 +26,7 @@ function Blog() {
         "seo"
       ];
     
-      const { tabRefs, setSelectedTab, selectedTab, underlineStyle, paginatedProducts, currentPage, totalPages, goToPage, nextPage, prevPage, } = useBlog();
+      const { getTabRef, setSelectedTab, selectedTab, underlineStyle, tabListRef, paginatedProducts, currentPage, totalPages, goToPage, nextPage, prevPage, } = useBlog();
     
       // State to track active filter
       const [activeFilter, setActiveFilter] = useState(filterBtn[0]);
@@ -35,15 +35,15 @@ function Blog() {
   return (
     <div>
     {/* Header */}
-    <div className="flex justify-between">
+    <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
       <div className="text-xl font-inter-b text-white-color">Blog Management</div>
-      <div className="flex gap-2">
+      <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
         {/* Search */}
         <div className="relative">
           <input
             type="text"
             placeholder="Search orders..."
-            className="w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none text-white-color"
+            className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none text-white-color"
           />
           <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
         </div>
@@ -59,12 +59,12 @@ function Blog() {
 
     {isOpen && <AddBulk onClose={() => setIsOpen(false)} />}
 
-    <div className='grid grid-cols-[1fr_500px] mt-8 gap-3'>
-      <div className='border-r border-white-color/30 pr-3 flex flex-col'>
-        <div className='flex justify-between items-center'>
+    <div className='mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px] 2xl:grid-cols-[1fr_500px]'>
+      <div className='flex flex-col xl:border-r xl:border-white-color/30 xl:pr-3'>
+        <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
           <div className='text-xl text-yellow-color'>Food as preventive pharmacy!</div>
 
-          <div className='flex items-center gap-3'>
+          <div className='flex flex-wrap items-center gap-3'>
             <button className='flex items-center gap-1 px-4 py-1.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>Update</button>
             <button className='flex items-center gap-1 px-4.5 py-1.5 text-white-color text-sm font-inter-s rounded-lg border border-white-color/20 cursor-pointer bg-[#FE4949]'>Discard</button>
           </div>
@@ -72,12 +72,13 @@ function Blog() {
 
         <div className=" mt-4">
           {/* Status Filters */}
-          <div className="relative h-fit border-b border-white-color/30">
-            <div className="flex gap-6">
-              {statuses.map((status, i) => (
+          <div ref={tabListRef} className="relative h-fit border-b border-white-color/30">
+            <div className="flex gap-2 overflow-x-auto pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6">
+              {statuses.map((status) => (
                 <button
                   key={status}
-                  ref={(el) => (tabRefs.current[i] = el)}
+                  ref={getTabRef(status)}
+                  data-tab-key={status}
                   onClick={() => setSelectedTab(status)}
                   className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
                     selectedTab === status
@@ -96,6 +97,7 @@ function Blog() {
               style={{
                 left: underlineStyle.left,
                 width: underlineStyle.width,
+                opacity: underlineStyle.opacity,
               }}
             />
           </div>
@@ -127,7 +129,7 @@ function Blog() {
         </div>
 
         <div className='mt-4'>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
               {paginatedProducts.map((item) => (
                 <div key={item} className='bg-white-color/5 border border-white-color/20 rounded-xl'>
                   <div className='flex items-center justify-center'>
@@ -136,7 +138,7 @@ function Blog() {
                   <div className='p-2'>
                     <div className='font-inter-m text-white-color/60 text-xs'>{item.name}</div>
                     <div className='font-inter-m text-white-color/60 text-xs'>{item.weight}</div>
-                    <div className='text-white-color font-inter-b text-xs'>₹{item.price}</div>
+                    <div className='text-white-color font-inter-b text-xs'>â‚¹{item.price}</div>
 
                     <div className='flex justify-between pt-2 mt-2 border-t border-white-color/10 text-xs'>
                       <div className='font-inter-r text-white-color/60'> <span>Stock:</span><span className='font-inter-r text-white-color'>{item.stock}</span></div>
@@ -209,3 +211,8 @@ function Blog() {
 }
 
 export default Blog
+
+
+
+
+

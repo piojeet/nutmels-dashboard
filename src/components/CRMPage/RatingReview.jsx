@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useCRM } from "../../context/CRMContext";
 import { GiCheckMark } from "react-icons/gi";
@@ -37,8 +37,8 @@ function RatingReview() {
 
   return (
     <div>
-      <div className="max-h-[600px] overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color">
-        <table className="w-full">
+      <div className="max-h-[600px] overflow-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color">
+        <table className="w-full min-w-[960px]">
           <thead className="text-white-color bg-white-color/10 rounded-t-md text-sm font-proxima-r">
             <tr>
               <th>
@@ -166,7 +166,7 @@ function RatingReview() {
         </table>
       </div>
 
-      <div className="flex items-center justify-center mt-8">
+      <div className="mt-8 flex items-center justify-center">
             {/* Pagination Buttons */}
             <div className="flex gap-2 items-center">
               {/* Prev */}
@@ -231,3 +231,4 @@ function RatingReview() {
 }
 
 export default RatingReview;
+

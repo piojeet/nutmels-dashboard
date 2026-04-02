@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useEffect, useRef } from 'react';
+﻿import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { initialOrders } from '../data/orders';
+import useTabIndicator from '../hooks/useTabIndicator';
 
 const OrderContext = createContext();
 
@@ -14,8 +15,7 @@ export const OrderProvider = ({ children }) => {
     const [openCalendar, setOpenCalendar] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
     const [selectedTab, setSelectedTab] = useState('All State');
-    const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-    const tabRefs = useRef([]);
+    const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(selectedTab);
     const calendarRef = useRef(null);
     const filterRef = useRef(null);
     const [checkedItems, setCheckedItems] = useState({});
@@ -24,15 +24,6 @@ export const OrderProvider = ({ children }) => {
     const [currentOrder, setCurrentOrder] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [isViewing, setIsViewing] = useState(false);
-
-
-
-
-    useEffect(() => {
-        const current = tabRefs.current?.find((el) => el?.innerText === selectedTab);
-        if (current) setUnderlineStyle({ left: current.offsetLeft, width: current.offsetWidth });
-    }, [selectedTab]);
-
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (calendarRef.current && !calendarRef.current.contains(e.target)) setOpenCalendar(false);
@@ -175,7 +166,8 @@ export const OrderProvider = ({ children }) => {
         selectedTab,
         setSelectedTab,
         underlineStyle,
-        tabRefs,
+        getTabRef,
+        tabListRef,
         startDate,
         setStartDate,
         openCalendar,
@@ -213,3 +205,6 @@ export const OrderProvider = ({ children }) => {
 
     return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>;
 };
+
+
+

@@ -1,8 +1,9 @@
-/* This code snippet is creating a context provider and custom hooks for managing CRM (Customer
+﻿/* This code snippet is creating a context provider and custom hooks for managing CRM (Customer
 Relationship Management) related data in a React application. Here's a breakdown of what the code is
 doing: */
-import { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { crmProfile } from '../data/crmdata';
+import useTabIndicator from '../hooks/useTabIndicator';
 
 const CRMContext = createContext();
 
@@ -22,17 +23,7 @@ export const CRMProvider = ({ children }) => {
   const [isViewing, setIsViewing] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-
-  const tabRefs = useRef([]);
-
-  // Handle tab underline animation
-  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-  useEffect(() => {
-    const current = tabRefs.current?.find((el) => el?.innerText === selectedTab);
-    if (current) {
-      setUnderlineStyle({ left: current.offsetLeft, width: current.offsetWidth });
-    }
-  }, [selectedTab]);
+  const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(selectedTab);
 
   // Filter logic
 const filteredOrders = orders.filter((order) => {
@@ -111,7 +102,8 @@ const handleDelete = (orderId) => {
     selectedTab,
     setSelectedTab,
     underlineStyle,
-    tabRefs,
+    getTabRef,
+    tabListRef,
     selectedStatuses,
     setSelectedStatuses,
     toggleStatus: (status) =>
@@ -148,3 +140,6 @@ const handleDelete = (orderId) => {
 
   return <CRMContext.Provider value={value}>{children}</CRMContext.Provider>;
 };
+
+
+

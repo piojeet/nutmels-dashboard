@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+﻿import { createContext, useContext, useState } from 'react';
+import useTabIndicator from '../hooks/useTabIndicator';
 
 const UiSeoContext = createContext();
 
@@ -7,25 +8,19 @@ export const useUiSeo = () => useContext(UiSeoContext);
 
 const UiSeoProvider = ({ children }) => {
     const [selectedTab, setSelectedTab] = useState('Home');
-
-    const tabRefs = useRef([]);
-
-    // Handle tab underline animation
-    const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-    useEffect(() => {
-      const current = tabRefs.current?.find((el) => el?.innerText === selectedTab);
-      if (current) {
-        setUnderlineStyle({ left: current.offsetLeft, width: current.offsetWidth });
-      }
-    }, [selectedTab]);
+    const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(selectedTab);
 
     const value = {
         setSelectedTab,
         selectedTab,
         underlineStyle,
-        tabRefs,
+        getTabRef,
+        tabListRef,
     }
     return <UiSeoContext.Provider value={value}>{children}</UiSeoContext.Provider>;
 }
 
 export { UiSeoProvider };
+
+
+
