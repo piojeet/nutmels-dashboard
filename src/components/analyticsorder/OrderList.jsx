@@ -2,6 +2,7 @@
 import { GiCheckMark } from 'react-icons/gi';
 import { MdFullscreen, MdFullscreenExit } from 'react-icons/md';
 import { FaEye, FaTrash } from 'react-icons/fa';
+import { showAppToast } from '../../utils/appToast';
 
 function OrderList() {
   const [confirmed, setConfirmed] = useState(false);
@@ -20,6 +21,13 @@ function OrderList() {
   const [allCheckList, setAllCheckList] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef(null);
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'Analytics',
+      detail,
+    });
+  };
 
   useEffect(() => {
     let filtered = [...orders];
@@ -68,12 +76,11 @@ function OrderList() {
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       setOrders((prev) => prev.filter((order) => order.id !== id));
+      notify('Order removed from analytics list.', 'success');
     }
   };
 
-  const handleView = (order) => {
-    alert(`Viewing order:\nOrder ID: ${order.orderId}\nProduct: ${order.product}`);
-  };
+  const handleView = () => {};
 
   return (
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>

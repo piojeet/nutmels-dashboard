@@ -1,8 +1,16 @@
 import React from "react";
 import { FieldShell, Panel, PrimaryButton, SelectInput, TextInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function SmtpSection({ form, setForm }) {
   const updateField = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -56,7 +64,9 @@ function SmtpSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Submit</PrimaryButton>
+        <PrimaryButton onClick={() => notify(`SMTP settings saved for ${form.host || "the current host"}.`, "success")}>
+          Submit
+        </PrimaryButton>
       </div>
     </Panel>
   );

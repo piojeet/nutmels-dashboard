@@ -29,6 +29,7 @@ export default function ThemeToggle() {
       document.documentElement.removeAttribute('data-theme');
       localStorage.setItem('theme', 'light');
     }
+
   };
 
   return (

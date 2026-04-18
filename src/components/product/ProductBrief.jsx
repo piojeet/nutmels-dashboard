@@ -1,8 +1,16 @@
 ﻿import React, { useState } from 'react';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
+import { showAppToast } from '../../utils/appToast';
 
 function ProductBrief() {
   const [activeSection, setActiveSection] = useState('brief');
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'Products',
+      detail,
+    });
+  };
   const sections = [
     { key: 'brief', label: 'Brief description' },
     { key: 'ingredients', label: 'Ingredients' },
@@ -27,7 +35,9 @@ function ProductBrief() {
                 <button
                   type='button'
                   key={section.key}
-                  onClick={() => setActiveSection(section.key)}
+                  onClick={() => {
+                    setActiveSection(section.key);
+                  }}
                   className={`shrink-0 text-start font-inter-m tracking-wider ${activeSection === section.key ? 'text-white-color' : 'text-white-color/60'}`}
                 >
                   {section.label}
@@ -46,7 +56,9 @@ function ProductBrief() {
               type='button'
               onClick={() => {
                 const index = sections.findIndex((section) => section.key === activeSection);
-                if (index > 0) setActiveSection(sections[index - 1].key);
+                if (index > 0) {
+                  setActiveSection(sections[index - 1].key);
+                }
               }}
               className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[120px]'
             >
@@ -56,7 +68,9 @@ function ProductBrief() {
               type='button'
               onClick={() => {
                 const index = sections.findIndex((section) => section.key === activeSection);
-                if (index < sections.length - 1) setActiveSection(sections[index + 1].key);
+                if (index < sections.length - 1) {
+                  setActiveSection(sections[index + 1].key);
+                }
               }}
               className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[100px]'
             >
@@ -66,11 +80,11 @@ function ProductBrief() {
         </div>
 
         <div className='flex flex-wrap justify-end gap-3 sm:gap-4'>
-          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[120px]'>
+          <button type='button' className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[120px]'>
             <IoArrowBack /> Previous
           </button>
-          <button className='w-full rounded-sm border border-white-color/20 bg-[#2DCA95] px-4 py-2.5 text-center text-sm font-inter-m sm:w-[100px]'>Save</button>
-          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[100px]'>
+          <button type='button' onClick={() => notify('Product brief saved.', 'success')} className='w-full rounded-sm border border-white-color/20 bg-[#2DCA95] px-4 py-2.5 text-center text-sm font-inter-m sm:w-[100px]'>Save</button>
+          <button type='button' className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-center text-sm font-inter-m text-white-color sm:w-[100px]'>
             Next <IoArrowForward />
           </button>
         </div>

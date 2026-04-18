@@ -1,6 +1,7 @@
 ﻿import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { initialOrders } from '../data/orders';
 import useTabIndicator from '../hooks/useTabIndicator';
+import { showAppToast } from '../utils/appToast';
 
 const OrderContext = createContext();
 
@@ -76,7 +77,11 @@ export const OrderProvider = ({ children }) => {
         const selectedOrders = filteredOrders.filter(order => checkedItems[order.id]);
 
         if (selectedOrders.length === 0) {
-            alert("Please select at least one order to export.");
+            showAppToast({
+                severity: 'warn',
+                summary: 'Orders',
+                detail: 'Please select at least one order to export.',
+            });
             return;
         }
 
@@ -131,6 +136,11 @@ export const OrderProvider = ({ children }) => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        showAppToast({
+            severity: 'success',
+            summary: 'Orders',
+            detail: `${selectedOrders.length} order${selectedOrders.length > 1 ? 's' : ''} exported successfully.`,
+        });
     };
 
 
@@ -139,6 +149,11 @@ export const OrderProvider = ({ children }) => {
         setCurrentOrder(order);
         setIsEditing(false);
         setIsViewing(true);
+        showAppToast({
+            severity: 'info',
+            summary: 'Orders',
+            detail: `${order.orderId} opened in preview.`,
+        });
     };
 
     const handleEdit = (orderId) => {
@@ -146,6 +161,11 @@ export const OrderProvider = ({ children }) => {
         if (order) {
             setCurrentOrder(order);
             setIsEditing(true);
+            showAppToast({
+                severity: 'info',
+                summary: 'Orders',
+                detail: `${order.orderId} opened for editing.`,
+            });
         }
     };
 

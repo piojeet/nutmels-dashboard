@@ -1,7 +1,16 @@
 import React from "react";
 import { FieldShell, Panel, PrimaryButton, SelectInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function CurrencySection({ form, setForm }) {
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
+
   return (
     <Panel
       title="Currency"
@@ -36,7 +45,9 @@ function CurrencySection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Update currency</PrimaryButton>
+        <PrimaryButton onClick={() => notify(`Currency updated to ${form.currency}.`, "success")}>
+          Update currency
+        </PrimaryButton>
       </div>
     </Panel>
   );

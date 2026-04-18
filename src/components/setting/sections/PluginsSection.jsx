@@ -2,9 +2,17 @@ import React from "react";
 import { FiCheckCircle, FiPlus, FiTrash2 } from "react-icons/fi";
 import { LuPlugZap } from "react-icons/lu";
 import { Panel, PrimaryButton, SecondaryButton, StatusPill } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function PluginsSection({ plugins, selectedPlugin, setSelectedPlugin }) {
   const selectedEntry = plugins.find((plugin) => plugin.id === selectedPlugin);
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -16,7 +24,9 @@ function PluginsSection({ plugins, selectedPlugin, setSelectedPlugin }) {
           <button
             key={plugin.id}
             type="button"
-            onClick={() => setSelectedPlugin(plugin.id)}
+            onClick={() => {
+              setSelectedPlugin(plugin.id);
+            }}
             className={`rounded-[28px] border p-6 text-left transition ${
               selectedPlugin === plugin.id
                 ? "border-emerald-300/25 bg-emerald-400/15"
@@ -44,6 +54,7 @@ function PluginsSection({ plugins, selectedPlugin, setSelectedPlugin }) {
 
         <button
           type="button"
+          onClick={() => notify("Plugin marketplace opened.")}
           className="flex min-h-[240px] flex-col items-center justify-center rounded-[28px] border border-dashed border-white-color/14 bg-white-color/[2%] p-6 text-center transition hover:border-yellow-color/35 hover:bg-white-color/[4%]"
         >
           <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white-color/15 bg-white-color/[5%] text-3xl text-white-color/60">
@@ -57,11 +68,11 @@ function PluginsSection({ plugins, selectedPlugin, setSelectedPlugin }) {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <SecondaryButton>
+        <SecondaryButton onClick={() => notify(`Deleted ${selectedEntry?.name || "selected"} plugin.`, "warn")}>
           <FiTrash2 />
           Delete {selectedEntry?.name || "plugin"}
         </SecondaryButton>
-        <PrimaryButton>
+        <PrimaryButton onClick={() => notify("Plugin marketplace opened.")}>
           <FiPlus />
           Add plugin
         </PrimaryButton>

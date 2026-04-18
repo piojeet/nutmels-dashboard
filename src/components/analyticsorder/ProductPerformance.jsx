@@ -16,7 +16,6 @@ function ProductPerformance() {
   const [selected, setSelected] = useState(options[0]);
   const [activeTab, setActiveTab] = useState(tabs[0] || '');
   const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(activeTab);
-
   if (!tabs.length) return null;
 
   return (
@@ -30,7 +29,9 @@ function ProductPerformance() {
                 key={tab}
                 ref={getTabRef(tab)}
                 data-tab-key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                }}
                 className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-4 ${
                   activeTab === tab ? 'text-yellow-color font-inter-b' : 'text-white-color/50 hover:text-yellow-color'
                 }`}
@@ -47,7 +48,9 @@ function ProductPerformance() {
         </div>
 
         <div className='relative z-20 w-full select-none text-white-color sm:w-fit'>
-          <div className='flex min-w-full cursor-pointer items-center justify-between gap-2 rounded-lg border border-white-color/20 bg-transparent px-3 py-1.5 sm:min-w-[150px]' onClick={() => setIsOpen(!isOpen)}>
+          <div className='flex min-w-full cursor-pointer items-center justify-between gap-2 rounded-lg border border-white-color/20 bg-transparent px-3 py-1.5 sm:min-w-[150px]' onClick={() => {
+            setIsOpen(!isOpen);
+          }}>
             <span>{selected}</span>
             <BiChevronDown size={16} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
           </div>

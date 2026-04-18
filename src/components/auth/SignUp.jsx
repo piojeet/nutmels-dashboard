@@ -3,8 +3,17 @@ import logo from '../../assets/header-logo-nuts 1.png'
 import { Link } from 'react-router-dom'
 import facebook from '../../assets/Facebook_Logo.png'
 import google from '../../assets/Google_Logo.png'
+import { showAppToast } from '../../utils/appToast'
 
 function SignUp() {
+    const notify = (detail, severity = 'info') => {
+        showAppToast({
+            severity,
+            summary: 'Sign Up',
+            detail,
+        });
+    };
+
     return (
         <div className='h-screen content-center'>
             <div className='max-w-[540px] w-full m-auto border border-white-color/20 bg-white-color/5 rounded-xl p-8'>
@@ -13,7 +22,14 @@ function SignUp() {
                 <div className='font-inter-r text-white-color/60 text-center mt-1'>Have an Account? {" "} <Link to={'/login'} className='text-yellow-color'>Sign In</Link></div>
 
                 <div className='space-y-4 mt-6'>
-                    <form action="" className='space-y-4'>
+                    <form
+                        action=""
+                        className='space-y-4'
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            notify('Account creation request submitted.');
+                        }}
+                    >
                         <div className='flex flex-col gap-1'>
                             <label htmlFor="email" className='font-inter-r text-white-color'>Email</label>
                             <input type="email" id='email' className='bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl h-[48px] px-4 placeholder:text-white-color/30 text-sm text-white-color font-inter-r outline-none' placeholder='Enter Email Address' />
@@ -33,8 +49,8 @@ function SignUp() {
                     <div className='text-sm font-inter-r text-white-color/30 text-center'>Or create an account using:</div>
 
                     <div className='space-y-3'>
-                        <button className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={google} alt="google" className='size-7' /> Continue with Google</button>
-                        <button className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={facebook} alt="facebook" className='size-7' /> Continue with Facebook</button>
+                        <button type='button' onClick={() => notify('Google sign up flow opened.')} className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={google} alt="google" className='size-7' /> Continue with Google</button>
+                        <button type='button' onClick={() => notify('Facebook sign up flow opened.')} className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={facebook} alt="facebook" className='size-7' /> Continue with Facebook</button>
                     </div>
                 </div>
             </div>

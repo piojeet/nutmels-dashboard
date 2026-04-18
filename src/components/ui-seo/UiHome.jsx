@@ -23,7 +23,9 @@ function UiHome() {
                 key={status}
                 ref={getTabRef(status)}
                 data-tab-key={status}
-                onClick={() => setSelectedTab(status)}
+                onClick={() => {
+                  setSelectedTab(status);
+                }}
                 className={`relative shrink-0 px-2.5 pb-2 font-inter-r text-sm transition-all ${
                   selectedTab === status ? 'text-yellow-color font-medium' : 'text-white-color/50 hover:text-yellow-color'
                 }`}

@@ -16,6 +16,8 @@
     "@mui/material": "^7.2.0",
     "@tailwindcss/vite": "^4.1.11",
     "date-fns": "^4.1.0",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.7",
     "react": "^19.1.0",
     "react-datepicker": "^8.4.0",
     "react-dom": "^19.1.0",

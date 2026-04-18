@@ -2,11 +2,19 @@
 import { FiUploadCloud } from 'react-icons/fi';
 import { IoCloseOutline } from 'react-icons/io5';
 import excel from '../../assets/excel.png';
+import { showAppToast } from '../../utils/appToast';
 
 function AddBulk({ onClose }) {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const inputRef = useRef();
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'Bulk Upload',
+      detail,
+    });
+  };
 
   const handleFileSelect = (e) => {
     const selected = e.target.files[0];
@@ -14,7 +22,7 @@ function AddBulk({ onClose }) {
       setFile(selected);
       setFileURL(URL.createObjectURL(selected));
     } else {
-      alert('File must be less than 10MB');
+      notify('File must be less than 10MB.', 'warn');
     }
   };
 
@@ -29,15 +37,18 @@ function AddBulk({ onClose }) {
       setFile(dropped);
       setFileURL(URL.createObjectURL(dropped));
     } else {
-      alert('File must be less than 10MB');
+      notify('File must be less than 10MB.', 'warn');
     }
   };
 
   const handleDragOver = (e) => e.preventDefault();
 
   const handleSave = () => {
-    if (!file) return alert('Please select a file first');
-    alert(`File saved: ${file.name}`);
+    if (!file) {
+      notify('Please select a file first.', 'warn');
+      return;
+    }
+    notify(`File saved: ${file.name}`, 'success');
     onClose();
   };
 
@@ -47,6 +58,7 @@ function AddBulk({ onClose }) {
     link.href = fileURL;
     link.download = file.name;
     link.click();
+    notify(`${file.name} download started.`);
   };
 
   const getFileIcon = (currentFile) => {

@@ -2,6 +2,7 @@
 import { MdFullscreen, MdFullscreenExit } from 'react-icons/md';
 import Payments from './Payments';
 import useTabIndicator from '../../hooks/useTabIndicator';
+import { showAppToast } from '../../utils/appToast';
 
 const tabs = ['Payments', 'Sales', 'Inventory'];
 
@@ -22,6 +23,13 @@ function Transactions() {
   const [allCheckList, setAllCheckList] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef(null);
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'Transactions',
+      detail,
+    });
+  };
 
   useEffect(() => {
     let filtered = [...orders];
@@ -71,12 +79,11 @@ function Transactions() {
     const confirmDelete = window.confirm('Are you sure you want to delete this order?');
     if (confirmDelete) {
       setOrders((prev) => prev.filter((order) => order.id !== id));
+      notify('Transaction removed from the list.', 'success');
     }
   };
 
-  const handleView = (order) => {
-    alert(`Viewing order:\nOrder ID: ${order.orderId}\nProduct: ${order.product}`);
-  };
+  const handleView = () => {};
 
   const componentMap = {
     Payments: (
@@ -110,7 +117,9 @@ function Transactions() {
                 key={tab}
                 ref={getTabRef(tab)}
                 data-tab-key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                }}
                 className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-4 ${
                   activeTab === tab ? 'text-yellow-color font-inter-b' : 'text-white-color/50 hover:text-yellow-color'
                 }`}

@@ -10,8 +10,16 @@ import {
   StatusPill,
   TextInput,
 } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function LanguagesSection({ controls, setControls }) {
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
   const filteredLanguages = [...LANGUAGE_ROWS]
     .filter((item) => {
       const search = controls.search.trim().toLowerCase();
@@ -93,7 +101,7 @@ function LanguagesSection({ controls, setControls }) {
               className="sm:w-[260px]"
             />
           </FieldShell>
-          <PrimaryButton className="shrink-0">
+          <PrimaryButton className="shrink-0" onClick={() => notify("Add language flow opened.")}>
             <FiPlus />
             Add language
           </PrimaryButton>
@@ -137,12 +145,13 @@ function LanguagesSection({ controls, setControls }) {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex justify-end gap-2">
-                      <SecondaryButton className="h-10 rounded-xl px-4">
+                      <SecondaryButton className="h-10 rounded-xl px-4" onClick={() => notify(`${item.name} opened for editing.`)}>
                         <FiEdit2 />
                         Edit
                       </SecondaryButton>
                       <button
                         type="button"
+                        onClick={() => notify(`${item.name} deleted from the language list.`, "success")}
                         className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-rose-300/20 bg-rose-400/15 px-4 text-sm font-inter-s text-rose-200 transition hover:bg-rose-400/20"
                       >
                         <FiTrash2 />

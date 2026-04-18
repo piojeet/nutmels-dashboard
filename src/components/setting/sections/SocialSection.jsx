@@ -1,6 +1,7 @@
 import React from "react";
 import { FiCheck } from "react-icons/fi";
 import { FieldShell, Panel, PrimaryButton, TextInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function SocialSection({ form, setForm }) {
   const providers = [
@@ -21,6 +22,13 @@ function SocialSection({ form, setForm }) {
   ];
 
   const updateValue = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -42,7 +50,9 @@ function SocialSection({ form, setForm }) {
               </div>
               <button
                 type="button"
-                onClick={() => updateValue(`${provider.key}Enabled`, !provider.enabled)}
+                onClick={() => {
+                  updateValue(`${provider.key}Enabled`, !provider.enabled);
+                }}
                 className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg transition ${
                   provider.enabled
                     ? "border-yellow-color bg-yellow-color text-black-color"
@@ -74,7 +84,7 @@ function SocialSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Submit</PrimaryButton>
+        <PrimaryButton onClick={() => notify("Social login settings saved.", "success")}>Submit</PrimaryButton>
       </div>
     </Panel>
   );

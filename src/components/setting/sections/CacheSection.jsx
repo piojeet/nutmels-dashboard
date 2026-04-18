@@ -1,8 +1,17 @@
 import React from "react";
 import { FiCheck, FiRefreshCw } from "react-icons/fi";
 import { Panel, PrimaryButton, SecondaryButton } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function CacheSection({ targets, setTargets }) {
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
+
   const toggleTarget = (targetId) => {
     setTargets((prev) =>
       prev.map((item) => (item.id === targetId ? { ...item, selected: !item.selected } : item))
@@ -60,15 +69,15 @@ function CacheSection({ targets, setTargets }) {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <PrimaryButton>
+        <PrimaryButton onClick={() => notify("Selected cache targets cleared.", "success")}>
           <FiRefreshCw />
           Clear selected cache
         </PrimaryButton>
         <SecondaryButton
           className="cursor-pointer"
-          onClick={() =>
-            setTargets((prev) => prev.map((item) => ({ ...item, selected: false })))
-          }
+          onClick={() => {
+            setTargets((prev) => prev.map((item) => ({ ...item, selected: false })));
+          }}
         >
           Reset selection
         </SecondaryButton>

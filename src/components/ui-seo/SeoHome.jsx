@@ -5,6 +5,7 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { BiPlus } from 'react-icons/bi';
+import { showAppToast } from '../../utils/appToast';
 
 function SeoHome() {
   const [slides, setSlides] = useState([
@@ -14,11 +15,19 @@ function SeoHome() {
   ]);
   const [editingIndex, setEditingIndex] = useState(null);
   const fileInputRef = useRef(null);
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'UI/SEO',
+      detail,
+    });
+  };
 
   const handleDelete = (index) => {
     const updated = [...slides];
     updated.splice(index, 1);
     setSlides(updated);
+    notify(`Slide ${index + 1} deleted.`, 'success');
   };
 
   const handleEdit = (index) => {
@@ -41,10 +50,12 @@ function SeoHome() {
       updated[editingIndex] = { src: imageUrl, alt: 'Updated Image' };
       setSlides(updated);
       setEditingIndex(null);
+      notify('Slide image updated.', 'success');
       return;
     }
 
     setSlides([...slides, { src: imageUrl, alt: 'New Image' }]);
+    notify('New slide added.', 'success');
   };
 
   return (
@@ -71,7 +82,9 @@ function SeoHome() {
 
               {editingIndex === idx && (
                 <button
-                  onClick={() => fileInputRef.current.click()}
+                  onClick={() => {
+                    fileInputRef.current.click();
+                  }}
                   className='absolute left-1/2 top-1/2 max-w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-sm bg-yellow-color px-3 py-2 text-center text-xs font-medium sm:text-sm'
                 >
                   Upload New Images in 1024 * 52

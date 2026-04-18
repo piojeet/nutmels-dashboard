@@ -1,8 +1,16 @@
 import React from "react";
 import { CheckRow, FieldShell, Panel, PrimaryButton, SelectInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function MiscSection({ form, setForm }) {
   const updateField = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -19,6 +27,7 @@ function MiscSection({ form, setForm }) {
           </div>
           <button
             type="button"
+            onClick={() => notify("Custom script deactivated.", "warn")}
             className="inline-flex h-11 items-center justify-center rounded-2xl bg-white-color/10 px-5 text-sm font-inter-s text-white-color transition hover:bg-white-color/15"
           >
             Deactivate
@@ -29,37 +38,49 @@ function MiscSection({ form, setForm }) {
       <div className="mt-5 grid gap-3 xl:grid-cols-2">
         <CheckRow
           checked={form.guestCheckout}
-          onChange={() => updateField("guestCheckout", !form.guestCheckout)}
+          onChange={() => {
+            updateField("guestCheckout", !form.guestCheckout);
+          }}
           label="Guest checkout"
           description="Allow customers to place orders without creating an account."
         />
         <CheckRow
           checked={form.cookieBanner}
-          onChange={() => updateField("cookieBanner", !form.cookieBanner)}
+          onChange={() => {
+            updateField("cookieBanner", !form.cookieBanner);
+          }}
           label="Cookie banner"
           description="Display a consent banner for tracking and analytics scripts."
         />
         <CheckRow
           checked={form.vendorRegistration}
-          onChange={() => updateField("vendorRegistration", !form.vendorRegistration)}
+          onChange={() => {
+            updateField("vendorRegistration", !form.vendorRegistration);
+          }}
           label="Vendor registration"
           description="Open seller onboarding from the storefront registration flow."
         />
         <CheckRow
           checked={form.attachPdf}
-          onChange={() => updateField("attachPdf", !form.attachPdf)}
+          onChange={() => {
+            updateField("attachPdf", !form.attachPdf);
+          }}
           label="Attach PDF in user email"
           description="Send invoice PDF with order confirmation and status emails."
         />
         <CheckRow
           checked={form.translatePdf}
-          onChange={() => updateField("translatePdf", !form.translatePdf)}
+          onChange={() => {
+            updateField("translatePdf", !form.translatePdf);
+          }}
           label="Translate attached PDF in email"
           description="Use selected language when generating invoice PDFs."
         />
         <CheckRow
           checked={form.sellerEmail}
-          onChange={() => updateField("sellerEmail", !form.sellerEmail)}
+          onChange={() => {
+            updateField("sellerEmail", !form.sellerEmail);
+          }}
           label="Send email to seller on new orders"
           description="Notify vendors immediately when their product gets ordered."
         />
@@ -83,7 +104,7 @@ function MiscSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Save</PrimaryButton>
+        <PrimaryButton onClick={() => notify("Miscellaneous settings saved.", "success")}>Save</PrimaryButton>
       </div>
     </Panel>
   );

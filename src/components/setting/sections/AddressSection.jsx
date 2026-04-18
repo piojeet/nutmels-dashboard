@@ -1,9 +1,17 @@
 import React from "react";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { FieldShell, Panel, PrimaryButton, TextInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function AddressSection({ form, setForm }) {
   const updateField = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -73,7 +81,9 @@ function AddressSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Submit</PrimaryButton>
+        <PrimaryButton onClick={() => notify("Business address details saved.", "success")}>
+          Submit
+        </PrimaryButton>
       </div>
     </Panel>
   );

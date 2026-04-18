@@ -1,8 +1,16 @@
 import React from "react";
 import { FieldShell, Panel, PrimaryButton, TextInput, ToggleSwitch } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function AnalyticsSection({ form, setForm }) {
   const updateField = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -13,7 +21,9 @@ function AnalyticsSection({ form, setForm }) {
         <div className="rounded-[24px] border border-white-color/12 bg-white-color/[3%] p-5">
           <ToggleSwitch
             checked={form.googleEnabled}
-            onChange={() => updateField("googleEnabled", !form.googleEnabled)}
+            onChange={() => {
+              updateField("googleEnabled", !form.googleEnabled);
+            }}
             label="Enable Google Analytics"
             description="Track page views, conversions and campaign performance."
           />
@@ -31,7 +41,9 @@ function AnalyticsSection({ form, setForm }) {
         <div className="rounded-[24px] border border-white-color/12 bg-white-color/[3%] p-5">
           <ToggleSwitch
             checked={form.facebookEnabled}
-            onChange={() => updateField("facebookEnabled", !form.facebookEnabled)}
+            onChange={() => {
+              updateField("facebookEnabled", !form.facebookEnabled);
+            }}
             label="Facebook Pixel"
             description="Use Meta pixel events for paid acquisition and retargeting."
           />
@@ -48,7 +60,7 @@ function AnalyticsSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Save</PrimaryButton>
+        <PrimaryButton onClick={() => notify("Analytics settings saved.", "success")}>Save</PrimaryButton>
       </div>
     </Panel>
   );

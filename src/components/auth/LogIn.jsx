@@ -4,10 +4,18 @@ import { Link } from 'react-router-dom'
 import facebook from '../../assets/Facebook_Logo.png'
 import google from '../../assets/Google_Logo.png'
 import { GiCheckMark } from 'react-icons/gi'
+import { showAppToast } from '../../utils/appToast'
 
 function LogIn() {
 
     const [checked, setChecked] = useState(false);
+    const notify = (detail, severity = 'info') => {
+        showAppToast({
+            severity,
+            summary: 'Sign In',
+            detail,
+        });
+    };
 
 
     return (
@@ -18,7 +26,14 @@ function LogIn() {
                 <div className='font-inter-r text-white-color/60 text-center mt-1'>New to Our Product? {" "} <Link to={'/signup'} className='text-yellow-color'>Create an Account</Link></div>
 
                 <div className='space-y-4 mt-6'>
-                    <form action="" className='space-y-4'>
+                    <form
+                        action=""
+                        className='space-y-4'
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            notify('Sign in request submitted.');
+                        }}
+                    >
                         <div className='flex flex-col gap-1'>
                             <label htmlFor="email" className='font-inter-r text-white-color'>Email</label>
                             <input type="email" id='email' className='bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl h-[48px] px-4 placeholder:text-white-color/30 text-sm text-white-color font-inter-r outline-none' placeholder='Enter Email Address' />
@@ -34,7 +49,9 @@ function LogIn() {
                                     type="checkbox"
                                     className="hidden"
                                     checked={checked}
-                                    onChange={() => setChecked(!checked)}
+                                    onChange={() => {
+                                        setChecked(!checked);
+                                    }}
                                 />
                                 <span
                                     className={`size-4 border flex items-center justify-center rounded-xs ${checked ? 'border-yellow-color' : 'border-white-color/30'
@@ -59,8 +76,8 @@ function LogIn() {
                     <div className='text-sm font-inter-r text-white-color/30 text-center'>Or sign in using:</div>
 
                     <div className='space-y-3'>
-                        <button className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={google} alt="google" className='size-7' /> Continue with Google</button>
-                        <button className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={facebook} alt="facebook" className='size-7' /> Continue with Facebook</button>
+                        <button type='button' onClick={() => notify('Google sign in flow opened.')} className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={google} alt="google" className='size-7' /> Continue with Google</button>
+                        <button type='button' onClick={() => notify('Facebook sign in flow opened.')} className='h-[48px] flex items-center justify-center font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer gap-2'><img src={facebook} alt="facebook" className='size-7' /> Continue with Facebook</button>
                     </div>
                 </div>
             </div>

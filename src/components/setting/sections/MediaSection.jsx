@@ -1,9 +1,17 @@
 import React from "react";
 import { FiGlobe } from "react-icons/fi";
 import { FieldShell, Panel, PrimaryButton, SelectInput, TextInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function MediaSection({ form, setForm }) {
   const updateField = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
 
   return (
     <Panel
@@ -64,7 +72,9 @@ function MediaSection({ form, setForm }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Update storage</PrimaryButton>
+        <PrimaryButton onClick={() => notify(`Media storage updated to ${form.storage}.`, "success")}>
+          Update storage
+        </PrimaryButton>
       </div>
     </Panel>
   );

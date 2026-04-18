@@ -4,6 +4,7 @@ doing: */
 import { createContext, useContext, useState, useEffect } from 'react';
 import { crmProfile } from '../data/crmdata';
 import useTabIndicator from '../hooks/useTabIndicator';
+import { showAppToast } from '../utils/appToast';
 
 const CRMContext = createContext();
 
@@ -42,6 +43,7 @@ const filteredOrders = orders.filter((order) => {
 
 // Delete handler
 const handleDelete = (orderId) => {
+  const deletedOrder = orders.find((order) => order.id === orderId);
   setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
 
   // Clean checkedItems if deleted
@@ -50,6 +52,14 @@ const handleDelete = (orderId) => {
     delete updated[orderId];
     return updated;
   });
+
+  if (deletedOrder) {
+    showAppToast({
+      severity: 'success',
+      summary: 'CRM',
+      detail: `${deletedOrder.customerName} removed from the list.`,
+    });
+  }
 };
 
 
@@ -87,6 +97,11 @@ const handleDelete = (orderId) => {
     setCurrentOrder(order);
     setIsEditing(false);
     setIsViewing(true);
+    showAppToast({
+      severity: 'info',
+      summary: 'CRM',
+      detail: `${order.customerName} opened in preview.`,
+    });
   };
 
   const handleEdit = (orderId) => {
@@ -94,6 +109,11 @@ const handleDelete = (orderId) => {
     if (order) {
       setCurrentOrder(order);
       setIsEditing(true);
+      showAppToast({
+        severity: 'info',
+        summary: 'CRM',
+        detail: `${order.customerName} opened for editing.`,
+      });
     }
   };
 

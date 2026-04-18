@@ -1,15 +1,17 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import SummaryTabs from '../analyticsorder/SummaryTabs';
 import CRM from '../crm/CRM';
 import useTabIndicator from '../../hooks/useTabIndicator';
+import SeoDashboard from './SeoDashboard';
+import WebsiteDashboard from './WebsiteDashboard';
 
 const tabs = ['Analytics', 'CRM', 'SEO', 'Website'];
 
 const componentMap = {
   Analytics: <SummaryTabs />,
   CRM: <CRM />,
-  SEO: 'This is SEO content.',
-  Website: 'This is Website content.',
+  SEO: <SeoDashboard />,
+  Website: <WebsiteDashboard />,
 };
 
 function HomeTabs() {
@@ -26,7 +28,9 @@ function HomeTabs() {
             key={tab}
             ref={getTabRef(tab)}
             data-tab-key={tab}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => {
+              setActiveTab(tab);
+            }}
             className={`relative shrink-0 px-3 py-1 font-inter-r text-sm transition-all duration-300 ease-in-out sm:px-4 ${
               activeTab === tab ? 'text-yellow-color font-medium' : 'text-white-color/50 hover:text-yellow-color'
             }`}

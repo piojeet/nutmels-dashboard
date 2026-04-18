@@ -10,12 +10,20 @@ import { IoEyeSharp, IoPencil } from 'react-icons/io5';
 import { useOrder } from '../../context/OrderContext';
 import OrderDetails from './OrderDetails';
 import { VscPackage } from "react-icons/vsc";
+import { showAppToast } from '../../utils/appToast';
 
 const statuses = ['All State', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 const statusesfilter = ['All', 'Processing', 'Delivered', 'Cancelled'];
 
 
 function Order() {
+  const notify = (detail, severity = 'info') => {
+    showAppToast({
+      severity,
+      summary: 'Orders',
+      detail,
+    });
+  };
 
   const {
     selectedTab,
@@ -74,7 +82,10 @@ function Order() {
             <BsDownload className="size-4" />
             Export
           </button>
-          <button className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg">
+          <button
+            onClick={() => notify('Add order flow opened.')}
+            className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
+          >
             <LuPlus className="size-4" />
             Add Order
           </button>
@@ -91,7 +102,9 @@ function Order() {
                 key={status}
                 ref={getTabRef(status)}
                 data-tab-key={status}
-                onClick={() => setSelectedTab(status)}
+                onClick={() => {
+                  setSelectedTab(status);
+                }}
                 className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${selectedTab === status
                   ? 'text-yellow-color font-medium'
                   : 'text-white-color/50 hover:text-yellow-color'
@@ -130,7 +143,9 @@ function Order() {
           {/* Select Date */}
           <div className="relative" ref={calendarRef}>
             <button
-              onClick={() => setOpenCalendar(!openCalendar)}
+              onClick={() => {
+                setOpenCalendar(!openCalendar);
+              }}
               className="flex items-center gap-2 px-3 py-2.5 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
             >
               <FaCalendarAlt className="text-white-color text-lg" />
@@ -154,7 +169,9 @@ function Order() {
           {/* Filters Button */}
           <div className="relative" ref={filterRef}>
             <button
-              onClick={() => setShowFilter(!showFilter)}
+              onClick={() => {
+                setShowFilter(!showFilter);
+              }}
               className="flex items-center gap-2 px-3 py-2.5 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
             >
               <FaSlidersH className="text-white-color text-lg" />
@@ -192,7 +209,9 @@ function Order() {
                 </div>
                 <button
                   className="mt-4 w-full bg-yellow-color hover:bg-yellow-color/90 text-white-color py-1.5 rounded-md text-sm font-inter-r"
-                  onClick={() => setShowFilter(false)}
+                  onClick={() => {
+                    setShowFilter(false);
+                  }}
                 >
                   Apply Filters
                 </button>
@@ -317,7 +336,9 @@ function Order() {
         <div className='flex gap-2 items-center'>
           {/* Prev */}
           <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            onClick={() => {
+              setCurrentPage((prev) => Math.max(prev - 1, 1));
+            }}
             className='size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30'
             disabled={currentPage === 1}
           >
@@ -328,7 +349,9 @@ function Order() {
           {Array.from({ length: totalPages }, (_, i) => i + 1).slice(0, 5).map((page) => (
             <button
               key={page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => {
+                setCurrentPage(page);
+              }}
               className={`size-[32px] ${currentPage === page ? 'bg-yellow-color text-white-color' : 'bg-white-color/10 text-white-color/50'
                 } backdrop-blur-xl flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar font-inter-s`}
             >
@@ -341,7 +364,9 @@ function Order() {
             <>
               <button className='size-[32px] bg-white-color/10 text-white-color/50 flex items-center justify-center rounded-xl shadow-side-bar'>...</button>
               <button
-                onClick={() => setCurrentPage(totalPages)}
+                onClick={() => {
+                  setCurrentPage(totalPages);
+                }}
                 className={`size-[32px] ${currentPage === totalPages ? 'bg-yellow-color text-black' : 'bg-white-color/10 text-white-color/50'
                   } backdrop-blur-xl flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar`}
               >
@@ -352,7 +377,9 @@ function Order() {
 
           {/* Next */}
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() => {
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+            }}
             className='size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30'
             disabled={currentPage === totalPages}
           >
@@ -365,7 +392,9 @@ function Order() {
       {isViewing && currentOrder && (
         <OrderDetails
           order={currentOrder}
-          onClose={() => setIsViewing(false)}
+          onClose={() => {
+            setIsViewing(false);
+          }}
         />
       )}
 

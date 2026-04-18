@@ -17,6 +17,7 @@ import { useCRM } from "../../context/CRMContext";
 import Funnel from "./Funnel";
 import SupportsCampaign from "./SupportsCampaign";
 import RatingReview from "./RatingReview";
+import { showAppToast } from "../../utils/appToast";
 
 const statuses = [
   "Customer Profile",
@@ -26,6 +27,14 @@ const statuses = [
 ];
 
 function CRMCustomerProfile() {
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "CRM",
+      detail,
+    });
+  };
+
   const {
     selectedTab,
     setSelectedTab,
@@ -89,7 +98,10 @@ function CRMCustomerProfile() {
             />
             <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
-          <button className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg">
+          <button
+            onClick={() => notify("Add customer flow opened.")}
+            className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
+          >
             <LuPlus className="size-4" />
             Add Order
           </button>
@@ -106,7 +118,9 @@ function CRMCustomerProfile() {
                 key={status}
                 ref={getTabRef(status)}
                 data-tab-key={status}
-                onClick={() => setSelectedTab(status)}
+                onClick={() => {
+                  setSelectedTab(status);
+                }}
                 className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
                   selectedTab === status
                     ? "text-yellow-color font-medium"
@@ -291,7 +305,9 @@ function CRMCustomerProfile() {
             <div className="flex gap-2 items-center">
               {/* Prev */}
               <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                onClick={() => {
+                  setCurrentPage((prev) => Math.max(prev - 1, 1));
+                }}
                 className="size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30"
                 disabled={currentPage === 1}
               >
@@ -304,7 +320,9 @@ function CRMCustomerProfile() {
                 .map((page) => (
                   <button
                     key={page}
-                    onClick={() => setCurrentPage(page)}
+                    onClick={() => {
+                      setCurrentPage(page);
+                    }}
                     className={`size-[32px] ${
                       currentPage === page
                         ? "bg-yellow-color text-white-color"
@@ -322,7 +340,9 @@ function CRMCustomerProfile() {
                     ...
                   </button>
                   <button
-                    onClick={() => setCurrentPage(totalPages)}
+                    onClick={() => {
+                      setCurrentPage(totalPages);
+                    }}
                     className={`size-[32px] ${
                       currentPage === totalPages
                         ? "bg-yellow-color text-black"
@@ -336,9 +356,9 @@ function CRMCustomerProfile() {
 
               {/* Next */}
               <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
+                onClick={() => {
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                }}
                 className="size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30"
                 disabled={currentPage === totalPages}
               >
@@ -352,7 +372,9 @@ function CRMCustomerProfile() {
       {isViewing && currentOrder && (
         <OrderDetails
           order={currentOrder}
-          onClose={() => setIsViewing(false)}
+          onClose={() => {
+            setIsViewing(false);
+          }}
         />
       )}
 

@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
+import { showAppToast } from '../../utils/appToast'
 
 function ConfirmEmail() {
 
     const [value, setValue] = useState('');
+    const notify = (detail, severity = 'info') => {
+        showAppToast({
+            severity,
+            summary: 'Confirm Email',
+            detail,
+        });
+    };
 
     const handleChange = (e) => {
         const input = e.target.value;
@@ -19,7 +27,14 @@ function ConfirmEmail() {
                 <div className='font-inter-r text-white-color/60 text-center mt-1'>We Will Help You Reset your Password</div>
 
                 <div className='space-y-4 mt-6'>
-                    <form action="" className='space-y-4 mb-8'>
+                    <form
+                        action=""
+                        className='space-y-4 mb-8'
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            notify('Confirmation code submitted.', 'success');
+                        }}
+                    >
                         <div className='flex flex-col gap-1'>
                             <label htmlFor="code" className='font-inter-r text-white-color'>Confirmation Code</label>
                             <input
@@ -37,7 +52,7 @@ function ConfirmEmail() {
                     <div className='text-sm font-inter-r text-white-color/30 text-center'>Haven’t received your code?</div>
 
                     <div className='space-y-3'>
-                        <button className='h-[48px] font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer flex items-center justify-center'>Resend Code</button>
+                        <button type='button' onClick={() => notify('Confirmation code resent.', 'success')} className='h-[48px] font-inter-r text-white-color/40 w-full bg-white-color/[3%] border-[0.5px] border-white-color/20 rounded-xl px-4 cursor-pointer flex items-center justify-center'>Resend Code</button>
                     </div>
                 </div>
             </div>

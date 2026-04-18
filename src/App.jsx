@@ -2,6 +2,7 @@
 import { useLocation } from 'react-router-dom';
 import SideBar from './components/sideBard/SideBar';
 import NavBar from './components/navBar/NavBar';
+import AppToaster from './components/toast/AppToaster';
 import AppRoutes from './routes/AppRoutes';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className='min-h-screen' style={{ background: 'var(--bg-radial)' }}>
+      <AppToaster />
       {shouldHideLayout ? (
         <AppRoutes />
       ) : (

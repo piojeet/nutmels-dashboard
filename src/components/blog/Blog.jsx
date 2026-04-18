@@ -11,8 +11,16 @@ import { useBlog } from '../../context/BlogContext';
 import Basic from './Basic';
 import { FaCaretLeft, FaCaretRight } from 'react-icons/fa';
 import MediaBlog from './MediaBlog';
+import { showAppToast } from '../../utils/appToast';
 
 function Blog() {
+    const notify = (detail, severity = 'info') => {
+      showAppToast({
+        severity,
+        summary: 'Blog',
+        detail,
+      });
+    };
 
     const filterBtn = [
         'All Blog (56)',
@@ -47,17 +55,21 @@ function Blog() {
           />
           <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
         </div>
-        <button onClick={() => setIsOpen(true)} className='flex items-center gap-1 px-3.5 py-2.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>
+        <button onClick={() => {
+          setIsOpen(true);
+        }} className='flex items-center gap-1 px-3.5 py-2.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>
           Add Bulk Product
         </button>
-        <button className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg cursor-pointer">
+        <button onClick={() => notify('Add new blog flow opened.')} className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg cursor-pointer">
           <LuPlus className="size-4" />
           Add New Product
         </button>
       </div>
     </div>
 
-    {isOpen && <AddBulk onClose={() => setIsOpen(false)} />}
+    {isOpen && <AddBulk onClose={() => {
+      setIsOpen(false);
+    }} />}
 
     <div className='mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px] 2xl:grid-cols-[1fr_500px]'>
       <div className='flex flex-col xl:border-r xl:border-white-color/30 xl:pr-3'>
@@ -65,8 +77,8 @@ function Blog() {
           <div className='text-xl text-yellow-color'>Food as preventive pharmacy!</div>
 
           <div className='flex flex-wrap items-center gap-3'>
-            <button className='flex items-center gap-1 px-4 py-1.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>Update</button>
-            <button className='flex items-center gap-1 px-4.5 py-1.5 text-white-color text-sm font-inter-s rounded-lg border border-white-color/20 cursor-pointer bg-[#FE4949]'>Discard</button>
+            <button onClick={() => notify('Blog changes updated.', 'success')} className='flex items-center gap-1 px-4 py-1.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer'>Update</button>
+            <button onClick={() => notify('Unsaved blog changes discarded.', 'warn')} className='flex items-center gap-1 px-4.5 py-1.5 text-white-color text-sm font-inter-s rounded-lg border border-white-color/20 cursor-pointer bg-[#FE4949]'>Discard</button>
           </div>
         </div>
 
@@ -79,7 +91,9 @@ function Blog() {
                   key={status}
                   ref={getTabRef(status)}
                   data-tab-key={status}
-                  onClick={() => setSelectedTab(status)}
+                  onClick={() => {
+                    setSelectedTab(status);
+                  }}
                   className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
                     selectedTab === status
                       ? "text-yellow-color font-medium"
@@ -120,7 +134,9 @@ function Blog() {
                   ? 'text-white-color border-white-color'
                   : 'text-white-color/30 border-transparent hover:text-white-color/70 hover:border-white-color/40')
               }
-              onClick={() => setActiveFilter(btn)}
+              onClick={() => {
+                setActiveFilter(btn);
+              }}
             // style={{ fontWeight: activeFilter === btn ? 600 : 400 }}
             >
               {btn}
@@ -153,7 +169,9 @@ function Blog() {
             <div className="flex gap-2 items-center justify-center mt-8">
               {/* Prev */}
               <button
-                onClick={prevPage}
+                onClick={() => {
+                  prevPage();
+                }}
                 className="size-[32px] bg-white-color/10 text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer disabled:opacity-30"
                 disabled={currentPage === 1}
               >
@@ -166,7 +184,9 @@ function Blog() {
                 .map((page) => (
                   <button
                     key={page}
-                    onClick={() => goToPage(page)}
+                    onClick={() => {
+                      goToPage(page);
+                    }}
                     className={`size-[32px] ${currentPage === page
                         ? "bg-yellow-color text-black-color"
                         : "bg-white-color/10 text-white-color"
@@ -182,7 +202,9 @@ function Blog() {
                     ...
                   </button>
                   <button
-                    onClick={() => goToPage(totalPages)}
+                    onClick={() => {
+                      goToPage(totalPages);
+                    }}
                     className={`size-[32px] ${currentPage === totalPages
                         ? "bg-yellow-color text-black"
                         : "bg-white-color/10 text-black-color"
@@ -195,7 +217,9 @@ function Blog() {
 
               {/* Next */}
               <button
-                onClick={nextPage}
+                onClick={() => {
+                  nextPage();
+                }}
                 className="size-[32px] bg-white-color/10 text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer disabled:opacity-30"
                 disabled={currentPage === totalPages}
               >

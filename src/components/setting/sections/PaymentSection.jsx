@@ -1,8 +1,17 @@
 import React from "react";
 import { FiCheck, FiChevronDown } from "react-icons/fi";
 import { FieldShell, Panel, PrimaryButton, SelectInput, TextInput } from "../SettingUI";
+import { showAppToast } from "../../../utils/appToast";
 
 function PaymentSection({ settings, setSettings }) {
+  const notify = (detail, severity = "info") => {
+    showAppToast({
+      severity,
+      summary: "Settings",
+      detail,
+    });
+  };
+
   const updateMethod = (methodId, field, value) => {
     setSettings((prev) => ({
       ...prev,
@@ -21,9 +30,9 @@ function PaymentSection({ settings, setSettings }) {
         <FieldShell label="Default">
           <SelectInput
             value={settings.defaultMethod}
-            onChange={(event) =>
-              setSettings((prev) => ({ ...prev, defaultMethod: event.target.value }))
-            }
+            onChange={(event) => {
+              setSettings((prev) => ({ ...prev, defaultMethod: event.target.value }));
+            }}
             options={settings.methods.map((item) => item.name)}
           />
         </FieldShell>
@@ -38,7 +47,9 @@ function PaymentSection({ settings, setSettings }) {
             <div className="flex flex-col gap-4 p-4 md:flex-row md:items-center md:justify-between">
               <button
                 type="button"
-                onClick={() => updateMethod(method.id, "enabled", !method.enabled)}
+                onClick={() => {
+                  updateMethod(method.id, "enabled", !method.enabled);
+                }}
                 className="flex items-center gap-3 text-left"
               >
                 <span
@@ -58,7 +69,9 @@ function PaymentSection({ settings, setSettings }) {
 
               <button
                 type="button"
-                onClick={() => updateMethod(method.id, "expanded", !method.expanded)}
+                onClick={() => {
+                  updateMethod(method.id, "expanded", !method.expanded);
+                }}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white-color/12 bg-white-color/[4%] text-white-color/60 transition hover:border-white-color/25 hover:text-white-color"
               >
                 <FiChevronDown className={`transition ${method.expanded ? "rotate-180" : ""}`} />
@@ -108,7 +121,7 @@ function PaymentSection({ settings, setSettings }) {
       </div>
 
       <div className="mt-6">
-        <PrimaryButton>Submit</PrimaryButton>
+        <PrimaryButton onClick={() => notify("Payment settings saved.", "success")}>Submit</PrimaryButton>
       </div>
     </Panel>
   );

@@ -154,7 +154,9 @@ function RatingReview() {
                 </td>
                 <td className="text-center">
                   <button
-                    onClick={() => handleDelete(order.id)}
+                    onClick={() => {
+                      handleDelete(order.id);
+                    }}
                     className="text-red-500 hover:text-red-700 cursor-pointer text-lg"
                   >
                     <RiDeleteBin5Line />
@@ -171,7 +173,9 @@ function RatingReview() {
             <div className="flex gap-2 items-center">
               {/* Prev */}
               <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                onClick={() => {
+                  setCurrentPage((prev) => Math.max(prev - 1, 1));
+                }}
                 className="size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30"
                 disabled={currentPage === 1}
               >
@@ -184,7 +188,9 @@ function RatingReview() {
                 .map((page) => (
                   <button
                     key={page}
-                    onClick={() => setCurrentPage(page)}
+                    onClick={() => {
+                      setCurrentPage(page);
+                    }}
                     className={`size-[32px] ${
                       currentPage === page
                         ? "bg-yellow-color text-white-color"
@@ -202,7 +208,9 @@ function RatingReview() {
                     ...
                   </button>
                   <button
-                    onClick={() => setCurrentPage(totalPages)}
+                    onClick={() => {
+                      setCurrentPage(totalPages);
+                    }}
                     className={`size-[32px] ${
                       currentPage === totalPages
                         ? "bg-yellow-color text-black"
@@ -216,9 +224,9 @@ function RatingReview() {
 
               {/* Next */}
               <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
+                onClick={() => {
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                }}
                 className="size-[32px] bg-white-color/10 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar disabled:opacity-30"
                 disabled={currentPage === totalPages}
               >
