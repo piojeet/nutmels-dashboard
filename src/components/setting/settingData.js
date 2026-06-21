@@ -5,13 +5,13 @@ export const SETTING_TABS = [
   { id: "address", label: "Address" },
   { id: "languages", label: "Languages" },
   { id: "social", label: "Social login" },
-  { id: "smtp", label: "SMTP setting" },
   { id: "analytics", label: "Analytics" },
   { id: "payment", label: "Payment" },
   { id: "media", label: "Media storage" },
-  { id: "misc", label: "Miscellaneous" },
-  { id: "plugins", label: "Plugins" },
-  { id: "cache", label: "Clear cache" },
+  { id: "logistics", label: "Logistics Partners" },
+  { id: "seo-ai", label: "SEO & AI" },
+  { id: "system-governance", label: "System Governance" },
+  { id: "notifications", label: "Notifications" },
 ];
 
 export const LANGUAGE_ROWS = [

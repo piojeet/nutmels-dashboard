@@ -56,7 +56,7 @@ function Payments({ filteredOrders, checkedItems, allCheckList, setAllCheckList,
                 </span>
               </td>
               <td>
-                <span className='flex items-center gap-4 px-2 py-2'>
+                <span className='flex items-center gap-4 px-2 py-2 justify-center'>
                   <button onClick={() => handleView(order)}><FaEye className='cursor-pointer opacity-70 transition hover:opacity-100' /></button>
                   <button onClick={() => handleDelete(order.id)}><FaTrash className='cursor-pointer opacity-70 transition hover:opacity-100' /></button>
                 </span>

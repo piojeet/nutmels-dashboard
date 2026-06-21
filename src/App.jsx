@@ -16,12 +16,12 @@ function App() {
       {shouldHideLayout ? (
         <AppRoutes />
       ) : (
-        <div className='mx-auto min-h-screen w-full px-3 sm:px-4 lg:px-8'>
+        <div className='mx-auto min-h-screen w-full px-3 sm:px-4 lg:px-8 flex flex-col'>
           <div className='sticky top-0 z-40 -mx-3 border-b border-white-color/10 bg-black-color/10 px-3 backdrop-blur-xl sm:-mx-4 sm:px-4 lg:-mx-8 lg:px-8'>
             <NavBar />
           </div>
 
-          <div className='py-6 sm:py-8 lg:py-10'>
+          <div className=''>
             <div className='hidden xl:block'>
               <div className='fixed left-8 top-[7.5rem] h-[calc(100dvh-8rem)] overflow-auto pr-2'>
                 <SideBar />

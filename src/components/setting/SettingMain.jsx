@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import useTabIndicator from "../../hooks/useTabIndicator";
 import AuditLogsSection from "./AuditLogsSection";
 import SettingsSectionsPanel from "./SettingsSectionsPanel";
@@ -21,7 +21,7 @@ function SettingMain() {
   const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(activeTopTab);
 
   return (
-    <section className="pb-10 text-white-color">
+    <section className="text-white-color">
       <div className="flex flex-col gap-6">
         <div>
           <h1 className="text-3xl font-inter-b text-white-color">Settings</h1>

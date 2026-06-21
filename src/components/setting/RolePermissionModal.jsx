@@ -40,7 +40,7 @@ function PermissionToggle({ checked, onClick, label, className = "" }) {
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-2 rounded-xl text-left text-sm transition ${className}`}
+      className={`flex items-center gap-2 rounded-xl text-left text-sm transition cursor-pointer ${className}`}
     >
       <span
         className={`flex h-5 w-5 items-center justify-center rounded-md border text-xs transition ${
@@ -155,11 +155,11 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-[#140d28]/70 p-4 backdrop-blur-sm">
-      <div className="relative w-full max-w-[920px] rounded-[30px] border border-white-color/12 bg-[#44366d]/95 px-5 py-6 shadow-[0_40px_120px_rgba(6,4,18,0.55)] backdrop-blur-xl sm:px-8 sm:py-8">
+      <div className="relative w-full max-w-[920px] rounded-[10px] border border-white-color/12 bg-[#44366d]/95 px-5 py-6 shadow-[0_40px_120px_rgba(6,4,18,0.55)] backdrop-blur-xl sm:px-8 sm:py-8">
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white-color text-xl text-[#3f2d66] transition hover:scale-105"
+          className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white-color text-xl text-[#3f2d66] transition hover:scale-105 cursor-pointer"
         >
           <FiX />
         </button>
@@ -169,8 +169,8 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
         </div>
 
         <div className="mt-8 space-y-6">
-          <div className="grid gap-5 md:grid-cols-[160px_minmax(0,1fr)] md:items-center">
-            <div className="text-2xl font-inter-m text-white-color/68">Name</div>
+          <div className="grid gap-5 md:grid-cols-[140px_minmax(0,1fr)] md:items-center">
+            <div className="font-inter-m text-white-color/68">Name</div>
             <TextInput
               value={form.name}
               onChange={(event) => setForm((previous) => ({ ...previous, name: event.target.value }))}
@@ -179,8 +179,8 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
             />
           </div>
 
-          <div className="grid gap-5 md:grid-cols-[160px_minmax(0,1fr)] md:items-center">
-            <div className="text-2xl font-inter-m text-white-color/68">Email Address</div>
+          <div className="grid gap-5 md:grid-cols-[140px_minmax(0,1fr)] md:items-center">
+            <div className="font-inter-m text-white-color/68">Email Address</div>
             <TextInput
               value={form.email}
               onChange={(event) => setForm((previous) => ({ ...previous, email: event.target.value }))}
@@ -189,8 +189,8 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
             />
           </div>
 
-          <div className="grid gap-5 md:grid-cols-[160px_minmax(0,1fr)] md:items-center">
-            <div className="text-2xl font-inter-m text-white-color/68">Roles</div>
+          <div className="grid gap-5 md:grid-cols-[140px_minmax(0,1fr)] md:items-center">
+            <div className="font-inter-m text-white-color/68">Roles</div>
             <SelectInput
               value={form.role}
               onChange={(event) => setForm((previous) => ({ ...previous, role: event.target.value }))}
@@ -199,10 +199,10 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
             />
           </div>
 
-          <div className="grid gap-5 md:grid-cols-[160px_minmax(0,1fr)]">
-            <div className="pt-2 text-2xl font-inter-m text-white-color/68">Permissions</div>
+          <div className="grid gap-5 md:grid-cols-[140px_minmax(0,1fr)]">
+            <div className="pt-2 font-inter-m text-white-color/68">Permissions</div>
 
-            <div className="space-y-4 rounded-[24px] border border-white-color/10 bg-white-color/[3%] p-4">
+            <div className="space-y-4">
               <PermissionToggle checked={form.permissions.all} onClick={toggleAllPermissions} label="All" />
 
               {PERMISSION_ROWS.map((row) => {
@@ -241,7 +241,7 @@ function RolePermissionModal({ open, editingUser, roleOptions, onClose, onSave }
         <div className="mt-8 flex justify-center">
           <PrimaryButton
             onClick={handleSubmit}
-            className="h-[46px] rounded-xl bg-green-color px-10 text-white-color"
+            className="h-[46px] rounded-xl bg-green-color px-10 text-white-color cursor-pointer"
           >
             Save
           </PrimaryButton>

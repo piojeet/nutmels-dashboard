@@ -144,7 +144,7 @@ function UsersSection() {
           </PrimaryButton>
         </div>
 
-        <div className="overflow-hidden rounded-[24px] border border-white-color/10 bg-white-color/[4%] shadow-side-bar backdrop-blur-xl">
+        <div className="overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[900px] text-left">
               <thead className="bg-white-color/[7%] text-sm font-inter-s text-white-color/70">

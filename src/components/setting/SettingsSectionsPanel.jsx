@@ -2,27 +2,23 @@ import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from
 import {
   createAddressForm,
   createAnalyticsForm,
-  createCacheTargets,
   createCurrencyForm,
   createLanguageControls,
   createMediaForm,
-  createMiscForm,
   createPaymentSettings,
-  createPlugins,
   createSocialForm,
-  createSmtpForm,
   SETTING_TABS,
 } from "./settingData";
 import AddressSection from "./sections/AddressSection";
 import AnalyticsSection from "./sections/AnalyticsSection";
-import CacheSection from "./sections/CacheSection";
 import CurrencySection from "./sections/CurrencySection";
 import LanguagesSection from "./sections/LanguagesSection";
+import LogisticsPartnersSection from "./sections/LogisticsPartnersSection";
 import MediaSection from "./sections/MediaSection";
-import MiscSection from "./sections/MiscSection";
+import NotificationsSection from "./sections/NotificationsSection";
 import PaymentSection from "./sections/PaymentSection";
-import PluginsSection from "./sections/PluginsSection";
-import SmtpSection from "./sections/SmtpSection";
+import SeoAiSection from "./sections/SeoAiSection";
+import SystemGovernanceSection from "./sections/SystemGovernanceSection";
 import SocialSection from "./sections/SocialSection";
 
 const TAB_COMPONENTS = {
@@ -30,13 +26,13 @@ const TAB_COMPONENTS = {
   address: AddressSection,
   languages: LanguagesSection,
   social: SocialSection,
-  smtp: SmtpSection,
   analytics: AnalyticsSection,
   payment: PaymentSection,
   media: MediaSection,
-  misc: MiscSection,
-  plugins: PluginsSection,
-  cache: CacheSection,
+  logistics: LogisticsPartnersSection,
+  "seo-ai": SeoAiSection,
+  "system-governance": SystemGovernanceSection,
+  notifications: NotificationsSection,
 };
 
 function SettingsSectionsPanel() {
@@ -53,14 +49,9 @@ function SettingsSectionsPanel() {
   const [addressForm, setAddressForm] = useState(createAddressForm);
   const [languageControls, setLanguageControls] = useState(createLanguageControls);
   const [socialForm, setSocialForm] = useState(createSocialForm);
-  const [smtpForm, setSmtpForm] = useState(createSmtpForm);
   const [analyticsForm, setAnalyticsForm] = useState(createAnalyticsForm);
   const [paymentSettings, setPaymentSettings] = useState(createPaymentSettings);
   const [mediaForm, setMediaForm] = useState(createMediaForm);
-  const [miscForm, setMiscForm] = useState(createMiscForm);
-  const [plugins] = useState(createPlugins);
-  const [selectedPlugin, setSelectedPlugin] = useState("pos");
-  const [cacheTargets, setCacheTargets] = useState(createCacheTargets);
   const tabRefs = useRef(new Map());
   const tabsContainerRef = useRef(null);
   const frameRef = useRef(null);
@@ -71,13 +62,9 @@ function SettingsSectionsPanel() {
     address: { form: addressForm, setForm: setAddressForm },
     languages: { controls: languageControls, setControls: setLanguageControls },
     social: { form: socialForm, setForm: setSocialForm },
-    smtp: { form: smtpForm, setForm: setSmtpForm },
     analytics: { form: analyticsForm, setForm: setAnalyticsForm },
     payment: { settings: paymentSettings, setSettings: setPaymentSettings },
     media: { form: mediaForm, setForm: setMediaForm },
-    misc: { form: miscForm, setForm: setMiscForm },
-    plugins: { plugins, selectedPlugin, setSelectedPlugin },
-    cache: { targets: cacheTargets, setTargets: setCacheTargets },
   };
 
   const ActiveSection = TAB_COMPONENTS[activeTab];
@@ -222,12 +209,12 @@ function SettingsSectionsPanel() {
   }, [activeTab, scheduleIndicatorUpdate]);
 
   return (
-    <div className="rounded-[32px] border border-white-color/12 bg-white-color/[2%] p-4 shadow-side-bar backdrop-blur-xl xl:p-6">
-      <div className="grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)]">
-        <aside className="xl:border-r xl:border-white-color/10 xl:pr-6">
+    <div className="">
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[260px_minmax(0,1fr)]">
+        <aside className="min-w-0 xl:border-r xl:border-white-color/10 xl:pr-6">
           <div
             ref={tabsContainerRef}
-            className="relative flex gap-5 overflow-x-auto border-b border-white-color/10 pb-2 xl:flex-col xl:gap-3 xl:overflow-visible xl:border-b-0 xl:border-l xl:border-white-color/10 xl:pb-0 xl:pl-4"
+            className="relative flex min-w-0 gap-2 overflow-x-auto border-b border-white-color/10 pb-2 xl:flex-col xl:gap-0 xl:overflow-visible xl:border-b-0 xl:border-l xl:border-white-color/10 xl:pb-0 xl:pl-4 h-full thumb-none"
           >
             {SETTING_TABS.map((tab) => (
               <button
@@ -238,7 +225,7 @@ function SettingsSectionsPanel() {
                 onClick={() => {
                   setActiveTab(tab.id);
                 }}
-                className={`relative shrink-0 rounded-[22px] px-4 pb-2 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-2 xl:pl-5 ${
+                className={`relative shrink-0 rounded-[22px] px-4 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-2 xl:pl-5 ${
                   activeTab === tab.id ? "text-yellow-color" : "text-white-color/70 hover:text-white-color"
                 }`}
               >
@@ -267,7 +254,7 @@ function SettingsSectionsPanel() {
           </div>
         </aside>
 
-        <div className="min-w-0">
+        <div className="min-w-0 pb-6">
           <ActiveSection {...sectionProps[activeTab]} />
         </div>
       </div>

@@ -4,7 +4,7 @@ import { FiCheck, FiChevronDown } from "react-icons/fi";
 export function Panel({ title, description, action, children, className = "" }) {
   return (
     <div
-      className={`rounded-[28px] border border-white-color/12 bg-white-color/[4%] p-5 shadow-side-bar backdrop-blur-xl ${className}`}
+      className={` ${className}`}
     >
       {(title || description || action) && (
         <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

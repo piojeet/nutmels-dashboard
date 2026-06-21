@@ -263,3 +263,7 @@ body {
         width: auto;
     }
 }
+
+.thumb-none::-webkit-scrollbar {
+    display: none;
+}

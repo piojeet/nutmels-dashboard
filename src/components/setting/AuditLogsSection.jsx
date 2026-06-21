@@ -272,7 +272,7 @@ function exportRowsToCsv(rows) {
 
 function MetricCard({ icon, title, value, badge, badgeClass, hint, iconClass = "" }) {
   return (
-    <div className="rounded-[26px] border border-white-color/12 bg-white-color/[4%] p-5 shadow-side-bar backdrop-blur-xl">
+    <div className="rounded-[26px] border border-white-color/12 p-5 shadow-sm backdrop-blur-xl">
       <div className="flex items-start justify-between gap-4">
         <span className={`flex h-12 w-12 items-center justify-center rounded-2xl border border-white-color/10 bg-white-color/[5%] text-xl ${iconClass}`}>
           {React.createElement(icon)}
@@ -283,7 +283,7 @@ function MetricCard({ icon, title, value, badge, badgeClass, hint, iconClass = "
       <div className="mt-5 text-[11px] font-inter-s uppercase tracking-[0.18em] text-white-color/45">
         {title}
       </div>
-      <div className="mt-2 text-[44px] font-inter-b leading-none text-white-color">{value}</div>
+      <div className="mt-2 text-[35px] font-inter-b leading-none text-white-color">{value}</div>
       <div className="mt-3 text-sm text-white-color/45">{hint}</div>
     </div>
   );
@@ -418,12 +418,12 @@ function AuditLogsSection() {
           <MetricCard key={card.title} {...card} />
         ))}
 
-        <div className="relative overflow-hidden rounded-[26px] border border-white-color/12 bg-[linear-gradient(180deg,rgba(40,52,147,0.92),rgba(20,26,74,0.96))] p-5 text-white shadow-[0_26px_70px_rgba(10,8,24,0.3)]">
+        <div className="relative overflow-hidden rounded-[26px] border border-white-color/12 bg p-5 text-white shadow-[0_26px_70px_rgba(10,8,24,0.3)]">
           <div className="absolute right-[-36px] top-[-36px] h-28 w-28 rounded-full bg-white/10 blur-2xl" />
           <div className="relative z-10">
             <div className="text-[11px] font-inter-s uppercase tracking-[0.18em] text-white/70">System Health</div>
             <div className="mt-4 flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/10 text-xl text-yellow-color">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/10 text-xl text-yellow-color aspect-square">
                 <FiShield />
               </span>
               <div>
@@ -455,10 +455,10 @@ function AuditLogsSection() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-[32px] border border-white-color/12 bg-white-color/[4%] shadow-side-bar backdrop-blur-xl">
+      <div className="overflow-hidden">
         <div className="flex flex-col gap-5 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-7">
           <div>
-            <div className="text-[30px] font-inter-b text-white-color">Recent Activity Dashboard</div>
+            <div className="text-[25px] font-inter-b text-white-color">Recent Activity Dashboard</div>
             <div className="mt-1 text-sm text-white-color/48">
               Track admin changes across users, governance and system level actions.
             </div>
@@ -472,7 +472,7 @@ function AuditLogsSection() {
                 setCurrentPage(1);
               }}
               className={`rounded-[14px] px-4 py-2 transition ${
-                mode === "real-time" ? "bg-white-color text-[#23308d] shadow-sm" : ""
+                mode === "real-time" ? "bg-yellow-color text-black shadow-sm" : ""
               }`}
             >
               Real-time
@@ -484,7 +484,7 @@ function AuditLogsSection() {
                 setCurrentPage(1);
               }}
               className={`rounded-[14px] px-4 py-2 transition ${
-                mode === "historical" ? "bg-white-color text-[#23308d] shadow-sm" : ""
+                mode === "historical" ? "bg-yellow-color text-black shadow-sm" : ""
               }`}
             >
               Historical
@@ -509,7 +509,7 @@ function AuditLogsSection() {
               {visibleRows.map((row) => (
                 <tr key={row.id} className="border-b border-white-color/8 align-top">
                   <td className="px-7 py-5">
-                    <div className="text-[28px] font-inter-b leading-[1.05] text-white-color">{row.timestamp}</div>
+                    <div className="font-inter-b leading-[1.05] text-white-color">{row.timestamp}</div>
                     <div className="mt-1 text-sm text-white-color/42">{row.utc}</div>
                   </td>
                   <td className="px-7 py-5">
@@ -525,7 +525,7 @@ function AuditLogsSection() {
                       {row.module}
                     </span>
                   </td>
-                  <td className="px-7 py-5 text-lg font-inter-s text-yellow-color">{row.action}</td>
+                  <td className="px-7 py-5 font-inter-s text-yellow-color">{row.action}</td>
                   <td className="px-7 py-5">
                     <span className="inline-flex rounded-xl bg-white-color/[7%] px-3 py-2 text-sm text-white-color/60">
                       {row.oldValue}

@@ -315,7 +315,7 @@ function Order() {
                   </span>
                 </td>
                 <td>
-                  <span className='flex items-center gap-4 px-2 py-2'>
+                  <span className='flex items-center gap-4 px-2 py-2 justify-center'>
                     <button onClick={() => handleEdit(order.id)}><IoPencil className='cursor-pointer opacity-70 hover:opacity-100 transition' /></button>
                     <button onClick={() => handleView(order)}><IoEyeSharp className='cursor-pointer opacity-70 hover:opacity-100 transition' /></button>
                   </span>
