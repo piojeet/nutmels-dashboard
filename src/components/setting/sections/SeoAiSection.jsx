@@ -29,7 +29,7 @@ function SeoAiSection() {
             <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-yellow-color text-yellow-color">
               <FiCode />
             </span>
-            <h2 className="text-xl font-inter-b text-yellow-color">Robots.txt Editor</h2>
+            <h2 className="md:text-xl text-lg font-inter-b text-yellow-color">Robots.txt Editor</h2>
           </div>
           <span className="rounded-full bg-[#e1e0e8] px-3 py-1 text-[11px] font-inter-b uppercase text-[#5e5f6c]">
             Live draft

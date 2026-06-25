@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   createAddressForm,
   createAnalyticsForm,
@@ -47,7 +53,9 @@ function SettingsSectionsPanel() {
   });
   const [currencyForm, setCurrencyForm] = useState(createCurrencyForm);
   const [addressForm, setAddressForm] = useState(createAddressForm);
-  const [languageControls, setLanguageControls] = useState(createLanguageControls);
+  const [languageControls, setLanguageControls] = useState(
+    createLanguageControls,
+  );
   const [socialForm, setSocialForm] = useState(createSocialForm);
   const [analyticsForm, setAnalyticsForm] = useState(createAnalyticsForm);
   const [paymentSettings, setPaymentSettings] = useState(createPaymentSettings);
@@ -74,6 +82,10 @@ function SettingsSectionsPanel() {
     const container = tabsContainerRef.current;
     const isDesktop = window.innerWidth >= 1280;
 
+    const handleScroll = () => scheduleIndicatorUpdate();
+
+    container?.addEventListener("scroll", handleScroll);
+
     setIsDesktopTabs(isDesktop);
 
     if (!currentTab || !container) {
@@ -97,17 +109,17 @@ function SettingsSectionsPanel() {
         previousStyle.height === nextStyle.height &&
         previousStyle.opacity === nextStyle.opacity
           ? previousStyle
-          : nextStyle
+          : nextStyle,
       );
       return;
     }
 
     const nextStyle = {
-      left: tabRect.left - containerRect.left,
-      width: tabRect.width,
+      left: currentTab.offsetLeft,
+      width: currentTab.offsetWidth,
       top: 0,
       height: 0,
-      opacity: tabRect.width > 0 ? 1 : 0,
+      opacity: currentTab.offsetWidth > 0 ? 1 : 0,
     };
 
     setTabIndicatorStyle((previousStyle) =>
@@ -115,7 +127,7 @@ function SettingsSectionsPanel() {
       previousStyle.width === nextStyle.width &&
       previousStyle.opacity === nextStyle.opacity
         ? previousStyle
-        : nextStyle
+        : nextStyle,
     );
   }, [activeTab]);
 
@@ -153,7 +165,7 @@ function SettingsSectionsPanel() {
         scheduleIndicatorUpdate();
       }
     },
-    [activeTab, scheduleIndicatorUpdate]
+    [activeTab, scheduleIndicatorUpdate],
   );
 
   useLayoutEffect(() => {
@@ -225,11 +237,15 @@ function SettingsSectionsPanel() {
                 onClick={() => {
                   setActiveTab(tab.id);
                 }}
-                className={`relative shrink-0 rounded-[22px] px-4 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-2 xl:pl-5 ${
-                  activeTab === tab.id ? "text-yellow-color" : "text-white-color/70 hover:text-white-color"
+                className={`relative shrink-0 rounded-[22px] px-4 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-2 xl:pl-5 cursor-pointer ${
+                  activeTab === tab.id
+                    ? "text-yellow-color"
+                    : "text-white-color/70 hover:text-white-color"
                 }`}
               >
-                <span className="whitespace-nowrap xl:whitespace-normal">{tab.label}</span>
+                <span className="whitespace-nowrap xl:whitespace-normal">
+                  {tab.label}
+                </span>
               </button>
             ))}
 

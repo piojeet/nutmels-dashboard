@@ -43,13 +43,14 @@ function useTabIndicator(activeTab) {
       return;
     }
 
-    const containerRect = container.getBoundingClientRect();
-    const tabRect = currentTab.getBoundingClientRect();
+    const handleScroll = () => scheduleUpdate();
+
+    container?.addEventListener("scroll", handleScroll);
 
     const nextStyle = {
-      left: tabRect.left - containerRect.left,
-      width: tabRect.width,
-      opacity: tabRect.width > 0 ? 1 : 0,
+      left: currentTab.offsetLeft,
+      width: currentTab.offsetWidth,
+      opacity: currentTab.offsetWidth > 0 ? 1 : 0,
     };
 
     setUnderlineStyle((previousStyle) =>

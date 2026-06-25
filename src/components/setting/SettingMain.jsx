@@ -21,7 +21,7 @@ function SettingMain() {
   const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(activeTopTab);
 
   return (
-    <section className="text-white-color">
+    <section className="text-white-color pt-6">
       <div className="flex flex-col gap-6">
         <div>
           <h1 className="text-3xl font-inter-b text-white-color">Settings</h1>

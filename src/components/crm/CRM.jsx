@@ -23,18 +23,18 @@ function CRM() {
   return (
     <div className='space-y-4'>
       <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
-        <div className='relative w-full rounded-xl bg-[#f3f0ee] p-4 shadow-sm'>
+        <div className='relative w-full rounded-xl bg-white/5 p-4 shadow-sm'>
           <div className='grid gap-4 text-sm font-medium text-[#6e6e6e] sm:grid-cols-2 xl:grid-cols-5'>
             {rawData.map((step, i) => (
               <div key={i} className='w-full rounded-xl px-2 py-1'>
-                <div className='text-xs font-inter-s text-black'>{step.name}</div>
-                <div className='text-lg font-inter-b text-black'>{formatNumber(step.value)}</div>
+                <div className='text-xs font-inter-s text-white'>{step.name}</div>
+                <div className='text-lg font-inter-b text-white'>{formatNumber(step.value)}</div>
                 {step.dropLabel && (
                   <>
-                    <div className='mt-2 text-[11px] text-[#6e6e6e]'>{step.dropLabel}</div>
-                    <div className='flex justify-between gap-3 text-[11px] font-semibold text-black'>
+                    <div className='mt-2 text-[11px] text-[#b9b9b9]'>{step.dropLabel}</div>
+                    <div className='flex justify-between gap-3 text-[11px] font-semibold text-white'>
                       <span>{formatNumber(step.dropValue)}</span>
-                      <span className='font-medium text-[#999]'>{step.dropPercent}</span>
+                      <span className='font-medium text-[#c5c4c4]'>{step.dropPercent}</span>
                     </div>
                   </>
                 )}
@@ -47,14 +47,14 @@ function CRM() {
               <AreaChart data={data} margin={{ top: 20, bottom: 0 }}>
                 <defs>
                   <linearGradient id='funnelGradient' x1='0' y1='0' x2='0' y2='1'>
-                    <stop offset='0%' stopColor='#d7f2a4' stopOpacity={1} />
-                    <stop offset='100%' stopColor='#6b9184' stopOpacity={1} />
+                    <stop offset='0%' stopColor='#bd821e' stopOpacity={1} />
+                    <stop offset='100%' stopColor='#FAAA21' stopOpacity={1} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray='3 3' vertical={false} stroke='#ddd' />
                 <YAxis hide />
                 <Tooltip formatter={(value) => formatNumber(value)} contentStyle={{ fontSize: '12px' }} />
-                <Area type='monotone' dataKey='value' stroke='#6b9184' fill='url(#funnelGradient)' dot={{ r: 4, fill: '#fff', stroke: '#6b9184', strokeWidth: 2 }} strokeWidth={2} />
+                <Area type='monotone' dataKey='value' stroke='#FAAA21' fill='url(#funnelGradient)' dot={{ r: 4, fill: '#fff', stroke: '#6b9184', strokeWidth: 2 }} strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </div>

@@ -55,17 +55,17 @@ function WebsiteDashboard() {
   };
 
   return (
-    <section className='relative overflow-hidden rounded-[30px] border border-white/6 bg-[#0d0d0f] p-4 text-white shadow-[0_30px_90px_rgba(0,0,0,0.5)] sm:p-5 xl:p-6'>
-      <div
+    <section className='relative overflow-hidden rounded-[30px] border border-white/20 p-4 text-white shadow-[0_30px_90px_rgba(0,0,0,0.5)] sm:p-5 xl:p-6'>
+      {/* <div
         className='absolute inset-0 opacity-[0.08]'
         style={{
           backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
           backgroundSize: '14px 14px',
         }}
-      />
+      /> */}
       <div className='relative z-10 space-y-4'>
         <div className='grid gap-4 xl:grid-cols-[1.05fr_0.95fr]'>
-          <div className='rounded-[22px] border border-white/6 bg-[#131314] p-5'>
+          <div className='rounded-[22px] border border-white/20 p-5'>
             <div className='flex items-center justify-between gap-3'>
               <div className='flex items-center gap-2 text-[22px] font-inter-b text-white'>
                 <TbWorldCode className='text-white/70' />
@@ -82,7 +82,7 @@ function WebsiteDashboard() {
                 <input
                   value={siteTitle}
                   onChange={(event) => setSiteTitle(event.target.value)}
-                  className='h-11 w-full rounded-xl border border-white/7 bg-[#0f0f10] px-4 text-sm text-white outline-none placeholder:text-white/25'
+                  className='h-[52px] w-full rounded-2xl border border-white-color/14 bg-white-color/[3%] px-4 text-sm text-white-color outline-none transition placeholder:text-white-color/25 focus:border-yellow-color/40 focus:bg-white-color/[6%]  '
                 />
               </label>
 
@@ -91,7 +91,7 @@ function WebsiteDashboard() {
                 <textarea
                   value={metaDescription}
                   onChange={(event) => setMetaDescription(event.target.value)}
-                  className='min-h-[92px] w-full rounded-xl border border-white/7 bg-[#0f0f10] px-4 py-3 text-sm text-white outline-none placeholder:text-white/25'
+                  className='min-h-[92px] w-full rounded-2xl border border-white-color/14 bg-white-color/[3%] px-4 text-sm text-white-color outline-none transition placeholder:text-white-color/25 focus:border-yellow-color/40 focus:bg-white-color/[6%] py-3'
                 />
               </label>
 
@@ -101,7 +101,7 @@ function WebsiteDashboard() {
                 <button
                   type='button'
                   onClick={() => faviconInputRef.current?.click()}
-                  className='flex min-h-[98px] w-full flex-col items-center justify-center rounded-[18px] border border-dashed border-white/10 bg-[#101011] px-4 py-5 text-center transition hover:border-[#ff7a00]/35 hover:bg-[#141416]'
+                  className='flex min-h-[98px] w-full flex-col items-center justify-center rounded-[18px] border border-dashed border-white/10 px-4 py-5 text-center transition hover:border-yellow-color hover:bg-white/5 cursor-pointer'
                 >
                   <span className='flex h-10 w-10 items-center justify-center rounded-full bg-white/6 text-white/70'>
                     <FiUploadCloud size={18} />
@@ -113,7 +113,7 @@ function WebsiteDashboard() {
             </div>
           </div>
 
-          <div className='rounded-[22px] border border-white/6 bg-[#131314] p-5'>
+          <div className='rounded-[22px] border border-white/20 p-5'>
             <div className='flex flex-wrap items-center justify-between gap-3'>
               <div className='flex items-center gap-2 text-[22px] font-inter-b text-white'>
                 <FiHardDrive className='text-white/70' />
@@ -125,7 +125,7 @@ function WebsiteDashboard() {
             </div>
 
             <div className='mt-5 grid gap-4 md:grid-cols-2'>
-              <div className='rounded-[18px] border border-white/6 bg-[#0f0f10] p-4'>
+              <div className='rounded-[18px] border border-white/20 bg-white/5 p-4'>
                 <div className='flex items-start justify-between gap-3'>
                   <span className='flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-white/70'>
                     <FiDatabase size={16} />
@@ -137,14 +137,14 @@ function WebsiteDashboard() {
                 <button
                   type='button'
                   onClick={handleClearCache}
-                  className='mt-5 inline-flex h-10 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#ff7a00,#ff9e2c)] px-4 text-sm font-inter-b text-black transition hover:brightness-110'
+                  className='mt-5 inline-flex h-10 items-center justify-center rounded-xl bg-yellow-color px-4 text-sm font-inter-b text-black transition hover:brightness-110 cursor-pointer'
                 >
                   <FiZap className='mr-2' />
                   Clear Global Cache
                 </button>
               </div>
 
-              <div className='rounded-[18px] border border-white/6 bg-[#0f0f10] p-4'>
+              <div className='rounded-[18px] border border-white/20 bg-white/5 p-4'>
                 <div className='flex items-start justify-between gap-3'>
                   <span className='flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-white/70'>
                     <TbBraces size={16} />
@@ -161,10 +161,10 @@ function WebsiteDashboard() {
                     onClick={() => {
                       setMaintenanceMode((current) => !current);
                     }}
-                    className={`relative h-7 w-12 rounded-full transition ${maintenanceMode ? 'bg-[#ff7a00]' : 'bg-white/16'}`}
+                    className={`relative h-7 w-12 rounded-full transition cursor-pointer ${maintenanceMode ? 'bg-yellow-color' : 'bg-white/16'}`}
                   >
                     <span
-                      className={`absolute top-1 h-5 w-5 rounded-full bg-white transition ${maintenanceMode ? 'left-6' : 'left-1'}`}
+                      className={`absolute top-1 h-5 w-5 rounded-full transition ${maintenanceMode ? 'left-6 bg-black' : 'left-1 bg-white'}`}
                     />
                   </button>
                 </div>
@@ -174,12 +174,12 @@ function WebsiteDashboard() {
             <div className='mt-8'>
               <div className='text-[11px] font-inter-m uppercase tracking-[0.2em] text-white/35'>System Health</div>
               <div className='mt-3 grid gap-4 md:grid-cols-2'>
-                <div className='rounded-[16px] border border-white/6 bg-[#0f0f10] p-4'>
+                <div className='rounded-[16px] border border-white/20 bg-white/5 p-4'>
                   <div className='text-[11px] uppercase tracking-[0.16em] text-white/35'>CPU Load</div>
                   <div className='mt-2 text-2xl font-inter-b text-white'>24%</div>
                   <div className='mt-1 text-xs text-[#65d68e]'>+ 2%</div>
                 </div>
-                <div className='rounded-[16px] border border-white/6 bg-[#0f0f10] p-4'>
+                <div className='rounded-[16px] border border-white/20 bg-white/5 p-4'>
                   <div className='text-[11px] uppercase tracking-[0.16em] text-white/35'>Memory</div>
                   <div className='mt-2 text-2xl font-inter-b text-white'>4.2GB <span className='text-sm text-white/35'>/ 16GB</span></div>
                 </div>
@@ -188,12 +188,12 @@ function WebsiteDashboard() {
           </div>
         </div>
 
-        <div className='rounded-[22px] border border-white/6 bg-[#131314] p-5'>
+        <div className='rounded-[22px] border border-white/20 p-5'>
           <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
             <div className='flex items-center gap-2 text-[22px] font-inter-b text-white'>
               <FiCode className='text-white/70' />
               Script & Analytics Injection
-              <span className='rounded-lg border border-white/8 bg-white/4 px-2 py-1 text-[10px] font-inter-s uppercase tracking-[0.16em] text-white/45'>
+              <span className='rounded-lg border border-white/20 bg-white/5 px-2 py-1 text-[10px] font-inter-s uppercase tracking-[0.16em] text-white/45'>
                 {scriptScope}
               </span>
             </div>
@@ -204,21 +204,21 @@ function WebsiteDashboard() {
                 onClick={() => {
                   setScriptScope((current) => (current === 'HEAD / BODY' ? 'BODY ONLY' : 'HEAD / BODY'));
                 }}
-                className='rounded-lg border border-white/8 bg-white/4 px-3 py-2 text-xs font-inter-s text-white/65 transition hover:bg-white/8'
+                className='rounded-lg border border-white/8 bg-white/4 px-3 py-2 text-xs font-inter-s text-white/65 transition hover:bg-white/8 cursor-pointer'
               >
                 {scriptScope}
               </button>
               <button
                 type='button'
                 onClick={handleFormatCode}
-                className='rounded-lg border border-white/8 bg-white/4 px-3 py-2 text-xs font-inter-s text-white/65 transition hover:bg-white/8'
+                className='rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-xs font-inter-s text-white/65 transition hover:bg-white/8 cursor-pointer'
               >
                 Format Code
               </button>
               <button
                 type='button'
                 onClick={handleSaveScripts}
-                className='inline-flex items-center rounded-lg bg-[linear-gradient(135deg,#ff7a00,#ff9e2c)] px-3 py-2 text-xs font-inter-b text-black transition hover:brightness-110'
+                className='inline-flex items-center rounded-lg bg-yellow-color px-3 py-2 text-xs font-inter-b text-black transition hover:brightness-110 cursor-pointer'
               >
                 <FiSave className='mr-2' />
                 Save Scripts
@@ -226,7 +226,7 @@ function WebsiteDashboard() {
             </div>
           </div>
 
-          <div className='mt-5 overflow-hidden rounded-[18px] border border-white/6 bg-[#09090a]'>
+          <div className='mt-5 overflow-hidden rounded-[18px] border border-white/20 bg-white/5'>
             <div className='flex items-center gap-2 border-b border-white/6 px-4 py-3 text-xs text-white/35'>
               <span className='h-2.5 w-2.5 rounded-full bg-[#ff5f57]' />
               <span className='h-2.5 w-2.5 rounded-full bg-[#febc2e]' />
@@ -238,7 +238,7 @@ function WebsiteDashboard() {
               value={scriptValue}
               onChange={(event) => setScriptValue(event.target.value)}
               spellCheck={false}
-              className='min-h-[250px] w-full resize-none bg-[#09090a] px-4 py-4 font-mono text-[13px] leading-6 text-white/82 outline-none'
+              className='min-h-[250px] w-full resize-none px-4 py-4 font-mono text-[13px] leading-6 text-white/82 outline-none'
             />
           </div>
 

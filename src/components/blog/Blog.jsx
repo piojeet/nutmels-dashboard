@@ -43,7 +43,7 @@ function Blog() {
   return (
     <div>
     {/* Header */}
-    <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+    <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between pt-6">
       <div className="text-xl font-inter-b text-white-color">Blog Management</div>
       <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
         {/* Search */}

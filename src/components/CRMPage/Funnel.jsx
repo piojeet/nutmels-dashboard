@@ -5,11 +5,11 @@ import User from '../../assets/Rectangle 1393.png'
 function Funnel() {
   return (
     <div>
-      <div className='grid grid-cols-3 gap-4'>
-        <div className='w-full col-span-2'>
+      <div className='grid lg:grid-cols-3 grid-cols-1 gap-4'>
+        <div className='w-full lg:col-span-2'>
           <div className='backdrop-blur-md bg-white-color/10 py-1 px-4 text-white-color rounded-sm shadow-side-bar'>Open(5) </div>
 
-          <div className='mt-4 grid grid-cols-4 gap-4'>
+          <div className='mt-4 grid lg:grid-cols-4 md:grid-cols-2 gap-4'>
             <div className='backdrop-blur-md bg-white-color/5 rounded-sm border border-white-color/20'>
               <div className='backdrop-blur-md bg-white-color/10 py-1 px-4 text-white-color rounded-sm shadow-side-bar flex items-center justify-between'><span>Identify (2)</span> <span>+</span></div>
               <div className='p-4 space-y-4'>
@@ -133,9 +133,9 @@ function Funnel() {
           </div>
         </div>
 
-        <div className='col-span-1 flex flex-col'>
+        <div className='lg:col-span-1 flex flex-col'>
           <div className='backdrop-blur-md bg-white-color/10 py-1 px-4 text-white-color rounded-sm shadow-side-bar'>Close (1)</div>
-          <div className='mt-4 grid grid-cols-2 gap-4 h-full'>
+          <div className='mt-4 grid md:grid-cols-2 gap-4 h-full'>
             <div className='backdrop-blur-md bg-white-color/5 rounded-sm border border-white-color/20'>
               <div className='backdrop-blur-md bg-white-color/10 py-1 px-4 text-white-color rounded-sm shadow-side-bar flex items-center justify-between'><span>Identify (2)</span> <span>+</span></div>
               <div className='p-4'>

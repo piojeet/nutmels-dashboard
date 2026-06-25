@@ -23,7 +23,7 @@ function ReportsHome() {
 
   return (
     <section>
-      <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+      <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-6'>
         <div className='text-2xl font-bold text-white-color'>Reports</div>
 
         <div className='flex w-full flex-col gap-2 sm:w-auto sm:flex-row'>

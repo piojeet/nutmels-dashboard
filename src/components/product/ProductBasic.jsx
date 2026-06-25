@@ -5,7 +5,7 @@ function ProductBasic() {
   return (
     <div className='h-full'>
       <form action='' className='flex h-full flex-col justify-between gap-6'>
-        <div className='space-y-6'>
+        <div className='md:space-y-6 space-y-4'>
           <div className='grid gap-2 md:grid-cols-[.4fr_1fr] md:items-center'>
             <div className='font-inter-m text-white-color/60'>Category</div>
             <input type='text' className='h-10 w-full rounded-sm border border-white-color/20 bg-white-color/5 px-4 outline-none text-white-color' />

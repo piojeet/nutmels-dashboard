@@ -73,7 +73,7 @@ function Order() {
 
 
   return (
-    <div className="text-white-color">
+    <div className="text-white-color pt-6">
       {/* Header */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>

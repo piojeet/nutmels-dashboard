@@ -12,7 +12,7 @@ function UiHome() {
   const statuses = ['Home', 'About Us', 'Policy Docs', 'Header', 'Footer'];
 
   return (
-    <div className='w-full'>
+    <div className='w-full pt-6'>
       <div className='text-xl font-inter-b text-white-color'>UI/SEO</div>
 
       <div className='mt-4'>

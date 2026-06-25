@@ -26,15 +26,15 @@ const getColor = (value) => {
 const RetentionGrid = () => {
     return (
         <div className='border border-white-color/20 bg-white-color/5 rounded-xl p-4'>
-            <div className="p-4 bg-white rounded-lg shadow overflow-auto h-full">
+            <div className="p-4 bg-white/5 rounded-lg shadow overflow-auto h-full">
                 <div className='flex'>
                     <div className='flex flex-col justify-around'>
                         {months.map(month => {
                             const [label1, label2] = month.split(' '); // e.g., "Jan 22" => ["Jan", "22"]
                             return (
                                 <div key={month} className="w-10 text-sm leading-tight">
-                                    <div className="text-black font-inter-s">{label1}</div>
-                                    <div className="text-black/60 font-inter-r">{label2}</div>
+                                    <div className="text-white font-inter-s">{label1}</div>
+                                    <div className="text-white/60 font-inter-r">{label2}</div>
                                 </div>
                             );
                         })}

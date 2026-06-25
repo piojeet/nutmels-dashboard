@@ -1,6 +1,5 @@
-﻿import { createContext, useContext, useState } from 'react';
-import products from '../data/allProducts';
-import useTabIndicator from '../hooks/useTabIndicator';
+﻿import { createContext, useContext, useState } from "react";
+import products from "../data/allProducts";
 
 const ProductContext = createContext();
 
@@ -8,14 +7,12 @@ const ProductContext = createContext();
 export const useProduct = () => useContext(ProductContext);
 
 const ProductProvider = ({ children }) => {
-  const [selectedTab, setSelectedTab] = useState('basic');
-  const { getTabRef, tabListRef, underlineStyle } = useTabIndicator(selectedTab);
-
   // -----------------------------
   // Pagination Logic
   // -----------------------------
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9; // ek page me kitne products dikhane hain
+
+  const itemsPerPage = 9;
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -25,34 +22,35 @@ const ProductProvider = ({ children }) => {
   );
 
   const goToPage = (page) => setCurrentPage(page);
-  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+
+  const nextPage = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
+  const prevPage = () =>
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   // -----------------------------
 
   const value = {
-    // Tabs
-    setSelectedTab,
-    selectedTab,
-    underlineStyle,
-    getTabRef,
-    tabListRef,
-
-    // Pagination
     products,
+
     currentPage,
     setCurrentPage,
+
     totalPages,
+
     paginatedProducts,
+
     goToPage,
     nextPage,
     prevPage,
   };
 
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+  return (
+    <ProductContext.Provider value={value}>
+      {children}
+    </ProductContext.Provider>
+  );
 };
 
 export { ProductProvider };
-
-
-

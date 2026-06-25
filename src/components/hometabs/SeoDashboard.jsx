@@ -125,8 +125,8 @@ function Sparkline({ values, stroke }) {
 function MenuSurface({ children, palette, className = '' }) {
   return (
     <div
-      className={`absolute right-0 top-[calc(100%+10px)] z-30 min-w-[180px] rounded-[18px] border p-2 shadow-2xl backdrop-blur-xl ${className}`}
-      style={{ background: palette.panelStrong, borderColor: palette.border }}
+      className={`absolute right-0 top-[calc(100%+10px)] z-30 min-w-[180px] rounded-[18px] border p-2 shadow-2xl backdrop-blur-xl bg-[#1C2037] ${className}`}
+      style={{ borderColor: palette.border }}
     >
       {children}
     </div>
@@ -174,7 +174,7 @@ function SeoDashboard() {
           border: 'rgba(36,46,74,0.1)',
           text: '#1b2240',
           muted: 'rgba(27,34,64,0.56)',
-          teal: '#1d9d99',
+          teal: '#FAAA21',
           tealGlow: 'rgba(29,157,153,0.16)',
           blue: '#5883ff',
           blueGlow: 'rgba(88,131,255,0.18)',
@@ -201,7 +201,7 @@ function SeoDashboard() {
           border: 'rgba(255,255,255,0.08)',
           text: '#f8fbff',
           muted: 'rgba(223,230,255,0.56)',
-          teal: '#2bc6c4',
+          teal: '#FAAA21',
           tealGlow: 'rgba(43,198,196,0.18)',
           blue: '#5c8eff',
           blueGlow: 'rgba(92,142,255,0.16)',
@@ -308,17 +308,17 @@ function SeoDashboard() {
   return (
     <section
       ref={dashboardRef}
-      className='relative overflow-hidden rounded-[30px] border p-4 shadow-side-bar backdrop-blur-xl sm:p-5 xl:p-6'
-      style={{ background: palette.shell, borderColor: palette.frame }}
+      className='relative overflow-hidden rounded-[30px] border border-white/20 p-4 shadow-md backdrop-blur-xl sm:p-5 xl:p-6'
+      // style={{ background: palette.shell, borderColor: palette.frame }}
     >
       <div
         className='pointer-events-none absolute inset-0 opacity-70'
-        style={{ background: 'radial-gradient(circle at top right, rgba(250,170,33,0.12), transparent 26%), radial-gradient(circle at bottom left, rgba(43,198,196,0.08), transparent 28%)' }}
+        // style={{ background: 'radial-gradient(circle at top right, rgba(250,170,33,0.12), transparent 26%), radial-gradient(circle at bottom left, rgba(43,198,196,0.08), transparent 28%)' }}
       />
 
       <div className='relative z-10 grid gap-4 xl:grid-cols-[minmax(0,1fr)_350px]'>
         <div className='space-y-4'>
-          <div className='rounded-[24px] border p-4 sm:p-5' style={{ background: palette.panel, borderColor: palette.border }}>
+          <div className='rounded-[24px] border p-4 sm:p-5' style={{ borderColor: palette.border }}>
             <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
               <div>
                 <div className='text-[30px] font-inter-b tracking-[-0.03em]' style={{ color: palette.text }}>
@@ -332,7 +332,7 @@ function SeoDashboard() {
               <div className='flex flex-col gap-3 sm:flex-row'>
                 <label
                   className='flex min-w-0 items-center gap-2 rounded-2xl border px-3 py-2.5 text-sm sm:min-w-[250px]'
-                  style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                  style={{ borderColor: palette.border, color: palette.text }}
                 >
                   <FiSearch size={16} style={{ color: palette.muted }} />
                   <input
@@ -359,7 +359,7 @@ function SeoDashboard() {
                     type='button'
                     onClick={() => toggleMenu('alerts')}
                     className='relative inline-flex h-11 cursor-pointer items-center justify-center rounded-2xl border px-4 transition hover:brightness-110'
-                    style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                    style={{ borderColor: palette.border, color: palette.text }}
                   >
                     <FiBell size={15} />
                     {unreadAlerts ? (
@@ -419,7 +419,7 @@ function SeoDashboard() {
                     type='button'
                     onClick={() => toggleMenu('period')}
                     className='inline-flex h-11 cursor-pointer items-center gap-2 rounded-2xl border px-4 text-sm font-inter-m transition hover:brightness-110'
-                    style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                    style={{ borderColor: palette.border, color: palette.text }}
                   >
                     <FiCalendar size={15} />
                     {period}
@@ -450,7 +450,7 @@ function SeoDashboard() {
                 <button
                   type='button'
                   className='inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-2xl border transition hover:brightness-110'
-                  style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                  style={{ borderColor: palette.border, color: palette.text }}
                 >
                   <FiMaximize2 size={15} />
                 </button>
@@ -466,8 +466,8 @@ function SeoDashboard() {
                   <button
                     key={item.label}
                     type='button'
-                    className='cursor-pointer rounded-[20px] border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-lg'
-                    style={{ background: palette.card, borderColor: palette.border }}
+                    className='cursor-pointer rounded-[20px] border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-lg bg-white/5'
+                    style={{ borderColor: palette.border }}
                   >
                     <div className='flex items-start justify-between gap-3'>
                       <div>
@@ -503,7 +503,7 @@ function SeoDashboard() {
             </div>
           </div>
 
-          <div className='rounded-[24px] border p-4 sm:p-5' style={{ background: palette.panel, borderColor: palette.border }}>
+          <div className='rounded-[24px] border p-4 sm:p-5 bg-white/5' style={{ borderColor: palette.border }}>
             <div className='flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between'>
               <div>
                 <div className='text-xl font-inter-b' style={{ color: palette.text }}>
@@ -520,7 +520,7 @@ function SeoDashboard() {
                     type='button'
                     onClick={() => toggleMenu('filter')}
                     className='inline-flex h-9 cursor-pointer items-center gap-2 rounded-xl border px-3 text-xs font-inter-m transition hover:brightness-110'
-                    style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                    style={{ borderColor: palette.border, color: palette.text }}
                   >
                     <FiFilter size={13} />
                     {filterLabel}
@@ -551,7 +551,7 @@ function SeoDashboard() {
                   type='button'
                   onClick={exportKeywords}
                   className='inline-flex h-9 cursor-pointer items-center gap-2 rounded-xl border px-3 text-xs font-inter-m transition hover:brightness-110'
-                  style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+                  style={{ borderColor: palette.border, color: palette.text }}
                 >
                   <FiDownload size={13} />
                   Export
@@ -696,7 +696,7 @@ function SeoDashboard() {
         </div>
 
         <div className='space-y-4 xl:pt-[86px]'>
-          <div className='rounded-[24px] border p-4 sm:p-5' style={{ background: palette.panel, borderColor: palette.border }}>
+          <div className='rounded-[24px] border p-4 sm:p-5' style={{ borderColor: palette.border }}>
             <div className='flex items-start justify-between gap-3'>
               <div>
                 <div className='flex items-center gap-2 text-xl font-inter-b' style={{ color: palette.text }}>
@@ -717,7 +717,7 @@ function SeoDashboard() {
 
             <div className='mt-5 space-y-3'>
               {errorItems.map((item) => (
-                <div key={item.path} className='rounded-[18px] border p-3' style={{ background: palette.cardAccent, borderColor: palette.border }}>
+                <div key={item.path} className='rounded-[18px] border p-3 bg-white/5' style={{ borderColor: palette.border }}>
                   <div className='truncate text-sm font-inter-m' style={{ color: palette.text }}>
                     {item.path}
                   </div>
@@ -745,13 +745,13 @@ function SeoDashboard() {
               type='button'
               onClick={toggleErrorList}
               className='mt-4 w-full cursor-pointer rounded-[18px] border px-4 py-3 text-sm font-inter-m transition hover:brightness-110'
-              style={{ background: palette.cardAccent, borderColor: palette.border, color: palette.text }}
+              style={{ borderColor: palette.border, color: palette.text }}
             >
               {showAllErrors ? 'Show Fewer Errors' : 'View All Errors'}
             </button>
           </div>
 
-          <div className='rounded-[24px] border p-4 sm:p-5' style={{ background: palette.panel, borderColor: palette.border }}>
+          <div className='rounded-[24px] border p-4 sm:p-5' style={{ borderColor: palette.border }}>
             <div className='flex h-14 w-14 items-center justify-center rounded-2xl' style={{ background: palette.tealGlow, color: palette.teal }}>
               <FiZap size={22} />
             </div>

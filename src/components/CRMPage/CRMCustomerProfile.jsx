@@ -82,7 +82,7 @@ function CRMCustomerProfile() {
     setAllCheckList(isChecked);
   };
   return (
-    <div className="text-white-color">
+    <div className="text-white-color pt-6">
       {/* Header */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>
@@ -109,40 +109,37 @@ function CRMCustomerProfile() {
       </div>
 
       {/* Filters */}
-      <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
-        {/* Status Filters */}
-        <div ref={tabListRef} className="relative w-fit h-fit">
-          <div className="flex overflow-x-auto pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {statuses.map((status) => (
-              <button
-                key={status}
-                ref={getTabRef(status)}
-                data-tab-key={status}
-                onClick={() => {
-                  setSelectedTab(status);
-                }}
-                className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${
-                  selectedTab === status
-                    ? "text-yellow-color font-medium"
-                    : "text-white-color/50 hover:text-yellow-color"
-                }`}
-              >
-                {status}
-              </button>
-            ))}
-          </div>
+      <div className="mt-4 min-w-0">
+            <div
+              ref={tabListRef}
+              className="relative flex min-w-0 gap-2 overflow-x-auto border-b border-white-color/30 pb-2 thumb-none"
+            >
+              {statuses.map((status) => (
+                <button
+                  key={status}
+                  ref={getTabRef(status)}
+                  data-tab-key={status}
+                  onClick={() => setSelectedTab(status)}
+                  className={`relative shrink-0 px-2.5 pb-2 font-inter-r text-sm transition ${
+                    selectedTab === status
+                      ? "text-yellow-color font-medium"
+                      : "text-white-color/50 hover:text-yellow-color"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">{status}</span>
+                </button>
+              ))}
 
-          {/* Underline */}
-          <div
-            className="absolute bottom-0 h-0.5 bg-yellow-color transition-all duration-300 ease-in-out"
-            style={{
-              left: underlineStyle.left,
-              width: underlineStyle.width,
-              opacity: underlineStyle.opacity,
-            }}
-          />
-        </div>
-      </div>
+              <div
+                className="pointer-events-none absolute bottom-0 h-0.5 bg-yellow-color transition-all duration-300 ease-in-out"
+                style={{
+                  left: underlineStyle.left,
+                  width: underlineStyle.width,
+                  opacity: underlineStyle.opacity,
+                }}
+              />
+            </div>
+          </div>
 
       {selectedTab === "Customer Profile" && (
         <>

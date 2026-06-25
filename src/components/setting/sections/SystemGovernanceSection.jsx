@@ -24,8 +24,12 @@ function SystemGovernanceSection() {
       <div className="rounded-[28px] border border-white/20 p-5 text-[#1A1A1A] sm:p-8">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-xl font-inter-b text-white">Global Maintenance</h2>
-            <p className="mt-2 text-sm text-[#babcc4]">Redirect all traffic to static maintenance page</p>
+            <h2 className="text-xl font-inter-b text-white">
+              Global Maintenance
+            </h2>
+            <p className="mt-2 text-sm text-[#babcc4]">
+              Redirect all traffic to static maintenance page
+            </p>
           </div>
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-yellow-color text-2xl text-yellow-color">
             <FiTool />
@@ -42,15 +46,19 @@ function SystemGovernanceSection() {
             onClick={() => {
               const next = !maintenanceEnabled;
               setMaintenanceEnabled(next);
-              notify(`Maintenance mode ${next ? "enabled" : "disabled"}.`, next ? "warn" : "success");
+            
+              notify(
+                `Maintenance mode ${next ? "enabled" : "disabled"}.`,
+                next ? "success" : "warn"
+              );
             }}
-            className={`relative h-8 w-16 rounded-full transition cursor-pointer ${
+            className={`relative h-8 w-16 cursor-pointer rounded-full transition ${
               maintenanceEnabled ? "bg-yellow-color" : "bg-white/10"
             }`}
           >
             <span
-              className={`absolute top-1 h-6 w-6 rounded-full bg-gray-400 shadow transition ${
-                maintenanceEnabled ? "left-9 bg-white" : "left-1"
+              className={`absolute top-1 h-6 w-6 rounded-full shadow transition-all duration-300 ${
+                maintenanceEnabled ? "left-9 bg-white" : "left-1 bg-gray-400"
               }`}
             />
           </button>
@@ -60,7 +68,9 @@ function SystemGovernanceSection() {
       <div className="rounded-[28px] border border-yellow-color p-8 text-white shadow-sm bg-white/5">
         <FiShield className="text-3xl" />
         <div className="mt-4 text-3xl font-inter-b">99.9%</div>
-        <div className="mt-1 text-xs font-inter-s uppercase tracking-[0.2em] text-white/85">System Health</div>
+        <div className="mt-1 text-xs font-inter-s uppercase tracking-[0.2em] text-white/85">
+          System Health
+        </div>
       </div>
 
       <div className="rounded-[28px] border border-white/20 p-5 text-[#dfdfdf] shadow-sm sm:p-8">
@@ -71,7 +81,8 @@ function SystemGovernanceSection() {
           <h2 className="text-xl font-inter-b text-[#e9e9e9]">Edge Network</h2>
         </div>
         <p className="mt-7 text-sm leading-6 text-[#a7adbb]">
-          Instantly purge the global cache across all Cloudflare points of presence.
+          Instantly purge the global cache across all Cloudflare points of
+          presence.
         </p>
         <button
           type="button"
@@ -91,12 +102,19 @@ function SystemGovernanceSection() {
 
         <div className="mt-6 grid gap-4">
           {LOGS.map((log) => (
-            <div key={log.label} className="flex items-center justify-between gap-3 rounded-xl border border-white/20 p-4 shadow-sm bg-white/5">
+            <div
+              key={log.label}
+              className="flex items-center justify-between gap-3 rounded-xl border border-white/20 p-4 shadow-sm bg-white/5"
+            >
               <div className="flex min-w-0 items-center gap-3">
                 <span className={`h-2 w-2 shrink-0 rounded-full ${log.tone}`} />
-                <span className="truncate text-sm font-inter-s text-[#dfe1e6]">{log.label}</span>
+                <span className="truncate text-sm font-inter-s text-[#dfe1e6]">
+                  {log.label}
+                </span>
               </div>
-              <span className="shrink-0 text-[11px] text-[#6c7586]">{log.time}</span>
+              <span className="shrink-0 text-[11px] text-[#6c7586]">
+                {log.time}
+              </span>
             </div>
           ))}
         </div>
@@ -106,7 +124,9 @@ function SystemGovernanceSection() {
         <div className="relative min-h-[92px] p-7">
           <div className="absolute inset-0 border border-white/20 rounded-lg" />
           <div className="relative">
-            <div className="text-xs font-inter-s uppercase tracking-[0.22em] text-white/70">Infrastructure</div>
+            <div className="text-xs font-inter-s uppercase tracking-[0.22em] text-white/70">
+              Infrastructure
+            </div>
             <div className="mt-2 flex items-center gap-2 text-xl font-inter-b text-white">
               <FiRefreshCw className="text-yellow-color" />
               Node Synchronization active

@@ -89,13 +89,13 @@ function NotificationsSection() {
 
             return (
               <div key={template.name} className="flex items-center justify-between gap-3 rounded-xl border border-white/20 bg-white/5 p-3">
-                <div className="flex min-w-0 items-center gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-yellow-color text-yellow-color">
+                <div className="flex min-w-0 items-center md:gap-4 gap-2">
+                  <span className="flex md:h-10 md:w-10 size-9 shrink-0 items-center justify-center rounded-lg border border-yellow-color text-yellow-color">
                     <Icon />
                   </span>
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-inter-b text-[#bbbecc]">{template.name}</div>
-                    <div className="text-xs text-[#9a9da5]">{template.type} • Approved</div>
+                    <div className="truncate md:text-sm text-xs font-inter-b text-[#bbbecc]">{template.name}</div>
+                    <div className="md:text-xs text-[10px] text-[#9a9da5]">{template.type} • Approved</div>
                   </div>
                 </div>
                 <button
@@ -194,7 +194,7 @@ function NotificationsSection() {
             <div className="text-3xl font-inter-b text-yellow-color">99.8%</div>
             <div className="mt-1 text-sm font-inter-s text-[#8b91a0]">Delivery Success Rate</div>
           </div>
-          <FiCheckCircle className="ml-auto text-5xl text-[#edf0ff]" />
+          <FiCheckCircle className="ml-auto lg:text-5xl text-2xl text-[#edf0ff]" />
         </div>
       </div>
 
