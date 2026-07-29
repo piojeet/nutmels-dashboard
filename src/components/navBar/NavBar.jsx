@@ -53,18 +53,18 @@ function NavBar() {
   };
 
   return (
-    <div className='relative flex flex-wrap items-center justify-between gap-3 py-3 sm:py-4'>
+    <div className='relative flex flex-wrap items-center justify-between gap-3 py-3 sm:py-3'>
       <Link to='/' className='shrink-0'>
-        <img src={theme === 'dark' ? logoDark : logoLight} alt='logo' className='h-8 w-auto sm:h-10' />
+        <img src={theme === 'dark' ? logoDark : logoLight} alt='logo' className='h-6 w-auto sm:h-7' />
       </Link>
 
       <div className='ml-auto flex items-center gap-2 sm:gap-3'>
-        <button className='flex size-10 items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl sm:size-[45px]'>
-          <LuSearch strokeWidth={1.5} size={22} />
+        <button className='flex size-8 items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl sm:size-[35px]'>
+          <LuSearch strokeWidth={1.5} size={18} />
         </button>
 
-        <Link to='' className='flex size-10 items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl sm:size-[45px]'>
-          <IoIosNotificationsOutline strokeWidth={1.5} size={22} />
+        <Link to='' className='flex size-8 items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl sm:size-[35px]'>
+          <IoIosNotificationsOutline strokeWidth={1.5} size={18} />
         </Link>
 
         <ThemeToggle />
@@ -73,9 +73,9 @@ function NavBar() {
           <button
             type='button'
             onClick={() => setOpen((previous) => !previous)}
-            className='flex items-center gap-2 rounded-2xl border border-white-color/10 bg-black-color/30 px-2 py-1.5 backdrop-blur-xl sm:gap-3 sm:px-2.5'
+            className='flex items-center gap-2 sm:gap-3'
           >
-            <div className='size-10 overflow-hidden rounded-xl sm:size-[45px]'>
+            <div className='size-8 overflow-hidden rounded-xl sm:size-[35px]'>
               <img src={user} alt='User' className='h-full w-full object-cover' />
             </div>
 

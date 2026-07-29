@@ -35,13 +35,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="size-[45px] bg-black-color/50 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar"
+      className="size-[35px] bg-black-color/50 backdrop-blur-xl text-white-color/50 flex items-center justify-center rounded-xl cursor-pointer shadow-side-bar"
       title="Toggle Theme"
     >
       {isDark ? (
-        <PiSunHorizonLight strokeWidth={1.5} size={25} />
+        <PiSunHorizonLight strokeWidth={1.5} size={20} />
       ) : (
-        <TbHazeMoon strokeWidth={1.5} size={25} />
+        <TbHazeMoon strokeWidth={1.5} size={20} />
       )}
     </button>
   );

@@ -21,7 +21,7 @@ function HomeTabs() {
   if (!tabs.length) return null;
 
   return (
-    <div className='relative mt-6 w-full sm:mt-8'>
+    <div className='relative mt-4 w-full sm:mt-4'>
       <div ref={tabListRef} className='relative flex w-full gap-2 overflow-x-auto pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
         {tabs.map((tab) => (
           <button

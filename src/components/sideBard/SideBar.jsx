@@ -46,11 +46,11 @@ function SideBar({ mobile = false }) {
 
   return (
     <div>
-      <ul className='flex flex-col gap-6'>
+      <ul className='flex flex-col gap-4'>
         {menuItems.map((item) => (
           <li key={item.path}>
             <Link to={item.path} className='flex flex-col items-center gap-2'>
-              <span className={`flex size-[45px] items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl ${isActive(item.path)}`}>
+              <span className={`flex size-[35px] items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl ${isActive(item.path)}`}>
                 {item.icon}
               </span>
               <span className={`text-white-color/50 ${isActive(item.path)}`}>{item.label}</span>

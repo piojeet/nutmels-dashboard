@@ -23,7 +23,7 @@ function App() {
 
           <div className=''>
             <div className='hidden xl:block'>
-              <div className='fixed left-8 top-[7.5rem] h-[calc(100dvh-8rem)] overflow-auto pr-2'>
+              <div className='fixed left-8 top-[5rem] h-[calc(100dvh-5rem)] overflow-auto pr-2'>
                 <SideBar />
               </div>
             </div>

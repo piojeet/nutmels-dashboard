@@ -36,7 +36,7 @@ function OrderChart() {
     return (
         <div>
             
-            <div tabIndex={0} className="w-full h-[250px] focus:outline-none focus-visible:outline-none">
+            <div tabIndex={0} className="w-full h-[180px] focus:outline-none focus-visible:outline-none">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         data={data}

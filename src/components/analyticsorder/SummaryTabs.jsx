@@ -23,7 +23,7 @@ function SummaryTabs() {
   if (!tabs.length) return null;
 
   return (
-    <div className='flex flex-col gap-6 lg:grid lg:grid-cols-2'>
+    <div className='flex flex-col gap-4 lg:grid lg:grid-cols-2'>
       <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
         <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
           <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
@@ -81,7 +81,7 @@ function SummaryTabs() {
           </div>
         </div>
 
-        <div className='mt-6 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
+        <div className='mt-4 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
           {componentMap?.[activeTab] || 'No content available'}
         </div>
       </div>

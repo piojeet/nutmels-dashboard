@@ -4,7 +4,7 @@ import { GiCheckMark } from 'react-icons/gi';
 
 function Payments({ filteredOrders, checkedItems, allCheckList, setAllCheckList, handleCheckboxChange, handleView, handleDelete }) {
   return (
-    <div className='h-[261px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1'>
+    <div className='h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1'>
       <table className='min-w-[760px] w-full'>
         <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
           <tr>
