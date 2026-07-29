@@ -149,7 +149,7 @@ function Blog() {
               {paginatedProducts.map((item) => (
                 <div key={item} className='bg-white-color/5 border border-white-color/20 rounded-xl'>
                   <div className='flex items-center justify-center'>
-                    <img src={item.image} alt={item.name} />
+                    <img src={item.image} alt={item.name} className='w-16 object-contain' />
                   </div>
                   <div className='p-2'>
                     <div className='font-inter-m text-white-color/60 text-xs'>{item.name}</div>

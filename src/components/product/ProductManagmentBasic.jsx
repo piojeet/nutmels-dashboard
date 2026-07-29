@@ -56,13 +56,8 @@ function ProductManagmentBasic() {
     prevPage,
   } = useProduct();
 
-  const {
-    selectedTab,
-    setSelectedTab,
-    getTabRef,
-    tabListRef,
-    underlineStyle,
-  } = useTabs("basic");
+  const { selectedTab, setSelectedTab, getTabRef, tabListRef, underlineStyle } =
+    useTabs("basic");
 
   // State to track active filter
   const [activeFilter, setActiveFilter] = useState(filterBtn[0]);
@@ -208,7 +203,7 @@ function ProductManagmentBasic() {
                   className="bg-white-color/5 border border-white-color/20 rounded-xl"
                 >
                   <div className="flex items-center justify-center">
-                    <img src={item.image} alt={item.name} />
+                    <img src={item.image} alt={item.name} className="w-16" />
                   </div>
                   <div className="p-2">
                     <div className="font-inter-m text-white-color/60 text-xs">

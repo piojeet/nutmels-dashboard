@@ -49,7 +49,7 @@ function HomeTabs() {
         />
       </div>
 
-      <div className='mt-5 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100 sm:mt-6'>
+      <div className='mt-4 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100 sm:mt-6'>
         {componentMap?.[activeTab] || 'No content available'}
       </div>
     </div>

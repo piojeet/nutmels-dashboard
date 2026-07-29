@@ -42,7 +42,7 @@ function CRM() {
             ))}
           </div>
 
-          <div className='mt-6 h-[150px] w-full'>
+          <div className='mt-4 h-[120px] w-full'>
             <ResponsiveContainer width='100%' height='100%'>
               <AreaChart data={data} margin={{ top: 20, bottom: 0 }}>
                 <defs>

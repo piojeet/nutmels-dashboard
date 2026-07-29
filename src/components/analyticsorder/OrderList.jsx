@@ -117,7 +117,7 @@ function OrderList() {
         </div>
       </div>
 
-      <div className='max-h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1'>
+      <div className='max-h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
         <table className='min-w-[760px] w-full'>
           <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
             <tr>

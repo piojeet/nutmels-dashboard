@@ -15,7 +15,7 @@ const BlogProvider = ({ children }) => {
   // Pagination Logic
   // -----------------------------
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9; // ek page me kitne products dikhane hain
+  const itemsPerPage = 6; // ek page me kitne products dikhane hain
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 

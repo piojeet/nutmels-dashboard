@@ -20,7 +20,7 @@ function Basic() {
           </div>
           <div className='grid gap-2 md:grid-cols-[.4fr_1fr] md:items-start'>
             <div className='font-inter-m text-white-color/60'>Brief description</div>
-            <textarea className='min-h-[250px] max-h-[400px] w-full rounded-md border border-white-color/20 bg-white-color/5 px-3 py-2.5 text-sm text-white-color outline-none' />
+            <textarea className='min-h-[200px] max-h-[300px] w-full rounded-md border border-white-color/20 bg-white-color/5 px-3 py-2.5 text-sm text-white-color outline-none' />
           </div>
         </div>
 
