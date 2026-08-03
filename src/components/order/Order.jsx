@@ -73,18 +73,18 @@ function Order() {
 
 
   return (
-    <div className="text-white-color pt-6">
+    <div className="text-white-color pt-4">
       {/* Header */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>
         <div className="flex w-full flex-col gap-2 sm:flex-row xl:w-auto">
-          <button onClick={handleExport} className="flex items-center gap-1 px-3.5 py-2.5 bg-white-color text-black-color text-sm font-inter-s rounded-lg cursor-pointer">
+          <button onClick={handleExport} className="flex items-center gap-1 px-3.5 py-2 bg-white-color text-black-color text-sm font-inter-s rounded-lg cursor-pointer">
             <BsDownload className="size-4" />
             Export
           </button>
           <button
             onClick={() => notify('Add order flow opened.')}
-            className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
+            className="flex items-center gap-1 px-3.5 py-2 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
           >
             <LuPlus className="size-4" />
             Add Order
@@ -105,7 +105,7 @@ function Order() {
                 onClick={() => {
                   setSelectedTab(status);
                 }}
-                className={`relative font-inter-r text-sm transition-all pb-2 px-2.5 ${selectedTab === status
+                className={`relative font-inter-r text-sm transition-all pb-1 px-2.5 ${selectedTab === status
                   ? 'text-yellow-color font-medium'
                   : 'text-white-color/50 hover:text-yellow-color'
                   }`}
@@ -135,9 +135,9 @@ function Order() {
               placeholder="Search orders..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
+              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2 pl-10 rounded-lg text-sm outline-none"
             />
-            <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
+            <CgSearch className="size-5 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
 
           {/* Select Date */}
@@ -146,7 +146,7 @@ function Order() {
               onClick={() => {
                 setOpenCalendar(!openCalendar);
               }}
-              className="flex items-center gap-2 px-3 py-2.5 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
+              className="flex items-center gap-2 px-3 py-2 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
             >
               <FaCalendarAlt className="text-white-color text-lg" />
               <span className="font-inter-r">Select Date</span>
@@ -172,7 +172,7 @@ function Order() {
               onClick={() => {
                 setShowFilter(!showFilter);
               }}
-              className="flex items-center gap-2 px-3 py-2.5 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
+              className="flex items-center gap-2 px-3 py-2 bg-white-color/5 border border-white-color/20 rounded-lg text-sm cursor-pointer"
             >
               <FaSlidersH className="text-white-color text-lg" />
               <span className="font-inter-r">Filters</span>
@@ -227,7 +227,7 @@ function Order() {
           <thead className='text-white-color bg-white-color/10 rounded-t-md text-sm font-proxima-r'>
             <tr>
               <th>
-                <span className='px-2 py-2 flex items-center w-fit mx-auto'>
+                <span className='px-2 py-2 flex items-center'>
                   <label className="flex items-center gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
@@ -272,7 +272,7 @@ function Order() {
             {currentOrders.map(order => (
               <tr key={order.id} className='px-4 py-3 text-white-color border-b border-white/10 text-sm'>
                 <td className='text-center'>
-                  <span className='px-2 py-2 flex w-fit mx-auto items-center'>
+                  <span className='px-2 py-2 flex w-fit'>
                     <label className="flex items-center gap-2 cursor-pointer select-none">
                       <input type="checkbox" checked={!!checkedItems[order.id]} onChange={() => handleCheckboxChange(order.id)} className="hidden" />
                       <span className={`size-4 border border-white-color/30 flex items-center justify-center rounded-xs ${checkedItems[order.id] ? 'border-yellow-color' : ''}`}>
@@ -282,12 +282,13 @@ function Order() {
                     <span className='px-2 py-2 inline-block font-proxima-r'>{order.orderId}</span>
                   </span>
                 </td>
-                <td className='text-center'><span className='flex gap-1 w-fit mx-auto'><span className='px-2 py-2 font-proxima-r shrink-0 flex text-3xl'><VscPackage /></span> <span> <span className='px-2 inline-block font-proxima-r'>{order.items?.[0]?.product || 'â€”'}</span> <br />  <span>+{order.items?.length || 1} Products</span></span></span></td>
+                <td className='text-center'><span className='flex gap-1 w-fit mx-auto'><span className='px-2 py-2 font-proxima-r shrink-0 flex text-xl'><VscPackage /></span> <span> <span className='px-2 inline-block font-proxima-r'>{order.items?.[0]?.product || 'â€”'}</span> <br />  <span>+{order.items?.length || 1} Products</span></span></span></td>
                 <td className='text-center'><span className='px-2 py-2 inline-block font-proxima-r'>{order.date}</span></td>
                 <td className='text-center'><span className='px-2 py-2 inline-block font-proxima-r'>{order.customer}</span></td>
                 <td className='text-center'>
                   <span className='px-2 py-2 inline-block font-proxima-r'>
-                    â‚¹{(
+                  &#8377;{" "}
+                  {(
                       (order.items || []).reduce((acc, item) => {
                         const unitPrice = parseFloat(item.UnitPrice || "0");
                         const discount = parseFloat(item.discount || "0");
@@ -326,7 +327,7 @@ function Order() {
         </table>
       </div>
 
-      <div className='mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+      <div className='mt-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
         {/* Showing Xâ€“Y from Z */}
         <div className='text-sm font-inter-m text-white-color/30'>
           Showing <span>{startItem}-{endItem}</span> from <span>{totalItems}</span>

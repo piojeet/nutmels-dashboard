@@ -82,7 +82,7 @@ function CRMCustomerProfile() {
     setAllCheckList(isChecked);
   };
   return (
-    <div className="text-white-color pt-6">
+    <div className="text-white-color pt-4">
       {/* Header */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="text-xl font-inter-b">Order</div>
@@ -94,13 +94,13 @@ function CRMCustomerProfile() {
               placeholder="Search orders..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none"
+              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2 pl-10 rounded-lg text-sm outline-none"
             />
-            <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
+            <CgSearch className="size-5 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
           <button
             onClick={() => notify("Add customer flow opened.")}
-            className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
+            className="flex items-center gap-1 px-3.5 py-2 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg"
           >
             <LuPlus className="size-4" />
             Add Order
@@ -112,7 +112,7 @@ function CRMCustomerProfile() {
       <div className="mt-4 min-w-0">
             <div
               ref={tabListRef}
-              className="relative flex min-w-0 gap-2 overflow-x-auto border-b border-white-color/30 pb-2 thumb-none"
+              className="relative flex min-w-0 gap-2 overflow-x-auto thumb-none"
             >
               {statuses.map((status) => (
                 <button
@@ -149,7 +149,7 @@ function CRMCustomerProfile() {
               <thead className="text-white-color bg-white-color/10 rounded-t-md text-sm font-proxima-r">
                 <tr>
                   <th>
-                    <span className="px-2 py-2 flex items-center w-fit mx-auto">
+                    <span className="px-2 py-2 flex items-center">
                       <label className="flex items-center gap-2 cursor-pointer select-none">
                         <input
                           type="checkbox"
@@ -218,7 +218,7 @@ function CRMCustomerProfile() {
                     className="px-4 py-3 text-white-color border-b border-white/10 text-sm"
                   >
                     <td className="text-center">
-                      <span className="px-2 py-2 flex w-fit mx-auto items-center">
+                      <span className="px-2 py-2 flex items-center">
                         <label className="flex items-center gap-2 cursor-pointer select-none">
                           <input
                             type="checkbox"

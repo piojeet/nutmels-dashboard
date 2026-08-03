@@ -170,7 +170,7 @@ export const OrderProvider = ({ children }) => {
     };
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+    const itemsPerPage = 6;
     const totalItems = filteredOrders.length;
 
     const totalPages = Math.ceil(totalItems / itemsPerPage);

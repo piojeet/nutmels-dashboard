@@ -67,7 +67,7 @@ function ProductManagmentBasic() {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between pt-6">
+      <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between pt-4">
         <div className="text-xl font-inter-b text-white-color">
           Product Management
         </div>
