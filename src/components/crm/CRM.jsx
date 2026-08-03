@@ -23,15 +23,15 @@ function CRM() {
   return (
     <div className='space-y-4'>
       <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
-        <div className='relative w-full rounded-xl bg-white/5 p-4 shadow-sm'>
+        <div className='relative w-full rounded-xl bg-white/5 p-3 shadow-sm'>
           <div className='grid gap-4 text-sm font-medium text-[#6e6e6e] sm:grid-cols-2 xl:grid-cols-5'>
             {rawData.map((step, i) => (
-              <div key={i} className='w-full rounded-xl px-2 py-1'>
+              <div key={i} className='w-full rounded-xl px-2'>
                 <div className='text-xs font-inter-s text-white'>{step.name}</div>
-                <div className='text-lg font-inter-b text-white'>{formatNumber(step.value)}</div>
+                <div className='text-sm font-inter-b text-white'>{formatNumber(step.value)}</div>
                 {step.dropLabel && (
                   <>
-                    <div className='mt-2 text-[11px] text-[#b9b9b9]'>{step.dropLabel}</div>
+                    <div className='mt-1 text-[11px] text-[#b9b9b9]'>{step.dropLabel}</div>
                     <div className='flex justify-between gap-3 text-[11px] font-semibold text-white'>
                       <span>{formatNumber(step.dropValue)}</span>
                       <span className='font-medium text-[#c5c4c4]'>{step.dropPercent}</span>
@@ -42,7 +42,7 @@ function CRM() {
             ))}
           </div>
 
-          <div className='mt-4 h-[120px] w-full'>
+          <div className='h-[110px] w-full'>
             <ResponsiveContainer width='100%' height='100%'>
               <AreaChart data={data} margin={{ top: 20, bottom: 0 }}>
                 <defs>

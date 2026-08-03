@@ -22,7 +22,7 @@ function HomeTabs() {
 
   return (
     <div className='relative mt-4 w-full sm:mt-4'>
-      <div ref={tabListRef} className='relative flex w-full gap-2 overflow-x-auto pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+      <div ref={tabListRef} className='relative flex w-full gap-2 overflow-x-auto pb-0 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -49,7 +49,7 @@ function HomeTabs() {
         />
       </div>
 
-      <div className='mt-4 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100 sm:mt-6'>
+      <div className='mt-3 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
         {componentMap?.[activeTab] || 'No content available'}
       </div>
     </div>

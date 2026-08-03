@@ -19,11 +19,11 @@ function ProductPerformance() {
   if (!tabs.length) return null;
 
   return (
-    <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
+    <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-3'>
       <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
         <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
           <div className='font-inter-b text-white-color'>Product Performance</div>
-          <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+          <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-1 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -32,7 +32,7 @@ function ProductPerformance() {
                 onClick={() => {
                   setActiveTab(tab);
                 }}
-                className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-4 ${
+                className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-3 ${
                   activeTab === tab ? 'text-yellow-color font-inter-b' : 'text-white-color/50 hover:text-yellow-color'
                 }`}
               >
@@ -48,7 +48,7 @@ function ProductPerformance() {
         </div>
 
         <div className='relative z-20 w-full select-none text-white-color sm:w-fit'>
-          <div className='flex min-w-full cursor-pointer items-center justify-between gap-2 rounded-lg border border-white-color/20 bg-transparent px-3 py-1.5 sm:min-w-[150px]' onClick={() => {
+          <div className='flex min-w-full cursor-pointer items-center justify-between gap-2 rounded-lg border border-white-color/20 bg-transparent px-3 py-1.5 sm:min-w-[140px]' onClick={() => {
             setIsOpen(!isOpen);
           }}>
             <span>{selected}</span>
@@ -76,7 +76,7 @@ function ProductPerformance() {
         </div>
       </div>
 
-      <div className='mt-5 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
+      <div className='mt-3 text-sm text-white transition-opacity duration-300 ease-in-out opacity-100'>
         {componentMap?.[activeTab] || 'No content available'}
       </div>
     </div>

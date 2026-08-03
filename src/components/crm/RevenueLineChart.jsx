@@ -70,7 +70,7 @@ const data = [
 
 function RevenueLineChart() {
     return (
-        <div className='border border-white-color/20 bg-white-color/5 rounded-xl p-4'>
+        <div className='border border-white-color/20 bg-white-color/5 rounded-xl p-3'>
             <div className="w-full h-full bg-white/5 p-4 pl-0 rounded shadow">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>

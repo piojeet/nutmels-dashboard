@@ -9,13 +9,13 @@ const tabs = ['Payments', 'Sales', 'Inventory'];
 function Transactions() {
   const [searchQuery, setSearchQuery] = useState('');
   const [orders, setOrders] = useState([
-    { id: 1, orderId: '#707263', date: 'Mar 25, 2025', product: 'Almond +3', amount: 'â‚¹1,680.00', status: 'CONFIRMED' },
-    { id: 2, orderId: '#707264', date: 'Mar 28, 2025', product: 'Flax +1', amount: 'â‚¹580.00', status: 'CONFIRMED' },
-    { id: 3, orderId: '#707265', date: 'Mar 29, 2025', product: 'Cashews +1', amount: 'â‚¹1,001.00', status: 'CONFIRMED' },
-    { id: 4, orderId: '#707266', date: 'Mar 30, 2025', product: 'Almond +8', amount: 'â‚¹1,780.00', status: 'CANCELLED' },
-    { id: 5, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: 'â‚¹1,789.00', status: 'CONFIRMED' },
-    { id: 6, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: 'â‚¹1,789.00', status: 'CONFIRMED' },
-    { id: 7, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: 'â‚¹1,789.00', status: 'CONFIRMED' },
+    { id: 1, orderId: '#707263', date: 'Mar 25, 2025', product: 'Almond +3', amount: '1,680.00', status: 'CONFIRMED' },
+    { id: 2, orderId: '#707264', date: 'Mar 28, 2025', product: 'Flax +1', amount: '580.00', status: 'CONFIRMED' },
+    { id: 3, orderId: '#707265', date: 'Mar 29, 2025', product: 'Cashews +1', amount: '1,001.00', status: 'CONFIRMED' },
+    { id: 4, orderId: '#707266', date: 'Mar 30, 2025', product: 'Almond +8', amount: '1,780.00', status: 'CANCELLED' },
+    { id: 5, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: '1,789.00', status: 'CONFIRMED' },
+    { id: 6, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: '1,789.00', status: 'CONFIRMED' },
+    { id: 7, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: '1,789.00', status: 'CONFIRMED' },
   ]);
 
   const [filteredOrders, setFilteredOrders] = useState([]);
@@ -108,10 +108,10 @@ function Transactions() {
 
   return (
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>
-      <div className='flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between'>
+      <div className='flex flex-col gap-4 p-3 lg:flex-row lg:items-center lg:justify-between'>
         <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
           <div className='font-inter-b text-white-color'>Transactions</div>
-          <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-2 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+          <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-2 pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -120,7 +120,7 @@ function Transactions() {
                 onClick={() => {
                   setActiveTab(tab);
                 }}
-                className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-4 ${
+                className={`relative shrink-0 px-3 text-sm font-inter-r transition-all duration-300 ease-in-out sm:px-3 ${
                   activeTab === tab ? 'text-yellow-color font-inter-b' : 'text-white-color/50 hover:text-yellow-color'
                 }`}
               >

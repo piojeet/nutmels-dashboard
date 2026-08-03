@@ -9,12 +9,12 @@ function OrderList() {
   const [cancelled, setCancelled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [orders, setOrders] = useState([
-    { id: 1, orderId: '#707263', date: 'Mar 25, 2025', product: 'Almond +3', amount: 'â‚¹1,680.00', status: 'CONFIRMED' },
-    { id: 2, orderId: '#707264', date: 'Mar 28, 2025', product: 'Flax +1', amount: 'â‚¹580.00', status: 'CONFIRMED' },
-    { id: 3, orderId: '#707265', date: 'Mar 29, 2025', product: 'Cashews +1', amount: 'â‚¹1,001.00', status: 'CONFIRMED' },
-    { id: 4, orderId: '#707266', date: 'Mar 30, 2025', product: 'Almond +8', amount: 'â‚¹1,780.00', status: 'CANCELLED' },
-    { id: 5, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: 'â‚¹1,789.00', status: 'CONFIRMED' },
-    { id: 6, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: 'â‚¹1,789.00', status: 'CONFIRMED' },
+    { id: 1, orderId: '#707263', date: 'Mar 25, 2025', product: 'Almond +3', amount: '1,680.00', status: 'CONFIRMED' },
+    { id: 2, orderId: '#707264', date: 'Mar 28, 2025', product: 'Flax +1', amount: '580.00', status: 'CONFIRMED' },
+    { id: 3, orderId: '#707265', date: 'Mar 29, 2025', product: 'Cashews +1', amount: '1,001.00', status: 'CONFIRMED' },
+    { id: 4, orderId: '#707266', date: 'Mar 30, 2025', product: 'Almond +8', amount: '1,780.00', status: 'CANCELLED' },
+    { id: 5, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: '1,789.00', status: 'CONFIRMED' },
+    { id: 6, orderId: '#707267', date: 'Mar 31, 2025', product: 'Flax +10', amount: '1,789.00', status: 'CONFIRMED' },
   ]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
@@ -84,7 +84,7 @@ function OrderList() {
 
   return (
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>
-      <div className='flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between'>
+      <div className='flex flex-col gap-4 p-3 lg:flex-row lg:items-center lg:justify-between'>
         <div className='font-inter-b text-white-color'>Order List</div>
         <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-4 lg:gap-6'>
           <label className='flex items-center gap-2 cursor-pointer select-none'>
@@ -118,7 +118,7 @@ function OrderList() {
       </div>
 
       <div className='max-h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
-        <table className='min-w-[760px] w-full'>
+        <table className='min-w-[600px] w-full'>
           <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
             <tr>
               <th>
@@ -160,7 +160,7 @@ function OrderList() {
                 <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.orderId}</span></td>
                 <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.date}</span></td>
                 <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.product}</span></td>
-                <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.amount}</span></td>
+                <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>&#8377;{" "}{order.amount}</span></td>
                 <td className='text-center'>
                   <span className='inline-block px-2 py-3 font-proxima-r'>
                     <span className={`rounded-md px-2 py-1 text-[10px] font-medium ${order.status === 'CONFIRMED' ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'}`}>

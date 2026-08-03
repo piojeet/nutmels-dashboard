@@ -13,14 +13,14 @@ function SideBar({ mobile = false }) {
   const isActive = (path) => (location.pathname === path ? 'text-yellow-color' : '');
 
   const menuItems = [
-    { path: '/', label: 'Home', icon: <GridViewRoundedIcon className='text-[25px]' /> },
-    { path: '/order', label: 'Order', icon: <ShoppingCartOutlinedIcon className='text-[25px]' /> },
-    { path: '/crm-customer-profile', label: 'CRM', icon: <LuUserCheck size={25} /> },
-    { path: '/products', label: 'Product', icon: <IoCubeOutline size={25} /> },
-    { path: '/blog', label: 'Blog', icon: <HiOutlineClipboardList size={25} /> },
-    { path: '/seo', label: 'UI/SEO', icon: <CiGlobe size={25} /> },
-    { path: '/reports', label: 'Reports', icon: <FiBarChart2 size={25} /> },
-    { path: '/setting', label: 'Setting', icon: <CiSettings size={25} /> },
+    { path: '/', label: 'Home', icon: <GridViewRoundedIcon className='text-[18px]!' /> },
+    { path: '/order', label: 'Order', icon: <ShoppingCartOutlinedIcon className='text-[18px]!' /> },
+    { path: '/crm-customer-profile', label: 'CRM', icon: <LuUserCheck className='text-[18px]!' /> },
+    { path: '/products', label: 'Product', icon: <IoCubeOutline className='text-[18px]!' /> },
+    { path: '/blog', label: 'Blog', icon: <HiOutlineClipboardList className='text-[18px]!' /> },
+    { path: '/seo', label: 'UI/SEO', icon: <CiGlobe className='text-[18px]!' /> },
+    { path: '/reports', label: 'Reports', icon: <FiBarChart2 className='text-[18px]!' /> },
+    { path: '/setting', label: 'Setting', icon: <CiSettings className='text-[18px]!' /> },
   ];
 
   if (mobile) {
@@ -46,14 +46,14 @@ function SideBar({ mobile = false }) {
 
   return (
     <div>
-      <ul className='flex flex-col gap-4'>
+      <ul className='flex flex-col gap-3'>
         {menuItems.map((item) => (
           <li key={item.path}>
-            <Link to={item.path} className='flex flex-col items-center gap-2'>
+            <Link to={item.path} className='flex flex-col items-center gap-1'>
               <span className={`flex size-[35px] items-center justify-center rounded-xl bg-black-color/50 text-white-color/50 shadow-side-bar backdrop-blur-xl ${isActive(item.path)}`}>
                 {item.icon}
               </span>
-              <span className={`text-white-color/50 ${isActive(item.path)}`}>{item.label}</span>
+              <span className={`text-white-color/50 text-xs ${isActive(item.path)}`}>{item.label}</span>
             </Link>
           </li>
         ))}

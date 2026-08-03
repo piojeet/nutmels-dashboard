@@ -5,7 +5,7 @@ import { GiCheckMark } from 'react-icons/gi';
 function Payments({ filteredOrders, checkedItems, allCheckList, setAllCheckList, handleCheckboxChange, handleView, handleDelete }) {
   return (
     <div className='h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
-      <table className='min-w-[760px] w-full'>
+      <table className='min-w-[600px] w-full'>
         <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
           <tr>
             <th>
@@ -44,18 +44,18 @@ function Payments({ filteredOrders, checkedItems, allCheckList, setAllCheckList,
                   </label>
                 </span>
               </td>
-              <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.orderId}</span></td>
-              <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.date}</span></td>
-              <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.product}</span></td>
-              <td className='text-center'><span className='inline-block px-2 py-2 font-proxima-r'>{order.amount}</span></td>
-              <td className='text-center'>
-                <span className='inline-block px-2 py-3 font-proxima-r'>
+              <td className='text-center text-sm'><span className='inline-block px-2 py-2 font-proxima-r'>{order.orderId}</span></td>
+              <td className='text-center text-sm'><span className='inline-block px-2 py-2 font-proxima-r'>{order.date}</span></td>
+              <td className='text-center text-sm'><span className='inline-block px-2 py-2 font-proxima-r'>{order.product}</span></td>
+              <td className='text-center text-sm'><span className='inline-block px-2 py-2 font-proxima-r'>&#8377;{" "}{order.amount}</span></td>
+              <td className='text-center text-sm'>
+                <span className='inline-block px-2 py-3 text-sm font-proxima-r'>
                   <span className={`rounded-md px-2 py-1 text-[10px] font-medium ${order.status === 'CONFIRMED' ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'}`}>
                     {order.status}
                   </span>
                 </span>
               </td>
-              <td>
+              <td className='text-center text-sm'>
                 <span className='flex items-center gap-4 px-2 py-2 justify-center'>
                   <button onClick={() => handleView(order)}><FaEye className='cursor-pointer opacity-70 transition hover:opacity-100' /></button>
                   <button onClick={() => handleDelete(order.id)}><FaTrash className='cursor-pointer opacity-70 transition hover:opacity-100' /></button>

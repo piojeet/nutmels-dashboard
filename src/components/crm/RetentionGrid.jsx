@@ -25,7 +25,7 @@ const getColor = (value) => {
 
 const RetentionGrid = () => {
     return (
-        <div className='border border-white-color/20 bg-white-color/5 rounded-xl p-4'>
+        <div className='border border-white-color/20 bg-white-color/5 rounded-xl p-3'>
             <div className="p-4 bg-white/5 rounded-lg shadow overflow-auto h-full">
                 <div className='flex'>
                     <div className='flex flex-col justify-around'>

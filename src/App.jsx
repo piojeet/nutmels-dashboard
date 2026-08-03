@@ -34,7 +34,7 @@ function App() {
               </div>
             </div>
 
-            <main className='pb-28 xl:ml-24 2xl:ml-28 xl:pb-0'>
+            <main className='pb-28 xl:ml-20 2xl:ml-28 xl:pb-0'>
               <AppRoutes />
             </main>
           </div>
