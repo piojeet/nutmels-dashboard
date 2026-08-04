@@ -86,7 +86,7 @@ function OrderList() {
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>
       <div className='flex flex-col gap-4 p-3 lg:flex-row lg:items-center lg:justify-between'>
         <div className='font-inter-b text-white-color'>Order List</div>
-        <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-4 lg:gap-6'>
+        <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-4 lg:gap-4'>
           <label className='flex items-center gap-2 cursor-pointer select-none'>
             <input type='checkbox' checked={confirmed} onChange={() => setConfirmed(!confirmed)} className='hidden' />
             <span className={`flex size-4 items-center justify-center rounded-xs border border-white-color/30 ${confirmed ? 'border-yellow-color' : ''}`}>
@@ -117,7 +117,7 @@ function OrderList() {
         </div>
       </div>
 
-      <div className='max-h-[200px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
+      <div className='max-h-[180px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
         <table className='min-w-[600px] w-full'>
           <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
             <tr>

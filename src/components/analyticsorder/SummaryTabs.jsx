@@ -24,8 +24,8 @@ function SummaryTabs() {
 
   return (
     <div className='flex flex-col gap-4 lg:grid lg:grid-cols-2'>
-      <div className='rounded-xl border border-white-color/20 bg-white-color/5 p-4'>
-        <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
+      <div className='rounded-xl border border-white-color/20 bg-white-color/5'>
+        <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between px-3 pt-3'>
           <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
             <div className='font-inter-b text-white-color'>Summary</div>
             <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-1 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>

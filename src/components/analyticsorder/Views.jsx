@@ -14,7 +14,7 @@ const productData = Array.from({ length: 9 }).map((_, index) => ({
 
 function Views() {
   return (
-    <div className='grid max-h-[calc(200px-12px)] grid-cols-1 gap-4 overflow-y-auto pb-4 sm:grid-cols-2 xl:grid-cols-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1'>
+    <div className='grid max-h-[calc(180px-12px)] grid-cols-1 gap-4 overflow-y-auto pb-4 sm:grid-cols-2 xl:grid-cols-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1'>
       {productData.map((item, index) => (
         <div key={item.id} className='flex gap-2.5 w-full'>
           <div className='shrink-0'><img src={item.img} alt='' className='size-[70px]' /></div>
