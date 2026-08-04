@@ -6,7 +6,7 @@ function Payments({ filteredOrders, checkedItems, allCheckList, setAllCheckList,
   return (
     <div className='h-[180px] overflow-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2'>
       <table className='min-w-[600px] w-full'>
-        <thead className='rounded-t-md bg-white-color/10 text-sm font-proxima-r text-white-color'>
+        <thead className='rounded-t-md bg-[var(--table-h)] text-sm font-proxima-r text-white-color sticky top-0 z-50'>
           <tr>
             <th>
               <span className='inline-block px-2 py-2'>
