@@ -107,16 +107,16 @@ const keywordRows = [
     trend: [20, 26, 22, 38, 30, 52, 60],
     tone: "#2bc6c4",
   },
-  {
-    keyword: "glassmorphism ui kit",
-    tag: "",
-    position: 1,
-    move: "-",
-    volume: "8,200",
-    kd: 42,
-    trend: [18, 18, 32, 16, 34, 50, 50],
-    tone: "#aeb8df",
-  },
+  // {
+  //   keyword: "glassmorphism ui kit",
+  //   tag: "",
+  //   position: 1,
+  //   move: "-",
+  //   volume: "8,200",
+  //   kd: 42,
+  //   trend: [18, 18, 32, 16, 34, 50, 50],
+  //   tone: "#aeb8df",
+  // },
   {
     keyword: "data visualization tools",
     tag: "",
@@ -684,7 +684,7 @@ function SeoDashboard() {
                       </div>
                     ) : (
                       <div
-                        className="mt-5 text-xs"
+                        className="mt-2 text-xs"
                         style={{ color: accent.textColor }}
                       >
                         {item.note}
@@ -1093,12 +1093,12 @@ function SeoDashboard() {
             className="rounded-xl border p-3"
             style={{ borderColor: palette.border }}
           >
-            <div
+            {/* <div
               className="flex h-8 w-8 items-center justify-center rounded-lg"
               style={{ background: palette.tealGlow, color: palette.teal }}
             >
               <FiZap size={13} />
-            </div>
+            </div> */}
 
             <div
               className="mt-2 text-lg font-inter-b"
