@@ -28,7 +28,7 @@ function SummaryTabs() {
         <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between px-3 pt-3'>
           <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
             <div className='font-inter-b text-white-color'>Summary</div>
-            <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-1 pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+            <div ref={tabListRef} className='relative flex overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
               {tabs.map((tab) => (
                 <button
                   key={tab}

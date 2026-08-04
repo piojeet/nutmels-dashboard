@@ -108,10 +108,10 @@ function Transactions() {
 
   return (
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>
-      <div className='flex flex-col gap-4 p-3 lg:flex-row lg:items-center lg:justify-between'>
+      <div className='flex flex-col gap-3 p-3 lg:flex-row lg:items-center lg:justify-between'>
         <div className='flex flex-col gap-4 xl:flex-row xl:items-center'>
           <div className='font-inter-b text-white-color'>Transactions</div>
-          <div ref={tabListRef} className='relative flex gap-2 overflow-x-auto pb-2 pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-4'>
+          <div ref={tabListRef} className='relative flex overflow-x-auto pb-2 pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
             {tabs.map((tab) => (
               <button
                 key={tab}

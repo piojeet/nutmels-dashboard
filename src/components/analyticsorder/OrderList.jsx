@@ -84,7 +84,7 @@ function OrderList() {
 
   return (
     <div ref={containerRef} className='rounded-xl border border-white-color/20 bg-white-color/5'>
-      <div className='flex flex-col gap-4 p-3 lg:flex-row lg:items-center lg:justify-between'>
+      <div className='flex flex-col gap-3 p-3 lg:flex-row lg:items-center lg:justify-between'>
         <div className='font-inter-b text-white-color'>Order List</div>
         <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end'>
           <label className='flex items-center gap-2 cursor-pointer select-none'>

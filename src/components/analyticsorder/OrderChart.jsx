@@ -20,11 +20,11 @@ function CustomLabel({ x, y, value, width }) {
             x={x + width / 2}  // 👈 Center align
             y={y - 10}
             fill={isPositive ? '#2DCA95' : '#FF5050'}
-            fontSize={12}
+            fontSize={10}
             fontWeight="bold"
             textAnchor="middle"
         >
-            {isPositive ? <IoIosTrendingUp size={14} /> : <IoIosTrendingDown size={14} />} {Math.abs(value)}%
+            {isPositive ? <IoIosTrendingUp size={12} /> : <IoIosTrendingDown size={12} />} {Math.abs(value)}%
         </text>
     );
 }
@@ -36,21 +36,22 @@ function OrderChart() {
     return (
         <div>
             
-            <div tabIndex={0} className="w-full h-[180px] focus:outline-none focus-visible:outline-none">
+            <div tabIndex={0} className="w-full h-[180px] focus:outline-none focus-visible:outline-none px-3">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         data={data}
-                        margin={{ top: 10, right: 0, bottom: 0, left: -30 }}
+                        margin={{ top: 10, right: 0, bottom: 0, left: -20 }}
                         barSize={20}
                     >
                         <CartesianGrid strokeDasharray="5 5" className='stroke-white-color/30' vertical={false} />
                         <XAxis
                             dataKey="date"
                             className='stroke-white-color/30'
+                            tick={{ fontSize: 11 }}
                             // padding={{ left: 0, right: 0 }}
                             interval={0}
                         />
-                        <YAxis className='stroke-white-color/30' />
+                        <YAxis className='stroke-white-color/30' tick={{ fontSize: 11 }} />
                         <Tooltip
                             contentStyle={{ backgroundColor: '#fff', border: 'none' }}
                             labelStyle={{ color: '#1a1a1a' }}
