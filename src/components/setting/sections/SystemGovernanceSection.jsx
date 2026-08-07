@@ -21,7 +21,7 @@ function SystemGovernanceSection() {
 
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
-      <div className="rounded-[28px] border border-white/20 p-5 text-[#1A1A1A] sm:p-8">
+      <div className="rounded-xl border border-white/20 p-4 text-[#1A1A1A]">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-xl font-inter-b text-white">
@@ -31,12 +31,12 @@ function SystemGovernanceSection() {
               Redirect all traffic to static maintenance page
             </p>
           </div>
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-yellow-color text-2xl text-yellow-color">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-yellow-color text-lg text-yellow-color">
             <FiTool />
           </span>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-sm font-inter-b uppercase tracking-[0.18em] text-[#c9cbd4]">
             Current status: {maintenanceEnabled ? "Maintenance" : "Operational"}
           </div>
@@ -65,17 +65,17 @@ function SystemGovernanceSection() {
         </div>
       </div>
 
-      <div className="rounded-[28px] border border-yellow-color p-8 text-white shadow-sm bg-white/5">
-        <FiShield className="text-3xl" />
-        <div className="mt-4 text-3xl font-inter-b">99.9%</div>
+      <div className="rounded-xl border border-yellow-color p-4 text-white shadow-sm bg-white/5">
+        <FiShield className="text-xl" />
+        <div className="mt-4 text-xl font-inter-b">99.9%</div>
         <div className="mt-1 text-xs font-inter-s uppercase tracking-[0.2em] text-white/85">
           System Health
         </div>
       </div>
 
-      <div className="rounded-[28px] border border-white/20 p-5 text-[#dfdfdf] shadow-sm sm:p-8">
+      <div className="rounded-xl border border-white/20 p-4 text-[#dfdfdf] shadow-sm">
         <div className="flex items-center gap-4">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-color text-xl text-yellow-color">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-yellow-color text-xl text-yellow-color">
             <FiZap />
           </span>
           <h2 className="text-xl font-inter-b text-[#e9e9e9]">Edge Network</h2>
@@ -87,24 +87,24 @@ function SystemGovernanceSection() {
         <button
           type="button"
           onClick={() => notify("Cloudflare cache flush queued.", "success")}
-          className="mt-10 flex h-[56px] w-full items-center justify-center gap-2 rounded-lg bg-yellow-color px-5 text-sm font-inter-b text-white transition hover:brightness-110 cursor-pointer"
+          className="mt-10 flex h-9 w-full items-center justify-center gap-2 rounded-lg bg-yellow-color px-5 text-sm font-inter-b text-white transition hover:brightness-110 cursor-pointer"
         >
           <FiZap />
           Cloudflare Cache Flush
         </button>
       </div>
 
-      <div className="rounded-[28px] border border-white/20 p-5 text-[#e9e9e9] shadow-sm sm:p-8">
+      <div className="rounded-xl border border-white/20 p-4 text-[#e9e9e9] shadow-sm">
         <div className="flex items-center gap-2">
-          <FiClock className="text-xl text-white" />
-          <h2 className="text-xl font-inter-b text-[#ffffff]">Recent Logs</h2>
+          <FiClock className="text-lg text-white" />
+          <h2 className="text-lg font-inter-b text-[#ffffff]">Recent Logs</h2>
         </div>
 
-        <div className="mt-6 grid gap-4">
+        <div className="mt-3 grid gap-3">
           {LOGS.map((log) => (
             <div
               key={log.label}
-              className="flex items-center justify-between gap-3 rounded-xl border border-white/20 p-4 shadow-sm bg-white/5"
+              className="flex items-center justify-between gap-3 rounded-lg border border-white/20 px-4 py-2 shadow-sm bg-white/5"
             >
               <div className="flex min-w-0 items-center gap-3">
                 <span className={`h-2 w-2 shrink-0 rounded-full ${log.tone}`} />
@@ -121,13 +121,13 @@ function SystemGovernanceSection() {
       </div>
 
       <div className="xl:col-span-2">
-        <div className="relative min-h-[92px] p-7">
+        <div className="relative min-h-[70px] p-4">
           <div className="absolute inset-0 border border-white/20 rounded-lg" />
           <div className="relative">
             <div className="text-xs font-inter-s uppercase tracking-[0.22em] text-white/70">
               Infrastructure
             </div>
-            <div className="mt-2 flex items-center gap-2 text-xl font-inter-b text-white">
+            <div className="mt-1 flex items-center gap-2 text-lg font-inter-b text-white">
               <FiRefreshCw className="text-yellow-color" />
               Node Synchronization active
             </div>

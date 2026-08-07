@@ -22,13 +22,13 @@ function SettingMain() {
 
   return (
     <section className="text-white-color pt-4">
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-3">
         <div>
-          <h1 className="text-3xl font-inter-b text-white-color">Settings</h1>
+          <h1 className="text-xl font-inter-b text-white-color">Settings</h1>
 
           <div
             ref={tabListRef}
-            className="relative mt-4 flex w-full max-w-[420px] gap-5 overflow-x-auto border-b border-white-color/18 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="relative mt-4 flex w-full max-w-[420px] overflow-x-auto border-b border-white-color/18 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {SETTING_TOP_TABS.map((tab) => (
               <button
@@ -37,7 +37,7 @@ function SettingMain() {
                 data-tab-key={tab.id}
                 type="button"
                 onClick={() => setActiveTopTab(tab.id)}
-                className={`relative shrink-0 px-1 pb-2 text-sm font-inter-s transition ${
+                className={`relative shrink-0 px-3 text-sm font-inter-s transition ${
                   activeTopTab === tab.id
                     ? "text-yellow-color"
                     : "text-white-color/50 hover:text-white-color"

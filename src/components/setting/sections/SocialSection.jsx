@@ -39,7 +39,7 @@ function SocialSection({ form, setForm }) {
         {providers.map((provider) => (
           <div
             key={provider.key}
-            className="rounded-[24px] border border-white-color/12 bg-white-color/[3%] p-5"
+            className="rounded-xl border border-white-color/12 bg-white-color/[3%] p-5"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -63,7 +63,7 @@ function SocialSection({ form, setForm }) {
               </button>
             </div>
 
-            <div className="mt-5 grid gap-4">
+            <div className="mt-4 grid gap-4">
               <FieldShell label={`${provider.label} client ID`}>
                 <TextInput
                   value={provider.clientId}
@@ -83,7 +83,7 @@ function SocialSection({ form, setForm }) {
         ))}
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <PrimaryButton onClick={() => notify("Social login settings saved.", "success")}>Submit</PrimaryButton>
       </div>
     </Panel>

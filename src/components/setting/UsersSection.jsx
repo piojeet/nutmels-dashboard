@@ -57,8 +57,8 @@ function UsersSection() {
 
     return users.filter((user) =>
       [user.name, user.role, user.email].some((value) =>
-        value.toLowerCase().includes(normalized)
-      )
+        value.toLowerCase().includes(normalized),
+      ),
     );
   }, [search, users]);
 
@@ -71,8 +71,8 @@ function UsersSection() {
                 ...user,
                 ...payload,
               }
-            : user
-        )
+            : user,
+        ),
       );
 
       showAppToast({
@@ -134,38 +134,46 @@ function UsersSection() {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search roles or email"
-              className="h-[52px] rounded-[16px] bg-white-color/[6%]"
+              className="h-[38px] rounded-lg bg-white-color/[6%]"
             />
           </div>
 
-          <PrimaryButton onClick={openCreateModal} className="h-[52px] rounded-[16px] px-5">
+          <PrimaryButton
+            onClick={openCreateModal}
+            className="h-[38px] rounded-[16px] px-5"
+          >
             <FiPlus />
             Add Role Permission
           </PrimaryButton>
         </div>
 
         <div className="overflow-hidden">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto max-h-[380px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2">
             <table className="w-full min-w-[900px] text-left">
-              <thead className="bg-white-color/[7%] text-sm font-inter-s text-white-color/70">
+              <thead className="text-sm font-inter-s text-white-color/70 bg-[var(--table-h)] sticky top-0 z-50">
                 <tr>
-                  <th className="px-6 py-4">Name</th>
-                  <th className="px-6 py-4">Role</th>
-                  <th className="px-6 py-4">Email Address</th>
-                  <th className="px-6 py-4">Granted Date</th>
-                  <th className="px-6 py-4 text-right">Action</th>
+                  <th className="px-4 py-2">Name</th>
+                  <th className="px-4 py-2">Role</th>
+                  <th className="px-4 py-2">Email Address</th>
+                  <th className="px-4 py-2">Granted Date</th>
+                  <th className="px-4 py-2 text-right">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {filteredUsers.length ? (
                   filteredUsers.map((user) => (
-                    <tr key={user.id} className="border-t border-white-color/10 text-white-color/78">
-                      <td className="px-6 py-5 font-inter-m">{user.name}</td>
-                      <td className="px-6 py-5">{user.role}</td>
-                      <td className="px-6 py-5">{user.email}</td>
-                      <td className="px-6 py-5 whitespace-nowrap">{user.grantedDate}</td>
-                      <td className="px-6 py-5">
+                    <tr
+                      key={user.id}
+                      className="border-t border-white-color/10 text-white-color/78 text-sm"
+                    >
+                      <td className="px-4 py-2 font-inter-m">{user.name}</td>
+                      <td className="px-4 py-2">{user.role}</td>
+                      <td className="px-4 py-2">{user.email}</td>
+                      <td className="px-4 py-2 whitespace-nowrap">
+                        {user.grantedDate}
+                      </td>
+                      <td className="px-4 py-2">
                         <div className="flex justify-end gap-4 text-lg text-white-color/60">
                           <button
                             type="button"
@@ -187,7 +195,10 @@ function UsersSection() {
                   ))
                 ) : (
                   <tr className="border-t border-white-color/10">
-                    <td colSpan="5" className="px-6 py-12 text-center text-sm text-white-color/45">
+                    <td
+                      colSpan="5"
+                      className="px-4 py-2 text-center text-sm text-white-color/45"
+                    >
                       No matching users found.
                     </td>
                   </tr>

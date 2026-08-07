@@ -44,7 +44,7 @@ function CurrencySection({ form, setForm }) {
         </FieldShell>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <PrimaryButton onClick={() => notify(`Currency updated to ${form.currency}.`, "success")}>
           Update currency
         </PrimaryButton>

@@ -7,7 +7,7 @@ function ProductMedia() {
     <div className='h-full'>
       <form action="" className='h-full flex flex-col justify-between gap-4'>
         <div className=''>
-          <div className='border-2 border-dashed border-white-color/30 h-[250px] rounded-xl flex flex-col justify-center items-center gap-3 bg-white-color/10'>
+          <div className='border-2 border-dashed border-white-color/30 h-[200px] rounded-xl flex flex-col justify-center items-center gap-3 bg-white-color/10'>
           <div className='text-white-color text-6xl'><RiUploadCloudLine /></div>
             <div className='space-y-2 text-center'>
               <div className='font-inter-r text-white-color'>Upload product Images <span className='font-semibold text-yellow-color'>browse</span></div>

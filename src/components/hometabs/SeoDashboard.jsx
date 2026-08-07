@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   Area,
   AreaChart,
@@ -226,6 +227,26 @@ function MenuSurface({ children, palette, className = "" }) {
   );
 }
 
+function PortalMenuSurface({ children, palette, position }) {
+  if (!position || typeof document === "undefined") return null;
+
+  return createPortal(
+    <div
+      className="fixed z-50 w-[170px] rounded-[18px] border bg-[#1C2037] p-2 text-left shadow-2xl backdrop-blur-xl"
+      style={{
+        ...(position.placement === "bottom"
+          ? { top: position.offset }
+          : { bottom: position.offset }),
+        right: position.right,
+        borderColor: palette.border,
+      }}
+    >
+      {children}
+    </div>,
+    document.body,
+  );
+}
+
 function SeoDashboard() {
   const dashboardRef = useRef(null);
   const [themeName, setThemeName] = useState(readTheme);
@@ -233,6 +254,7 @@ function SeoDashboard() {
   const [filterLabel, setFilterLabel] = useState(filters[0]);
   const [query, setQuery] = useState("");
   const [openMenu, setOpenMenu] = useState("");
+  const [rowMenuPosition, setRowMenuPosition] = useState(null);
   const [showAllErrors, setShowAllErrors] = useState(false);
   const [crawlRequested, setCrawlRequested] = useState(false);
   const [errors, setErrors] = useState(initialErrors);
@@ -327,7 +349,7 @@ function SeoDashboard() {
     });
   };
 
-  const unreadAlerts = alerts.filter((item) => !item.read).length;
+  // const unreadAlerts = alerts.filter((item) => !item.read).length;
 
   const toggleMenu = (name) => {
     const isClosing = openMenu === name;
@@ -491,7 +513,7 @@ function SeoDashboard() {
                 </label>
 
                 <div className="relative">
-                  <button
+                  {/* <button
                     type="button"
                     onClick={() => toggleMenu("alerts")}
                     className="relative inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-3 transition hover:brightness-110"
@@ -506,7 +528,7 @@ function SeoDashboard() {
                         {unreadAlerts}
                       </span>
                     ) : null}
-                  </button>
+                  </button> */}
 
                   {openMenu === "alerts" ? (
                     <MenuSurface palette={palette} className="w-[260px]">
@@ -613,13 +635,13 @@ function SeoDashboard() {
                   ) : null}
                 </div>
 
-                <button
+                {/* <button
                   type="button"
                   className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border transition hover:brightness-110"
                   style={{ borderColor: palette.border, color: palette.text }}
                 >
                   <FiMaximize2 size={13} />
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -927,7 +949,20 @@ function SeoDashboard() {
                             <div className="relative inline-flex">
                               <button
                                 type="button"
-                                onClick={() => toggleMenu(`row:${row.keyword}`)}
+                                onClick={(event) => {
+                                  const rect = event.currentTarget.getBoundingClientRect();
+                                  const menuHeight = 152;
+                                  const canOpenBelow =
+                                    window.innerHeight - rect.bottom >= menuHeight + 10;
+                                  setRowMenuPosition({
+                                    placement: canOpenBelow ? "bottom" : "top",
+                                    offset: canOpenBelow
+                                      ? rect.bottom + 10
+                                      : window.innerHeight - rect.top + 10,
+                                    right: Math.max(8, window.innerWidth - rect.right),
+                                  });
+                                  toggleMenu(`row:${row.keyword}`);
+                                }}
                                 className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border transition hover:brightness-110"
                                 style={{
                                   background: palette.chip,
@@ -939,9 +974,9 @@ function SeoDashboard() {
                               </button>
 
                               {openMenu === `row:${row.keyword}` ? (
-                                <MenuSurface
+                                <PortalMenuSurface
                                   palette={palette}
-                                  className="w-[170px] text-left"
+                                  position={rowMenuPosition}
                                 >
                                   <button
                                     type="button"
@@ -976,7 +1011,7 @@ function SeoDashboard() {
                                     <FiCopy size={14} />
                                     Copy keyword
                                   </button>
-                                </MenuSurface>
+                                </PortalMenuSurface>
                               ) : null}
                             </div>
                           </td>

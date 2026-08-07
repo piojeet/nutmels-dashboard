@@ -272,19 +272,19 @@ function exportRowsToCsv(rows) {
 
 function MetricCard({ icon, title, value, badge, badgeClass, hint, iconClass = "" }) {
   return (
-    <div className="rounded-[26px] border border-white-color/12 p-5 shadow-sm backdrop-blur-xl">
+    <div className="rounded-xl border border-white-color/12 p-3 shadow-sm backdrop-blur-xl">
       <div className="flex items-start justify-between gap-4">
-        <span className={`flex h-12 w-12 items-center justify-center rounded-2xl border border-white-color/10 bg-white-color/[5%] text-xl ${iconClass}`}>
+        <span className={`flex size-9 items-center justify-center rounded-lg border border-white-color/10 bg-white-color/[5%] text-lg ${iconClass}`}>
           {React.createElement(icon)}
         </span>
         <span className={`rounded-full px-3 py-1 text-xs font-inter-s ${badgeClass}`}>{badge}</span>
       </div>
 
-      <div className="mt-5 text-[11px] font-inter-s uppercase tracking-[0.18em] text-white-color/45">
+      <div className="mt-2 text-[11px] font-inter-s uppercase tracking-[0.18em] text-white-color/45">
         {title}
       </div>
-      <div className="mt-2 text-[35px] font-inter-b leading-none text-white-color">{value}</div>
-      <div className="mt-3 text-sm text-white-color/45">{hint}</div>
+      <div className="mt-2 text-xl font-inter-b leading-none text-white-color">{value}</div>
+      <div className="mt-2 text-xs text-white-color/45">{hint}</div>
     </div>
   );
 }
@@ -412,40 +412,39 @@ function AuditLogsSection() {
   };
 
   return (
-    <section className="space-y-6">
-      <div className="grid gap-4 xl:grid-cols-[repeat(3,minmax(0,1fr))_280px]">
+    <section className="space-y-4">
+      <div className="grid gap-4 xl:grid-cols-[repeat(3,minmax(0,1fr))_350px]">
         {summaryCards.map((card) => (
           <MetricCard key={card.title} {...card} />
         ))}
 
-        <div className="relative overflow-hidden rounded-[26px] border border-white-color/12 bg p-5 text-white shadow-[0_26px_70px_rgba(10,8,24,0.3)]">
+        <div className="relative overflow-hidden rounded-xl border border-white-color/12 bg p-3 text-white shadow-[0_26px_70px_rgba(10,8,24,0.3)]">
           <div className="absolute right-[-36px] top-[-36px] h-28 w-28 rounded-full bg-white/10 blur-2xl" />
           <div className="relative z-10">
-            <div className="text-[11px] font-inter-s uppercase tracking-[0.18em] text-white/70">System Health</div>
-            <div className="mt-4 flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/10 text-xl text-yellow-color aspect-square">
+            <div className="flex items-center gap-3">
+              <span className="flex size-9 items-center justify-center rounded-lg border border-white/12 bg-white/10 text-lg text-yellow-color aspect-square">
                 <FiShield />
               </span>
               <div>
                 <div className="text-lg font-inter-b">Export Full Audit</div>
-                <div className="text-sm text-white/62">Archive and compliance ready snapshot</div>
+                <div className="text-xs text-white/62">Archive and compliance ready snapshot</div>
               </div>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-3 flex gap-2">
               <button
                 type="button"
                 onClick={handleArchive}
-                className="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-left text-sm font-inter-s transition hover:bg-white/14"
+                className="flex w-full items-center justify-between rounded-lg border border-white/10 bg-white/10 px-4 py-3 text-left text-sm font-inter-s transition hover:bg-white/14"
               >
                 Archive
                 <FiArchive />
               </button>
-
+ 
               <button
                 type="button"
                 onClick={handleGenerateCsv}
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white/16 px-4 py-3 text-sm font-inter-b transition hover:bg-white/22"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-white/16 px-4 py-2 text-sm font-inter-b transition hover:bg-white/22"
               >
                 Generate CSV
                 <FiDownload />
@@ -456,10 +455,10 @@ function AuditLogsSection() {
       </div>
 
       <div className="overflow-hidden">
-        <div className="flex flex-col gap-5 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-7">
+        <div className="flex flex-col gap-4 px-4 pb-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-[25px] font-inter-b text-white-color">Recent Activity Dashboard</div>
-            <div className="mt-1 text-sm text-white-color/48">
+            <div className="text-xl font-inter-b text-white-color">Recent Activity Dashboard</div>
+            <div className="text-xs text-white-color/48">
               Track admin changes across users, governance and system level actions.
             </div>
           </div>
@@ -492,47 +491,47 @@ function AuditLogsSection() {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto max-h-[200px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2">
           <table className="w-full min-w-[1050px] text-left">
             <thead className="border-y border-white-color/10 bg-white-color/[3%] text-[11px] uppercase tracking-[0.18em] text-white-color/40">
               <tr>
-                <th className="px-7 py-4 font-inter-s">Timestamp</th>
-                <th className="px-7 py-4 font-inter-s">Admin ID</th>
-                <th className="px-7 py-4 font-inter-s">Module</th>
-                <th className="px-7 py-4 font-inter-s">Action</th>
-                <th className="px-7 py-4 font-inter-s">Old Value</th>
-                <th className="px-7 py-4 font-inter-s">New Value</th>
+                <th className="px-4 py-2 font-inter-s">Timestamp</th>
+                <th className="px-4 py-2 font-inter-s">Admin ID</th>
+                <th className="px-4 py-2 font-inter-s">Module</th>
+                <th className="px-4 py-2 font-inter-s">Action</th>
+                <th className="px-4 py-2 font-inter-s">Old Value</th>
+                <th className="px-4 py-2 font-inter-s">New Value</th>
               </tr>
             </thead>
 
             <tbody>
               {visibleRows.map((row) => (
                 <tr key={row.id} className="border-b border-white-color/8 align-top">
-                  <td className="px-7 py-5">
-                    <div className="font-inter-b leading-[1.05] text-white-color">{row.timestamp}</div>
-                    <div className="mt-1 text-sm text-white-color/42">{row.utc}</div>
+                  <td className="px-4 py-2">
+                    <div className="font-inter-b leading-[1.05] text-white-color text-sm">{row.timestamp}</div>
+                    <div className="mt-1 text-xs text-white-color/42">{row.utc}</div>
                   </td>
-                  <td className="px-7 py-5">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white-color/[7%] text-sm font-inter-b text-white-color/80">
+                  <td className="px-4 py-2">
+                    <div className="flex items-center gap-2">
+                      <span className="flex size-8 items-center justify-center rounded-lg bg-white-color/[7%] font-inter-b text-white-color/80 text-xs">
                         {row.initials}
                       </span>
-                      <span className="text-lg font-inter-s text-white-color/82">{row.adminId}</span>
+                      <span className="text-sm font-inter-s text-white-color/82">{row.adminId}</span>
                     </div>
                   </td>
-                  <td className="px-7 py-5">
-                    <span className={`inline-flex rounded-full px-3 py-1 text-xs font-inter-s ${getModuleTone(row.module)}`}>
+                  <td className="px-4 py-2">
+                    <span className={`inline-flex rounded-full px-3 py-1 text-[10px] font-inter-s ${getModuleTone(row.module)}`}>
                       {row.module}
                     </span>
                   </td>
-                  <td className="px-7 py-5 font-inter-s text-yellow-color">{row.action}</td>
-                  <td className="px-7 py-5">
-                    <span className="inline-flex rounded-xl bg-white-color/[7%] px-3 py-2 text-sm text-white-color/60">
+                  <td className="px-4 py-2 font-inter-s text-yellow-color text-sm">{row.action}</td>
+                  <td className="px-4 py-2">
+                    <span className="inline-flex rounded-xl bg-white-color/[7%] px-3 py-1 text-[10px] text-white-color/60">
                       {row.oldValue}
                     </span>
                   </td>
-                  <td className="px-7 py-5">
-                    <span className={`inline-flex rounded-xl px-3 py-2 text-sm font-inter-s ${getValueTone(row.newValue)}`}>
+                  <td className="px-4 py-2">
+                    <span className={`inline-flex rounded-lg px-3 py-1 font-inter-s text-xs ${getValueTone(row.newValue)}`}>
                       {row.newValue}
                     </span>
                   </td>
@@ -542,8 +541,8 @@ function AuditLogsSection() {
           </table>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white-color/10 px-5 py-5 text-sm text-white-color/45 md:flex-row md:items-center md:justify-between md:px-7">
-          <div>{metaText}</div>
+        <div className="flex flex-col gap-4 py-3 text-sm text-white-color/45 md:flex-row md:items-center md:justify-between">
+          <div className="text-xs">{metaText}</div>
 
           <div className="flex items-center gap-2 text-base text-white-color/45">
             <button

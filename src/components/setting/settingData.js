@@ -20,6 +20,8 @@ export const LANGUAGE_ROWS = [
   { id: 3, name: "Hindi", code: "hi", direction: "LTR", isDefault: false, status: "Public", order: 3 },
   { id: 4, name: "Arabic", code: "ar", direction: "RTL", isDefault: false, status: "Public", order: 2 },
   { id: 5, name: "French", code: "fr", direction: "LTR", isDefault: false, status: "Draft", order: 1 },
+  { id: 5, name: "French", code: "fr", direction: "LTR", isDefault: false, status: "Draft", order: 1 },
+  { id: 5, name: "French", code: "fr", direction: "LTR", isDefault: false, status: "Draft", order: 1 },
 ];
 
 const CACHE_PRESETS = [

@@ -19,7 +19,7 @@ function AddressSection({ form, setForm }) {
       description="Primary business contact information shown in invoices, receipts and outgoing email templates."
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <FieldShell label="Email" className="md:col-span-2">
+        <FieldShell label="Email" className="">
           <TextInput
             icon={FiMail}
             value={form.email}
@@ -27,7 +27,7 @@ function AddressSection({ form, setForm }) {
             placeholder="Enter support email"
           />
         </FieldShell>
-        <FieldShell label="Phone" className="md:col-span-2">
+        <FieldShell label="Phone" className="">
           <TextInput
             icon={FiPhone}
             value={form.phone}
@@ -35,14 +35,14 @@ function AddressSection({ form, setForm }) {
             placeholder="Enter support phone"
           />
         </FieldShell>
-        <FieldShell label="Address line 1" className="md:col-span-2">
+        <FieldShell label="Address line 1" className="">
           <TextInput
             value={form.address1}
             onChange={(event) => updateField("address1", event.target.value)}
             placeholder="Street, building, area"
           />
         </FieldShell>
-        <FieldShell label="Address line 2" className="md:col-span-2">
+        <FieldShell label="Address line 2" className="">
           <TextInput
             value={form.address2}
             onChange={(event) => updateField("address2", event.target.value)}
@@ -80,7 +80,7 @@ function AddressSection({ form, setForm }) {
         </FieldShell>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <PrimaryButton onClick={() => notify("Business address details saved.", "success")}>
           Submit
         </PrimaryButton>

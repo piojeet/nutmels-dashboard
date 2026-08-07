@@ -33,7 +33,7 @@ function ProductInventory() {
             <SimpleRow label='Tax' />
           </div>
 
-          <div className='mt-6 grid gap-6 xl:grid-cols-[.4fr_1fr]'>
+          <div className='mt-4 grid gap-3 xl:grid-cols-[.3fr_1fr]'>
             <div className='space-y-4'>
               <div className='text-sm font-inter-m font-medium text-white-color/60'>Variants</div>
               <div className='space-y-3'>
@@ -44,7 +44,7 @@ function ProductInventory() {
             </div>
 
             <div className='overflow-x-auto'>
-              <div className='grid min-w-[780px] grid-cols-5 gap-3'>
+              <div className='grid grid-cols-5 gap-3'>
                 {columns.map((column, index) => (
                   <ColumnGroup key={index} title={column} />
                 ))}
@@ -54,11 +54,11 @@ function ProductInventory() {
         </div>
 
         <div className='flex flex-wrap justify-end gap-3 sm:gap-4'>
-          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-sm text-white-color sm:w-[120px]'>
+          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2 text-sm text-white-color sm:w-[120px]'>
             <IoArrowBack /> Previous
           </button>
-          <button className='w-full rounded-sm border border-white-color/20 bg-[#2DCA95] px-4 py-2.5 text-sm sm:w-[100px]'>Save</button>
-          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2.5 text-sm text-white-color sm:w-[100px]'>
+          <button className='w-full rounded-sm border border-white-color/20 bg-[#2DCA95] px-4 py-2 text-sm sm:w-[100px]'>Save</button>
+          <button className='flex w-full items-center justify-center gap-1 rounded-sm border border-white-color/20 bg-white-color/5 px-4 py-2 text-sm text-white-color sm:w-[100px]'>
             Next <IoArrowForward />
           </button>
         </div>

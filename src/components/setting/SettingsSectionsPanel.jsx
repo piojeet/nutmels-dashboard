@@ -222,7 +222,7 @@ function SettingsSectionsPanel() {
 
   return (
     <div className="">
-      <div className="grid min-w-0 gap-6 xl:grid-cols-[260px_minmax(0,1fr)]">
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[200px_minmax(0,1fr)]">
         <aside className="min-w-0 xl:border-r xl:border-white-color/10 xl:pr-6">
           <div
             ref={tabsContainerRef}
@@ -237,7 +237,7 @@ function SettingsSectionsPanel() {
                 onClick={() => {
                   setActiveTab(tab.id);
                 }}
-                className={`relative shrink-0 rounded-[22px] px-4 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-2 xl:pl-5 cursor-pointer ${
+                className={`relative shrink-0 rounded-[22px] px-4 text-left font-inter-s transition xl:w-full xl:rounded-none xl:px-0 xl:py-1.5 xl:pl-5 cursor-pointer text-sm ${
                   activeTab === tab.id
                     ? "text-yellow-color"
                     : "text-white-color/70 hover:text-white-color"

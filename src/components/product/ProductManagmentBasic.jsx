@@ -77,7 +77,7 @@ function ProductManagmentBasic() {
             <input
               type="text"
               placeholder="Search orders..."
-              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2.5 pl-10 rounded-lg text-sm outline-none text-white-color"
+              className="w-full sm:w-[260px] bg-white-color/5 border border-white-color/20 px-3 py-2 pl-10 rounded-lg text-sm outline-none text-white-color"
             />
             <CgSearch className="size-6 text-white-color absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
@@ -85,13 +85,13 @@ function ProductManagmentBasic() {
             onClick={() => {
               setIsOpen(true);
             }}
-            className="flex items-center gap-1 px-3.5 py-2.5 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer"
+            className="flex items-center gap-1 px-3.5 py-2 text-white-color text-sm font-inter-s rounded-lg bg-white-color/5 border border-white-color/20 cursor-pointer"
           >
             Add Bulk Product
           </button>
           <button
             onClick={() => notify("Add new product form opened.")}
-            className="flex items-center gap-1 px-3.5 py-2.5 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg cursor-pointer"
+            className="flex items-center gap-1 px-3.5 py-2 bg-yellow-color text-white-color text-sm font-inter-s rounded-lg cursor-pointer"
           >
             <LuPlus className="size-4" />
             Add New Product
@@ -107,7 +107,7 @@ function ProductManagmentBasic() {
         />
       )}
 
-      <div className="mt-8 xl:grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px] 2xl:grid-cols-[1fr_500px]">
+      <div className="mt-4 xl:grid gap-4 xl:grid-cols-[minmax(0,1fr)_520px] 2xl:grid-cols-[1fr_600px]">
         <div className="flex flex-col xl:border-r xl:border-white-color/30 xl:pr-3">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="text-xl text-yellow-color">
@@ -175,15 +175,15 @@ function ProductManagmentBasic() {
           </div>
         </div>
         <div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <div className="flex flex-wrap gap-x-1 gap-y-1.5 text-xs">
             {filterBtn.map((btn) => (
               <button
                 key={btn}
                 className={
-                  `border-b-2 px-2 pb-1 transition-colors duration-150 cursor-pointer ` +
+                  `border-b-1 px-2 pb-0.5 transition-colors duration-150 cursor-pointer ` +
                   (activeFilter === btn
                     ? "text-white-color border-white-color"
-                    : "text-white-color/30 border-transparent hover:text-white-color/70 hover:border-white-color/40")
+                    : "text-white-color/50 border-transparent hover:text-white-color/70 hover:border-white-color/60")
                 }
                 onClick={() => {
                   setActiveFilter(btn);
@@ -196,24 +196,24 @@ function ProductManagmentBasic() {
           </div>
 
           <div className="mt-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:grid-cols-4">
               {paginatedProducts.map((item) => (
                 <div
                   key={item}
                   className="bg-white-color/5 border border-white-color/20 rounded-xl"
                 >
                   <div className="flex items-center justify-center">
-                    <img src={item.image} alt={item.name} className="w-16" />
+                    <img src={item.image} alt={item.name} className="w-18" />
                   </div>
                   <div className="p-2">
-                    <div className="font-inter-m text-white-color/60 text-xs">
+                    <div className="font-inter-m text-white-color/60 text-xs!">
                       {item.name}
                     </div>
                     <div className="font-inter-m text-white-color/60 text-xs">
                       {item.weight}
                     </div>
                     <div className="text-white-color font-inter-b text-xs">
-                      â‚¹{item.price}
+                    &#8377;{" "}{item.price}
                     </div>
 
                     <div className="flex justify-between pt-2 mt-2 border-t border-white-color/10 text-xs">

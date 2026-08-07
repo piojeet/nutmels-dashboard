@@ -188,7 +188,7 @@ function PaymentSection() {
               key={id}
               type="button"
               onClick={() => setActivePayment(id)}
-              className={`relative z-10 h-10 rounded-md px-2 text-[11px] font-inter-b uppercase tracking-[0.08em] transition-colors duration-300 ${
+              className={`relative z-10 h-9 rounded-md px-2 text-[11px] font-inter-b uppercase tracking-[0.08em] transition-colors duration-300 ${
                 activePayment === id
                   ? "text-white"
                   : "text-[#8fa0b8] hover:text-yellow-color"
@@ -203,12 +203,12 @@ function PaymentSection() {
           <div>
             <div>
               <div className="grid lg:grid-cols-2 gap-4">
-                <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-4">
+                <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-2">
                   <div className="flex justify-between flex-wrap gap-4">
                     <div className="flex justify-between gap-6">
                       <div className="flex items-center gap-2">
-                        <div className="shrink-0 size-10 bg-yellow-color rounded-md flex items-center justify-center text-white">
-                          <FiZap size={25} />
+                        <div className="shrink-0 size-8 bg-yellow-color rounded-md flex items-center justify-center text-white">
+                          <FiZap size={20} />
                         </div>
                         <div>
                           <h3>{payment.name}</h3>
@@ -248,10 +248,10 @@ function PaymentSection() {
                       </div>
                     </div>
                     <div className="flex gap-4">
-                      <button className="shrink-0 size-10 rounded-md bg-white/10 flex items-center justify-center text-yellow-color cursor-pointer hover:bg-white/20">
+                      <button className="shrink-0 size-9 rounded-md bg-white/10 flex items-center justify-center text-yellow-color cursor-pointer hover:bg-white/20">
                         <RiSettings3Line size={25} />
                       </button>
-                      <button className="bg-yellow-color w-fit h-10 px-3 flex items-center justify-center text-white cursor-pointer hover:brightness-95 gap-2 rounded-md">
+                      <button className="bg-yellow-color w-fit h-9 px-3 flex items-center justify-center text-white cursor-pointer hover:brightness-95 gap-2 rounded-md">
                         <MdOutlineSettingsInputComponent /> Configure
                       </button>
                     </div>
@@ -272,8 +272,8 @@ function PaymentSection() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-2">
+                <div className="space-y-4 grid grid-cols-2 gap-4">
+                  <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-2 h-full">
                     <div className="text-xl font-semibold text-white-color">
                       Avg Speed
                     </div>
@@ -289,7 +289,7 @@ function PaymentSection() {
                       <span className="w-[60%] h-full bg-blue-500 rounded-full inline-block absolute top-0 left-0"></span>
                     </div>
                   </div>
-                  <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-2">
+                  <div className="border border-white/20 rounded-lg p-4 flex flex-col justify-between gap-2 h-full">
                     <div className="text-xl font-semibold text-white-color">
                       Success Rate
                     </div>
@@ -305,7 +305,7 @@ function PaymentSection() {
               </div>
 
               <div className="mt-4">
-                <div className="w-full rounded-[18px] px-5 py-4 border border-white/20">
+                <div className="w-full rounded-xl px-4 py-4 border border-white/20">
                   <div className="mb-2.5 flex items-center justify-between">
                     <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/90">
                       Volume Trend (24H)
@@ -316,7 +316,7 @@ function PaymentSection() {
                     </span>
                   </div>
 
-                  <div className="relative h-[200px]">
+                  <div className="relative h-[130px]">
                     <canvas
                       ref={chartRef}
                       aria-label="Volume trend over 24 hours, up 12.4%"

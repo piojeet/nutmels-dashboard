@@ -18,7 +18,7 @@ function AnalyticsSection({ form, setForm }) {
       description="Toggle measurement platforms and keep tracking IDs organised in one place."
     >
       <div className="grid gap-4 xl:grid-cols-2">
-        <div className="rounded-[24px] border border-white-color/12 bg-white-color/[3%] p-5">
+        <div className="rounded-xl border border-white-color/12 bg-white-color/[3%] p-4">
           <ToggleSwitch
             checked={form.googleEnabled}
             onChange={() => {
@@ -38,7 +38,7 @@ function AnalyticsSection({ form, setForm }) {
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-white-color/12 bg-white-color/[3%] p-5">
+        <div className="rounded-xl border border-white-color/12 bg-white-color/[3%] p-4">
           <ToggleSwitch
             checked={form.facebookEnabled}
             onChange={() => {
@@ -59,7 +59,7 @@ function AnalyticsSection({ form, setForm }) {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <PrimaryButton onClick={() => notify("Analytics settings saved.", "success")}>Save</PrimaryButton>
       </div>
     </Panel>

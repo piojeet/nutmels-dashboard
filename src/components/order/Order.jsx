@@ -160,7 +160,7 @@ function Order() {
                     setOpenCalendar(false);
                   }}
                   inline
-                  calendarClassName="!bg-white-color/5 !text-white-color p-2 rounded-lg"
+                  calendarClassName="!bg-[var(--dark-bg)] !text-white-color p-2 rounded-lg"
                 />
               </div>
             )}
@@ -178,7 +178,7 @@ function Order() {
               <span className="font-inter-r">Filters</span>
             </button>
             {showFilter && (
-              <div className="absolute right-0 mt-2 w-64 bg-white-color/5 text-white-color border border-white/20 rounded-lg p-4 z-10">
+              <div className="absolute right-0 mt-2 w-64 bg-[var(--dark-bg)] text-white-color border border-white/20 rounded-lg p-4 z-10">
                 <h3 className="text-sm font-semibold mb-3 font-inter-s">Filter by Status</h3>
                 <div className="flex flex-col gap-2 font-inter-r">
                   {statusesfilter.map((status, i) => {

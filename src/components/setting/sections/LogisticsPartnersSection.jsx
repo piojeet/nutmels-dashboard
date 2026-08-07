@@ -53,12 +53,12 @@ function LogisticsPartnersSection() {
 
   return (
     <div className="mx-auto">
-      <div className="rounded-[30px] p-5 text-[#1A1A1A] shadow-side-bar sm:p-8">
-        <p className="text-sm font-inter-r text-[#8798ad]">
+      <div className="">
+        {/* <p className="text-sm font-inter-r text-[#8798ad]">
           Manage global shipping APIs.
-        </p>
+        </p> */}
 
-        <div className="mt-6 grid grid-cols-3 gap-1 rounded-lg border border-white-color/10 bg-white-color/[5%] p-1 relative">
+        <div className="grid grid-cols-3 gap-1 rounded-lg border border-white-color/10 bg-white-color/[5%] p-1 relative">
           <div
             className="absolute inset-y-1 rounded-md bg-yellow-color transition-all duration-300"
             style={{
@@ -71,7 +71,7 @@ function LogisticsPartnersSection() {
               key={id}
               type="button"
               onClick={() => setActivePartner(id)}
-              className={`h-10 rounded-md px-2 text-[11px] font-inter-b uppercase tracking-[0.08em] transition relative z-10 ${
+              className={`h-9 rounded-md px-2 text-[11px] font-inter-b uppercase tracking-[0.08em] transition relative z-10 ${
                 activePartner === id
                   ? "text-white shadow-sm"
                   : "text-[#8fa0b8] hover:text-yellow-color"
@@ -82,9 +82,9 @@ function LogisticsPartnersSection() {
           ))}
         </div>
 
-        <div className="mt-9 flex items-center justify-between gap-4">
+        <div className="mt-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-yellow-color text-xl text-yellow-color">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-yellow-color text-lg text-yellow-color">
               <FiTruck />
             </span>
             <div>
@@ -110,7 +110,7 @@ function LogisticsPartnersSection() {
           </button>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <div className="rounded-2xl border border-[#e8edf4]/20 p-4">
             <div className="text-[11px] font-inter-b uppercase tracking-[0.16em] text-[#bdbdbd]">
               Status
@@ -145,14 +145,14 @@ function LogisticsPartnersSection() {
             onClick={() =>
               notify(`${partner.label} sync refreshed.`, "success")
             }
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f7f9fc] text-yellow-color transition hover:bg-yellow-color hover:text-black-color"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f7f9fc] text-yellow-color transition hover:bg-yellow-color hover:text-black-color"
             aria-label="Refresh logistics sync"
           >
             <FiRefreshCw />
           </button>
         </div>
 
-        <div className="mt-6 flex items-center gap-2 rounded-lg border border-dashed border-[#d7e0ea] px-4 py-3 text-[11px] font-inter-s uppercase tracking-[0.08em] text-[#7f91a8]">
+        <div className="mt-4 flex items-center gap-2 rounded-lg border border-dashed border-[#d7e0ea] px-4 py-3 text-[11px] font-inter-s uppercase tracking-[0.08em] text-[#7f91a8]">
           <FiShield className="text-base" />
           Secure 256-bit AES encryption enabled
         </div>
@@ -162,7 +162,7 @@ function LogisticsPartnersSection() {
           onClick={() =>
             notify(`${partner.label} logistics settings submitted.`, "success")
           }
-          className="mt-9 flex h-[52px] w-full items-center justify-center rounded-lg bg-yellow-color px-5 text-sm font-inter-b text-black-color shadow-side-bar transition hover:brightness-105"
+          className="mt-4 flex h-[40px] w-full items-center justify-center rounded-lg bg-yellow-color px-5 text-sm font-inter-b text-black-color shadow-side-bar transition hover:brightness-105"
         >
           Submit Changes
         </button>

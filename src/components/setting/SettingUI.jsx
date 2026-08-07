@@ -7,11 +7,11 @@ export function Panel({ title, description, action, children, className = "" }) 
       className={` ${className}`}
     >
       {(title || description || action) && (
-        <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>
             {title ? <h2 className="text-xl font-inter-s text-white-color">{title}</h2> : null}
             {description ? (
-              <p className="mt-1 max-w-2xl text-sm leading-6 text-white-color/55">{description}</p>
+              <p className="max-w-2xl text-xs leading-6 text-white-color/55">{description}</p>
             ) : null}
           </div>
           {action}
@@ -40,7 +40,7 @@ export function TextInput({ icon: Icon, className = "", ...props }) {
       ) : null}
       <input
         {...props}
-        className={`h-[52px] w-full rounded-2xl border border-white-color/14 bg-white-color/[3%] px-4 text-sm text-white-color outline-none transition placeholder:text-white-color/25 focus:border-yellow-color/40 focus:bg-white-color/[6%] ${
+        className={`h-9 w-full rounded-lg border border-white-color/14 bg-white-color/[3%] px-4 text-sm text-white-color outline-none transition placeholder:text-white-color/25 focus:border-yellow-color/40 focus:bg-white-color/[6%] ${
           Icon ? "pl-11" : ""
         } ${className}`}
       />
@@ -53,7 +53,7 @@ export function SelectInput({ options, className = "", ...props }) {
     <div className="relative">
       <select
         {...props}
-        className={`h-[52px] w-full appearance-none rounded-2xl border border-white-color/14 bg-white-color/[3%] px-4 pr-11 text-sm text-white-color outline-none transition focus:border-yellow-color/40 focus:bg-white-color/[6%] ${className}`}
+        className={`h-9 w-full appearance-none rounded-lg border border-white-color/14 bg-white-color/[3%] px-4 pr-11 text-sm text-white-color outline-none transition focus:border-yellow-color/40 focus:bg-white-color/[6%] ${className}`}
       >
         {options.map((option) => (
           <option
@@ -75,7 +75,7 @@ export function PrimaryButton({ children, className = "", ...props }) {
     <button
       type="button"
       {...props}
-      className={`inline-flex h-[52px] items-center justify-center gap-2 rounded-2xl bg-yellow-color px-5 text-sm font-inter-s text-black-color shadow-side-bar transition hover:opacity-90 ${className}`}
+      className={`inline-flex py-2 items-center justify-center gap-2 rounded-lg bg-yellow-color px-5 text-sm font-inter-s text-black-color shadow-side-bar transition hover:opacity-90 ${className}`}
     >
       {children}
     </button>
@@ -87,7 +87,7 @@ export function SecondaryButton({ children, className = "", ...props }) {
     <button
       type="button"
       {...props}
-      className={`inline-flex h-[52px] items-center justify-center gap-2 rounded-2xl border border-white-color/14 bg-white-color/[3%] px-5 text-sm font-inter-s text-white-color shadow-side-bar transition hover:border-white-color/25 hover:bg-white-color/[6%] ${className}`}
+      className={`inline-flex h-[35px] items-center justify-center gap-2 rounded-lg! border border-white-color/14 bg-white-color/[3%] px-5 text-sm font-inter-s text-white-color shadow-side-bar transition hover:border-white-color/25 hover:bg-white-color/[4%] ${className}`}
     >
       {children}
     </button>
@@ -154,7 +154,7 @@ export function StatusPill({ tone = "default", children }) {
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-inter-s uppercase tracking-[0.18em] ${tones[tone]}`}
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-inter-s uppercase tracking-[0.18em] ${tones[tone]}`}
     >
       {children}
     </span>

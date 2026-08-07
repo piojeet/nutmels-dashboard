@@ -47,7 +47,7 @@ const RetentionGrid = () => {
                                 {row.map((value, colIndex) => (
                                     <div
                                         key={colIndex}
-                                        className="w-14 h-6 rounded flex items-center justify-center text-white text-xs font-medium mr-1"
+                                        className="w-14 h-5 rounded flex items-center justify-center text-white text-[10px] font-medium mr-1"
                                         style={{ backgroundColor: getColor(value) }}
                                     >
                                         {value}

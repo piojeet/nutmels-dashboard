@@ -108,42 +108,42 @@ function LanguagesSection({ controls, setControls }) {
         </div>
       </div>
 
-      <div className="mt-5 text-sm text-white-color/45">
+      <div className="mt-3 text-sm text-white-color/45">
         Showing 1 to {filteredLanguages.length} of {LANGUAGE_ROWS.length} results
       </div>
 
-      <div className="mt-4 overflow-hidden rounded-[26px] border border-white-color/10 bg-white-color/[3%]">
-        <div className="overflow-x-auto">
+      <div className="mt-2 overflow-hidden rounded-lg border border-white-color/10 bg-white-color/[3%]">
+        <div className="overflow-x-auto max-h-[300px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-yellow-color [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white-color/20 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-2">
           <table className="w-full min-w-[760px] text-left">
-            <thead className="bg-white-color/[6%] text-sm font-inter-s text-white-color/70">
+            <thead className="bg-[var(--table-h)] text-sm font-inter-s text-white-color/70 sticky top-0 z-50">
               <tr>
-                <th className="px-6 py-4">Name</th>
-                <th className="px-6 py-4">Code</th>
-                <th className="px-6 py-4">Direction</th>
-                <th className="px-6 py-4">Default</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Code</th>
+                <th className="px-4 py-2">Direction</th>
+                <th className="px-4 py-2">Default</th>
+                <th className="px-4 py-2">Status</th>
+                <th className="px-4 py-2 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredLanguages.map((item) => (
                 <tr key={item.id} className="border-t border-white-color/8 text-sm text-white-color/80">
-                  <td className="px-6 py-4 font-inter-s text-white-color underline decoration-white-color/20 underline-offset-4">
+                  <td className="px-4 py-2 font-inter-s text-white-color underline decoration-white-color/20 underline-offset-4">
                     {item.name}
                   </td>
-                  <td className="px-6 py-4 uppercase text-white-color/60">{item.code}</td>
-                  <td className="px-6 py-4">{item.direction}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-2 uppercase text-white-color/60 text-xs">{item.code}</td>
+                  <td className="px-4 py-2 text-xs">{item.direction}</td>
+                  <td className="px-4 py-2">
                     <StatusPill tone={item.isDefault ? "success" : "danger"}>
                       {item.isDefault ? "Yes" : "No"}
                     </StatusPill>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-2">
                     <StatusPill tone={item.status === "Public" ? "success" : "warning"}>
                       {item.status}
                     </StatusPill>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-2">
                     <div className="flex justify-end gap-2">
                       <SecondaryButton className="h-10 rounded-xl px-4" onClick={() => notify(`${item.name} opened for editing.`)}>
                         <FiEdit2 />
@@ -152,7 +152,7 @@ function LanguagesSection({ controls, setControls }) {
                       <button
                         type="button"
                         onClick={() => notify(`${item.name} deleted from the language list.`, "success")}
-                        className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-rose-300/20 bg-rose-400/15 px-4 text-sm font-inter-s text-rose-200 transition hover:bg-rose-400/20"
+                        className="inline-flex h-[35px] items-center justify-center gap-2 rounded-xl border border-rose-300/20 bg-rose-400/15 px-4 text-sm font-inter-s text-rose-200 transition hover:bg-rose-400/20"
                       >
                         <FiTrash2 />
                         Delete
