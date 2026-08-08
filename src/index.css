@@ -10,7 +10,9 @@ body {
 }
 
 /* The Footer editor owns its own scroll container, so the document must not scroll behind it. */
-body:has(.seo-footer-editor) {
+body:has(.seo-footer-editor),
+body:has(.seo-header-editor),
+body:has(.seo-about-editor) {
     overflow-y: hidden;
 }
 
