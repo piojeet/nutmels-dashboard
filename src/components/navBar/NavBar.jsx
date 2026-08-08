@@ -53,7 +53,7 @@ function NavBar() {
   };
 
   return (
-    <div className='relative flex flex-wrap items-center justify-between gap-3 py-3 sm:py-3'>
+    <div className='relative flex flex-wrap items-center justify-between gap-3 py-2'>
       <Link to='/' className='shrink-0'>
         <img src={theme === 'dark' ? logoDark : logoLight} alt='logo' className='h-6 w-auto sm:h-7' />
       </Link>

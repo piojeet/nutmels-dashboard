@@ -6,6 +6,12 @@ html, body, #root {
 
 body {
     overflow-x: hidden;
+    background: var(--bg-radial);
+}
+
+/* The Footer editor owns its own scroll container, so the document must not scroll behind it. */
+body:has(.seo-footer-editor) {
+    overflow-y: hidden;
 }
 
 * {
